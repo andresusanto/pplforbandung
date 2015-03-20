@@ -23,7 +23,7 @@ Dump SQL database diserahkan ke Andre Susanto / Luthfi Hamid, nanti informasi lo
 ## Aturan:
 1. Setiap kelompok sudah dibuatkan folder masing-masing, sedangkan folder root digunakan untuk portal utama
 2. Tiap kelompok diharuskan untuk membuat branch masing-masing jika ingin menggunakan repo ini, push hanya boleh dilakukan pada branch masing-masing
-3. Jumlah branch yang boleh dibuat oleh sebuah kelompok itu bebas, tetapi untuk memudahkan tolong gunakan aturan penamaan **<nomor_kelompok>_<nama_branch_bebas>**
+3. Jumlah branch yang boleh dibuat oleh sebuah kelompok itu bebas, tetapi untuk memudahkan tolong gunakan aturan penamaan **[nomor_kelompok]_[nama_branch_bebas]**
 4. Merge ke master dilakukan jika bagian dari pekerjaan dirasa sudah siap, dan ingin dilakukan pengujian pada server
 5. Branch utama (master) otomatis langsung ter-sync ke server, sehingga jika ingin melakukan merge, tolong diperiksa/diteliti terlebih dahulu. Jangan sampai me-merge pekerjaan kelompok lain.
 
