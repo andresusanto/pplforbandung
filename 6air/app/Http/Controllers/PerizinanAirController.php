@@ -24,7 +24,7 @@ class PerizinanAirController extends Controller {
 		return view('home');
 	}
 	
-	public function getPerpanjangperizinan()
+	public function perpanjangperizinan($id)
 	{
 		return view('home');
 	}
@@ -34,7 +34,7 @@ class PerizinanAirController extends Controller {
 		return view('home');
 	}
 	
-	public function getUbahperizinan()
+	public function ubahperizinan($id)
 	{
 		return view('home');
 	}
