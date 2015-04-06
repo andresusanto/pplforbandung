@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<meta charset="utf-8"><title>Homepage User</title>
+	<meta charset="utf-8"><title>Homepage Dinas</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 
 	<link rel="shortcut icon" href="favicon_16.ico"><link rel="bookmark" href="favicon_16.ico"><link href="{{ asset('/css/site.min.css') }}" rel="stylesheet">
@@ -20,7 +20,8 @@
 						<a class="navbar-brand" href="HomepageUser.html"><img src="img/title.png" height="40"></a></div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="nav-link" href="FormPerizinanBaru.html">Ajukan Izin</a></li>
+							<li><a class="nav-link" href="FormPerizinanBaru.html">Izin Masuk</a></li>
+							<li><a class="nav-link" href="FormPerizinanBaru.html">Izin Diterima</a></li>
 						</ul>
 					</div>
 				</div>
@@ -30,6 +31,6 @@
 		@yield('content')
 			
 			<div class="site-footer"><div class="container">
-			<div class="copyright clearfix"><p><b>Aplikasi Perizinan Air</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="FormPerizinanBaru">Ajukan Izin</a>&nbsp;&bull;&nbsp;<p>&copy; 2015  Pemerintah Kota Bandung</p></div></div></div></div>
+			<div class="copyright clearfix"><p><b>Aplikasi Perizinan Air</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="FormPerizinanBaru">Izin Masuk</a>&nbsp;&bull;&nbsp;<a href="FormPerizinanBaru">Izin Diterima</a><br><p>&copy; 2015  Pemerintah Kota Bandung</p></div></div></div></div>
 	</body>
 </html>
