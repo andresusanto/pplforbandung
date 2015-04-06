@@ -1,6 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 
+use Response;
+use Auth;
+use Mail;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Routing\Controller;
+
+use App\IzinAir;
+
+
 class PerizinanAirController extends Controller {
 
 
@@ -15,13 +26,27 @@ class PerizinanAirController extends Controller {
 	
 	public function getNewperizinan()
 	{
-		return view('home');
+		return view('izinbaru');
 	}
 	
 	
 	public function postNewperizinan()
 	{
-		return view('home');
+		$izinair = new IzinAir;
+		$izinair->id_penduduk = "12345"; //seharusnya Auth::user()->nik
+		$izinair->id_lahan	= Request::input('lahan');
+		$izinair->kategori = Request::input('kategori');
+		$izinair->deskripsi = Request::input('deskripsi');
+		$izinair->status = "NEW";
+		$izinair->ischange = 0;
+		$izinair->save();
+		
+		return view('message')->with(array(
+												'message_title' => "Sukses",
+												'message_body' => "Perizinan anda berhasil dikirim",
+												'message_color' => "green",
+												'message_redirect' => action('PerizinanAirController@getIndex')
+											));
 	}
 	
 	public function perpanjangperizinan($id)
