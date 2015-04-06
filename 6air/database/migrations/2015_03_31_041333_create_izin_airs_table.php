@@ -15,7 +15,13 @@ class CreateIzinAirsTable extends Migration {
 		Schema::create('izin_airs', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('nama');
+			$table->string('id_penduduk');
+			$table->string('id_lahan');
+			$table->string('status');
+			$table->string('kategori');
+			$table->string('mulai_berlaku');
+			$table->string('berlaku_hingga');
+			$table->string('deskripsi');
 			
 			$table->timestamps();
 		});
