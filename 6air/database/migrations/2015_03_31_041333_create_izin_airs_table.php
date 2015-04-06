@@ -22,7 +22,7 @@ class CreateIzinAirsTable extends Migration {
 			$table->date('mulai_berlaku');
 			$table->date('berlaku_hingga');
 			$table->string('deskripsi');
-			
+			$table->integer('ischange');
 			$table->timestamps();
 		});
 	}

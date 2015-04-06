@@ -14,8 +14,12 @@
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
+Route::get('perizinanair/detilperizinan/{id}', 'PerizinanAirController@detilperizinan');
+Route::get('perizinanair/ubahstatus/{id}/{status}', 'PerizinanAirController@ubahstatus');
+
 
 Route::controllers([
+	'perizinanair' => 'PerizinanAirController',
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
