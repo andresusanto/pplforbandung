@@ -69,7 +69,6 @@ class PerizinanAirController extends Controller {
 		return view('home');
 	}
 	
-	
 	public function getIndex()
 	{
 		return view('home');
@@ -85,11 +84,37 @@ class PerizinanAirController extends Controller {
 	
 	public function IndexDinas()
 	{
-		
+		return view('homepagedinas');
 	}
 	
 	public function IndexUser()
 	{
 		
+	}
+	
+	public function showPerizinanMasuk()
+	{
+		$izinair = IzinAir::where('status', '=', 'NEW')->get();
+		
+		foreach($izinair as $izin)
+		{
+			echo $izin->deskripsi;
+			echo '<br>';
+		}
+		
+		$izinair = IzinAir::find(2);
+		$izinair->deskripsi = 'henry';
+		$izinair->save();
+	}
+	
+	public function showPerizinanDiterima()
+	{
+		$izinair = IzinAir::where('status', '=', 'ACCEPT')->get();
+		
+		foreach($izinair as $izin)
+		{
+			echo $izin->deskripsi;
+			echo '<br>';
+		}
 	}
 }
