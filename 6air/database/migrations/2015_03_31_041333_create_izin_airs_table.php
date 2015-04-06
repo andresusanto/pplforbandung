@@ -19,8 +19,8 @@ class CreateIzinAirsTable extends Migration {
 			$table->string('id_lahan');
 			$table->string('status');
 			$table->string('kategori');
-			$table->string('mulai_berlaku');
-			$table->string('berlaku_hingga');
+			$table->date('mulai_berlaku');
+			$table->date('berlaku_hingga');
 			$table->string('deskripsi');
 			
 			$table->timestamps();
