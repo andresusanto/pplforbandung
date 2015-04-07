@@ -61,11 +61,18 @@ class PerizinanAirController extends Controller {
 	
 	public function ubahperizinan($id)
 	{
-		return view('home');
+		$izinair = IzinAir::where('id', '=', $id)->first();
+		$data = $izinair->toArray();
+		
+		return view('formperubahanizin', $data);
 	}
 	
 	public function postUbahperizinan()
-	{
+	{		
+		$id = Request::input('id');
+		$izinair = IzinAir::find($id);
+		$izinair->deskripsi = Request::input('deskripsi');
+		$izinair->save();
 		return view('home');
 	}
 	

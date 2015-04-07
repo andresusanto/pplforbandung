@@ -4,7 +4,9 @@
 <div class="container documents">
 		<div class="row">
 			<div class="col-md-5 ">
-			<form>
+			<form action="{{ action('PerizinanAirController@postUbahperizinan') }}" method="POST">
+				<input type="hidden" name="_token" value="{{csrf_token()}}" />
+				<input type="hidden" name="id" value=<?= $id ?> />
 				<label>Nama Pemohon</label>
 				<input class="form-control" placeholder="nama pemohon"><br>
 				<label>Lokasi</label>
@@ -22,7 +24,7 @@
 				<label>Instansi</label>
 				<input class="form-control" placeholder="instansi"><br>
 				<label>Deskripsi</label>
-				<textarea class="form-control" placeholder="deskripsi"></textarea><br>
+				<textarea class="form-control" name="deskripsi" placeholder="deskripsi"><?= $deskripsi ?></textarea><br>
 				<button class="btn btn-primary" type="submit">Submit</button><br> 
 			</form>
 			</div>
