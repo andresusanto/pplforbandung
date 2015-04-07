@@ -20,8 +20,8 @@
 						<a class="navbar-brand" href="HomepageUser.html"><img src="img/title.png" height="40"></a></div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a class="nav-link" href="FormPerizinanBaru.html">Izin Masuk</a></li>
-							<li><a class="nav-link" href="FormPerizinanBaru.html">Izin Diterima</a></li>
+							<li><a class="nav-link" href="perizinanmasuk">Izin Masuk</a></li>
+							<li><a class="nav-link" href="perizinanditerima">Izin Diterima</a></li>
 						</ul>
 					</div>
 				</div>
