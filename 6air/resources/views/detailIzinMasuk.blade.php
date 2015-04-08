@@ -23,7 +23,10 @@
 			</tr>
 			<tr>
 				<td>Deskripsi</td>
-				<td>nsdojefojero kjgorko</td>
+				<td><?php
+						echo $izinair->deskripsi
+					?>
+				</td>
 			</tr>
 			<tr>
 				<td>Berlaku Hingga</td>

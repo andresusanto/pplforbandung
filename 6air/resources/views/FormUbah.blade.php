@@ -20,11 +20,11 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 					</button> 
-					<a class="navbar-brand" href="HomepageUser.html"><img src="img/title.png" height="40"></a>
+					<a class="navbar-brand" href="../homeuser"><img src="{{asset('/img/title.png')}}" height="40"></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a class="nav-link" href="FormPerizinanBaru.html">Ajukan Izin</a></li>
+						<li><a class="nav-link" href="../newperizinan">Ajukan Izin</a></li>
 					</ul>
 				</div>
 			</div>
@@ -35,11 +35,6 @@
 				<div class="col-md-8">
 					<h3>Perubahan Izin</h3>
 					<h4>Silahkan mengajukan perubahan izin dengan mengedit form di bawah ini.</h4>
-				</div>
-				<div class="col-md-4">
-					<div class="advertisement">
-						<script async type="text/javascript" src="//cdn.adpacks.com/adpacks.js?zoneid=1386&serve=C6SI42Y&placement=bootflat" id="_adpacks_js"></script>
-					</div>
 				</div>
 			</div>
 			<div class="topic__infos">

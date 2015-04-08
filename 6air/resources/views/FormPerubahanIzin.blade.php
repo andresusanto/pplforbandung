@@ -3,7 +3,7 @@
 @section('content')
 <div class="container documents">
 		<div class="row">
-			<div class="col-md-5 ">
+			<div class="col-md-5">
 			<form action="{{ action('PerizinanAirController@postUbahperizinan') }}" method="POST">
 				<input type="hidden" name="_token" value="{{csrf_token()}}" />
 				<input type="hidden" name="id" value=<?= $id ?> />
@@ -20,7 +20,7 @@
 					<option value="5">Izin pembangunan lintasan yang berada di bawah/atasnya </option>
 					<option value="6">Izin pemanfaatan bangunan pengairan dan lahan pada daerah sempadan saluran air </option>
 					<option value="7">Izin pemanfaatan lahan mata air dan lahan pengairan lainnya </option>
-				</select><br>
+				</select><br><br>
 				<label>Instansi</label>
 				<input class="form-control" placeholder="instansi"><br>
 				<label>Deskripsi</label>

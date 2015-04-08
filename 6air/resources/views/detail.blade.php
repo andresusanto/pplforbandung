@@ -20,7 +20,7 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 					</button> 
-					<a class="navbar-brand" href="HomepageUser.html"><img src="img/title.png" height="40"></a>
+					<a class="navbar-brand" href="../homeuser"><img src="{{asset('/img/title.png')}}" height="40"></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
@@ -35,11 +35,6 @@
 				<div class="col-md-8">
 					<h3>Detail Perizinan</h3>
 					<h4>Berikut ini adalah detail perizinan yang anda ajukan. </h4>
-				</div>
-				<div class="col-md-4">
-					<div class="advertisement">
-						<script async type="text/javascript" src="//cdn.adpacks.com/adpacks.js?zoneid=1386&serve=C6SI42Y&placement=bootflat" id="_adpacks_js"></script>
-					</div>
 				</div>
 				<div class="row">
 					

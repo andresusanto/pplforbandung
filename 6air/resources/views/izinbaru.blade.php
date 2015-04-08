@@ -1,4 +1,4 @@
-@extends('app')
+@extends('formbaru')
 
 @section('content')
 <div class="container">

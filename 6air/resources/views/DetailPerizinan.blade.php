@@ -18,8 +18,11 @@
 				<td>Izin Pengelolaan Air Bawah Tanah</td>
 			</tr>
 			<tr>
-				<td>Instansi</td>
-				<td>HMIF</td>
+				<td>Deskripsi</td>
+				<td><?php
+						echo $izinair->deskripsi;
+					?>
+				</td>
 			</tr>
 			<tr>
 				<td>Berlaku Hingga</td>
@@ -29,7 +32,7 @@
 		</table>
 		</div>
 		<div class="col-md-2"></div>
-			<a href="FormPerubahanIzin.html" class="col-md-2 btn btn-primary">Ubah</a><br><br><br>
+			<a href="../ubahperizinan/{{$izinair->id}}" class="col-md-2 btn btn-primary">Ubah</a><br><br><br>
 		<div class="col-md-2"></div>
 			<a href="" class="col-md-2 btn btn-info">Perpanjang</a><br><br><br>
 		<div class="col-md-2"></div>

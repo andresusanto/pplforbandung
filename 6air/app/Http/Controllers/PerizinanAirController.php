@@ -26,7 +26,7 @@ class PerizinanAirController extends Controller {
 	
 	public function getNewperizinan()
 	{
-		return view('izinbaru');
+		return view('formperizinanbaru');
 	}
 	
 	
@@ -45,7 +45,7 @@ class PerizinanAirController extends Controller {
 												'message_title' => "Sukses",
 												'message_body' => "Perizinan anda berhasil dikirim",
 												'message_color' => "green",
-												'message_redirect' => action('PerizinanAirController@getIndex')
+												'message_redirect' => action('PerizinanAirController@homeuser')
 											));
 	}
 	
@@ -68,12 +68,12 @@ class PerizinanAirController extends Controller {
 	}
 	
 	public function postUbahperizinan()
-	{		
+	{
 		$id = Request::input('id');
 		$izinair = IzinAir::find($id);
 		$izinair->deskripsi = Request::input('deskripsi');
 		$izinair->save();
-		return view('home');
+		return view('homeuser');
 	}
 	
 	public function getIndex()
@@ -81,47 +81,48 @@ class PerizinanAirController extends Controller {
 		return view('home');
 	}
 
-	public function detilperizinan($id){
-		return $id;
+	public function detailperizinanUser($id){
+		$izinair = IzinAir::find($id);
+		return view('detailperizinan')->with('izinair', $izinair);
+	}
+	
+	public function detilperizinanDinas($id){
+		$izinair = IzinAir::find($id);
+		
+		return view('detailizinmasuk')->with('izinair', $izinair);
 	}
 	
 	public function ubahstatus($id, $status){
 		return $id . ' ' . $status;
 	}
 	
-	public function IndexDinas()
+	public function HomeDinas()
 	{
 		return view('homepagedinas');
 	}
 	
-	public function IndexUser()
+	public function HomeUser()
 	{
+		$izinair = IzinAir::all();
 		
+		return view('homepageuser')->with('izinair', $izinair);
 	}
 	
 	public function showPerizinanMasuk()
 	{
 		$izinair = IzinAir::where('status', '=', 'NEW')->get();
 		
-		foreach($izinair as $izin)
-		{
-			echo $izin->deskripsi;
-			echo '<br>';
-		}
+		return view('izinmasuk')->with('izinair', $izinair);
 		
-		$izinair = IzinAir::find(2);
+		/*$izinair = IzinAir::find(2);
 		$izinair->deskripsi = 'henry';
-		$izinair->save();
+		$izinair->save();*/
 	}
 	
 	public function showPerizinanDiterima()
 	{
 		$izinair = IzinAir::where('status', '=', 'ACCEPT')->get();
 		
-		foreach($izinair as $izin)
-		{
-			echo $izin->deskripsi;
-			echo '<br>';
-		}
+		return view('izinditerima')->with('izinair', $izinair);
 	}
 }

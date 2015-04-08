@@ -17,7 +17,7 @@
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> 
 						<span class="icon-bar"></span> <span class="icon-bar"></span></button> 
-						<a class="navbar-brand" href="HomepageUser.html"><img src="img/title.png" height="40"></a></div>
+						<a class="navbar-brand" href="homedinas"><img src="{{asset('/img/title.png')}}" height="40"></a></div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li><a class="nav-link" href="perizinanmasuk">Izin Masuk</a></li>
