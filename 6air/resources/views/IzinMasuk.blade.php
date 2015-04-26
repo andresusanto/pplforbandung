@@ -6,7 +6,7 @@
 			<?php 
 				foreach($izinair as $izin)
 				{						
-					echo '<div class="list-group">';
+					echo '<div class="list-group col-xs-6">';
 					echo '<a href="detilperizinandinas/'.$izin->id.'" class="list-group-item active">';
 					echo '<h4 class="list-group-item-heading">'.$izin->kategori.'</h4>';
 					echo '<p class="list-group-item-text left">'.$izin->deskripsi.'</p><br>';

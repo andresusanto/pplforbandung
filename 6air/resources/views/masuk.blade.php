@@ -31,19 +31,11 @@
 			</div>
 		</nav>
 		
-		<div class="topic">
-			<div class="container">
-				<div class="col-md-8">
-					<h3>Izin Masuk</h3>
-				</div>
-			</div>
-			<div class="topic__infos">
-			</div>
-		</div>
 	</div>
 	
 	@yield('content')
-	
+	<br><br><br><br><br><br><br><br><br>
+<br>	
 	<div class="site-footer"><div class="container">
 			<div class="copyright clearfix"><p><b>Aplikasi Perizinan Air</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="FormPerizinanBaru">Izin Masuk</a>&nbsp;&bull;&nbsp;<p>&copy; 2015  Pemerintah Kota Bandung</p></div></div></div></div>
 	</body>

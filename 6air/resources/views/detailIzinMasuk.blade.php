@@ -38,11 +38,12 @@
 		<div class="col-md-2"></div>
 			
 		<div class="col-md-2">
-		<label>Ubah Status</label>
+		
 			<select name="selecter_basic" class="selecter_1">
 					<option value="1">Diterima</option>
 					<option value="2">Ditolak</option>
 				</select><br>
-		</div>
+		<br>
+		<button type="submit" class="btn btn-primary">Ubah Status</button> </div>
 	</div>
 @endsection

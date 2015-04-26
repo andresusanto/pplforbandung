@@ -12,8 +12,8 @@
 				<label>Lokasi</label>
 				<input class="form-control" placeholder="lokasi"><br>
 				<label>Jenis Izin </label>
-				<select name="selecter_basic" class="selecter_1">
-					<option value="1">Izin Pengelolaan Air Bawah Tanah</option>
+				<select name="selecter_basic" class="selecter_1 form-control">
+					<option value="1">Izin Pengelolaan Air Baw contrlah Tanah</option>
 					<option value="2">Izin Pengambilan Air Permukaan</option>
 					<option value="3">Izin  pembuangan air buangan  ke sumber air</option>
 					<option value="4">Izin perubahan alur, bentuk, dimensi, dan kemiringan dasar saluran/sungai </option>
