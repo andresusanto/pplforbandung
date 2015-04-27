@@ -29,7 +29,7 @@
 								echo '<td>Izin Pengelolaan Air Bawah Tanah</td>';
 								echo '<td>'.$izin->deskripsi.'</td>';
 								echo '<td>'.$izin->status.'</td>';
-								echo '<td><a href="'.action("PerizinanAirController@detailperizinanuser",$izin->id).'">Approve</a></td>';
+								echo '<td><a href="'.action("PerizinanAirController@approveizin",array($izin->id, 1)).'">Approve</a> <a href="'.action("PerizinanAirController@approveizin",array($izin->id, 0)).'">Reject</a></td>';
 								echo '</tr>';
 								
 							}

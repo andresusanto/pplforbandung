@@ -49,9 +49,37 @@ class PerizinanAirController extends Controller {
 											));
 	}
 	
-	public function getNotifikasi()
+	public function getNotifikasiuser()
 	{
+		
 		return view('home');
+	}
+	
+	public function approveizin($id, $status)
+	{
+		$izinair = IzinAir::find($id);
+		if ($izinair){
+			if ($status == 1)
+				$izinair->status = "APP";
+			else
+				$izinair->status = "REJ";
+			
+			$izinair->save();
+			
+			return view('message')->with(array(
+					'message_title' => "Sukses",
+					'message_body' => "Status perizinan sukses diubah",
+					'message_color' => "green",
+					'message_redirect' => action('PerizinanAirController@getHomedinas')
+				));
+		}else{
+			return view('message')->with(array(
+					'message_title' => "Error",
+					'message_body' => "Perizinan gagal disetujui",
+					'message_color' => "red",
+					'message_redirect' => action('PerizinanAirController@getHomedinas')
+				));
+		}
 	}
 	
 	public function perpanjangperizinan($id)
@@ -105,7 +133,7 @@ class PerizinanAirController extends Controller {
 	
 	public function getHomedinas()
 	{
-		$izinair = IzinAir::all();
+		$izinair = IzinAir::where('status', '=', 'NEW')->get();
 		return view('dinas/home')->with(array(
 												'izinair' => $izinair,
 												'dinas' => "",
