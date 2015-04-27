@@ -18,10 +18,6 @@ Route::get('perizinanair/detailperizinanuser/{id}', 'PerizinanAirController@deta
 Route::get('perizinanair/ubahstatus/{id}/{status}', 'PerizinanAirController@ubahstatus');
 Route::get('perizinanair/perpanjangperizinan/{id}', 'PerizinanAirController@perpanjangperizinan');
 Route::get('perizinanair/ubahperizinan/{id}', 'PerizinanAirController@ubahperizinan');
-Route::get('perizinanair/homeuser/', 'PerizinanAirController@homeuser');
-Route::get('perizinanair/homedinas', 'PerizinanAirController@homedinas');
-Route::get('perizinanair/perizinanmasuk', 'PerizinanAirController@showperizinanmasuk');
-Route::get('perizinanair/perizinanditerima', 'PerizinanAirController@showperizinanditerima');
 Route::get('perizinanair/detilperizinandinas/{id}', 'PerizinanAirController@detilperizinandinas');
 
 

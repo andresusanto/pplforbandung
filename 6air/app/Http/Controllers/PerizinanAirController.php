@@ -21,7 +21,7 @@ class PerizinanAirController extends Controller {
 
 	public function __construct()
 	{
-		//$this->middleware('auth');
+		$this->middleware('auth');
 	}
 	
 	public function getNewperizinan()
@@ -96,19 +96,19 @@ class PerizinanAirController extends Controller {
 		return $id . ' ' . $status;
 	}
 	
-	public function HomeDinas()
+	public function getHomedinas()
 	{
 		return view('homepagedinas');
 	}
 	
-	public function HomeUser()
+	public function getHomeuser()
 	{
 		$izinair = IzinAir::all();
 		
 		return view('homepageuser')->with('izinair', $izinair);
 	}
 	
-	public function showPerizinanMasuk()
+	public function getShowPerizinanMasuk()
 	{
 		$izinair = IzinAir::where('status', '=', 'NEW')->get();
 		
@@ -119,7 +119,7 @@ class PerizinanAirController extends Controller {
 		$izinair->save();*/
 	}
 	
-	public function showPerizinanDiterima()
+	public function getShowPerizinanDiterima()
 	{
 		$izinair = IzinAir::where('status', '=', 'ACCEPT')->get();
 		

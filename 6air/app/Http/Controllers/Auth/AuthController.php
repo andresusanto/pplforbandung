@@ -1,9 +1,13 @@
 <?php namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller {
 
@@ -33,6 +37,60 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
+	}
+	
+	public function getCode()
+	{
+		// modul OAuth
+		if (Request::has('code'))
+		{
+			$data = array (	'grant_type' => 'authorization_code',
+							'client_id' => 'ucJpPsUshiUWoXne',
+							'client_secret' => 'JM7ipwqjX5KX13KD',
+							'redirect_uri' => 'http://air.pplbandung.biz.tm/auth/code',
+							'code'=> Request::input('code'));
+			$data = http_build_query($data);
+			$context_options = array (
+								'http' => array (
+									'method' => 'POST',
+									'header'=> "Content-type: application/x-www-form-urlencoded\r\n"
+											 . "Content-Length: " . strlen($data) . "\r\n",
+									'content' => $data
+									)
+								);
+								
+			$context = stream_context_create($context_options);
+			$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/oauth/access_token", false, $context);
+			
+			$result = json_decode($result, true);
+			if ($result['access_token']){
+				$options = array(
+					'http' => array(
+						'method'  => 'GET'
+					),
+				);
+				$context  = stream_context_create($options);
+				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/" . $result['access_token'], false, $context);
+				$result = json_decode($result, true);
+				
+				if ($result['nama']){
+					if (!User::find($result['id'])){
+						$user = new User;
+						$user->id = $result['id'];
+						$user->name = $result['nama'];
+						$user->save();
+					}
+					Auth::loginUsingId($result['id']);
+					return new RedirectResponse(action('PerizinanAirController@getHomeuser'));
+				}else{
+					return "OAuth Failed (2)!";
+				}
+			}else{
+				return "OAuth Failed (1)!";
+			}
+			//
+			
+		}
 	}
 
 }

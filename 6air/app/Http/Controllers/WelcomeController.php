@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use Auth;
 
 class WelcomeController extends Controller {
 
@@ -30,7 +31,10 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		if (Auth::check())
+		{
+			redirect()->intended('perizinanair');
+		} else return view('homeguest');
 	}
 
 }
