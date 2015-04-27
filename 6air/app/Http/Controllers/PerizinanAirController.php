@@ -98,14 +98,14 @@ class PerizinanAirController extends Controller {
 	
 	public function getHomedinas()
 	{
-		return view('homepagedinas');
+		return view('HomepageDinas');
 	}
 	
 	public function getHomeuser()
 	{
 		$izinair = IzinAir::all();
 		
-		return view('homepageuser')->with('izinair', $izinair);
+		return view('HomepageUser')->with('izinair', $izinair);
 	}
 	
 	public function getShowPerizinanMasuk()
