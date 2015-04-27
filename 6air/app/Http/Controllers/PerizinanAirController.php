@@ -26,7 +26,7 @@ class PerizinanAirController extends Controller {
 	
 	public function getNewperizinan()
 	{
-		return view('FormPerizinanBaru');
+		return view('user/newizin')->with('nav_pengajuan','');
 	}
 	
 	
@@ -45,8 +45,13 @@ class PerizinanAirController extends Controller {
 												'message_title' => "Sukses",
 												'message_body' => "Perizinan anda berhasil dikirim",
 												'message_color' => "green",
-												'message_redirect' => action('PerizinanAirController@getHomeuser')
+												'message_redirect' => action('PerizinanAirController@getListperizinan')
 											));
+	}
+	
+	public function getNotifikasi()
+	{
+		return view('home');
 	}
 	
 	public function perpanjangperizinan($id)
@@ -64,7 +69,7 @@ class PerizinanAirController extends Controller {
 		$izinair = IzinAir::where('id', '=', $id)->first();
 		$data = $izinair->toArray();
 		
-		return view('formperubahanizin', $data);
+		return view('user/ubahizin', $data);
 	}
 	
 	public function postUbahperizinan()
@@ -83,7 +88,9 @@ class PerizinanAirController extends Controller {
 
 	public function detailperizinanUser($id){
 		$izinair = IzinAir::find($id);
-		return view('DetailPerizinan')->with('izinair', $izinair);
+		return view('user/detilizin')->with(array(
+												'izinair' => $izinair,
+												'nav_list' => ""));
 	}
 	
 	public function detilperizinanDinas($id){
@@ -98,14 +105,23 @@ class PerizinanAirController extends Controller {
 	
 	public function getHomedinas()
 	{
-		return view('HomepageDinas');
+		$izinair = IzinAir::all();
+		return view('dinas/home')->with('izinair',$izinair);
+	}
+	
+	public function getListperizinan()
+	{
+		$izinair = IzinAir::all();
+		
+		return view('user/listizin')->with(array(
+												'izinair' => $izinair,
+												'nav_list' => "")
+											);
 	}
 	
 	public function getHomeuser()
 	{
-		$izinair = IzinAir::all();
-		
-		return view('HomepageUser')->with('izinair', $izinair);
+		return view('public/welcome')->with('nav_home','AS');
 	}
 	
 	public function getShowPerizinanMasuk()

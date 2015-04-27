@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"><title>@yield('title')</title>
+<meta charset="utf-8"><title>Form Perizinan Baru</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="shortcut icon" href="favicon_16.ico">
 	<link rel="bookmark" href="favicon_16.ico">
@@ -20,13 +20,21 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 					</button> 
-					<a class="navbar-brand" href="{{action('WelcomeController@index')}}"><img src="{{asset('/img/title.png')}}" height="40"></a>
+					<a class="navbar-brand" href="#"><img src="{{asset('/img/title.png')}}" height="40"></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="PerizinanAirController@getNewperizinan">Ajukan Izin</a></li>
-						<!--<li><a href="PerizinanAirController@getNewperizinan">Perpanjang Izin</a></li>
-					-->
+						@if (Auth::guest())
+							<li><a href="{{ url('/auth/sso') }}">Login Pemohon</a></li>
+							<li><a href="{{ url('/auth/login') }}">Login Dinas</a></li>
+						@else
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								</ul>
+							</li>
+						@endif
 					</ul>
 				</div>
 			</div>
@@ -35,8 +43,8 @@
 		<div class="topic">
 			<div class="container">
 				<div class="col-md-8">
-					@yield('head')
-					
+					<h3>Ajukan Izin</h3>
+					<h4>Silahkan mengajukan perizinan terkait air dengan mengisi form di bawah ini.</h4>
 				</div>
 			</div>
 			<div class="topic__infos">

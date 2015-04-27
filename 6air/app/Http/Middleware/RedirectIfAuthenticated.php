@@ -35,7 +35,12 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(action('PerizinanAirController@getHomeuser'));
+			if ($this->auth->user()->email != ""){
+				return new RedirectResponse(action('PerizinanAirController@getHomedinas'));
+			}else{	
+				return new RedirectResponse(action('PerizinanAirController@getHomeuser'));
+			}
+			
 		}
 
 		return $next($request);
