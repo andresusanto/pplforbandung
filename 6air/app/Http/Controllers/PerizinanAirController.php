@@ -26,14 +26,14 @@ class PerizinanAirController extends Controller {
 	
 	public function getNewperizinan()
 	{
-		return view('formperizinanbaru');
+		return view('FormPerizinanBaru');
 	}
 	
 	
 	public function postNewperizinan()
 	{
 		$izinair = new IzinAir;
-		$izinair->id_penduduk = "12345"; //seharusnya Auth::user()->nik
+		$izinair->id_penduduk = Auth::user()->id;
 		$izinair->id_lahan	= Request::input('lahan');
 		$izinair->kategori = Request::input('kategori');
 		$izinair->deskripsi = Request::input('deskripsi');
@@ -45,7 +45,7 @@ class PerizinanAirController extends Controller {
 												'message_title' => "Sukses",
 												'message_body' => "Perizinan anda berhasil dikirim",
 												'message_color' => "green",
-												'message_redirect' => action('PerizinanAirController@homeuser')
+												'message_redirect' => action('PerizinanAirController@getHomeuser')
 											));
 	}
 	
@@ -83,13 +83,13 @@ class PerizinanAirController extends Controller {
 
 	public function detailperizinanUser($id){
 		$izinair = IzinAir::find($id);
-		return view('detailperizinan')->with('izinair', $izinair);
+		return view('DetailPerizinan')->with('izinair', $izinair);
 	}
 	
 	public function detilperizinanDinas($id){
 		$izinair = IzinAir::find($id);
 		
-		return view('detailizinmasuk')->with('izinair', $izinair);
+		return view('detailIzinMasuk')->with('izinair', $izinair);
 	}
 	
 	public function ubahstatus($id, $status){
@@ -112,7 +112,7 @@ class PerizinanAirController extends Controller {
 	{
 		$izinair = IzinAir::where('status', '=', 'NEW')->get();
 		
-		return view('izinmasuk')->with('izinair', $izinair);
+		return view('IzinMasuk')->with('izinair', $izinair);
 		
 		/*$izinair = IzinAir::find(2);
 		$izinair->deskripsi = 'henry';
@@ -123,6 +123,6 @@ class PerizinanAirController extends Controller {
 	{
 		$izinair = IzinAir::where('status', '=', 'ACCEPT')->get();
 		
-		return view('izinditerima')->with('izinair', $izinair);
+		return view('IzinDiterima')->with('izinair', $izinair);
 	}
 }

@@ -1,7 +1,15 @@
-@extends('welcome')
+@extends('base')
+@section('title')
+Homepage User
+@endsection
+
+@section('head')
+<h3>Selamat Datang</h3>
+<h4>Aplikasi perizinan air akan membantu anda mempermudah segala urusan terkait perizinan air.</h4>
+@endsection
+
 
 @section('content')
-<div class="index"><h1><img src="{{asset('/img/logo-index.png')}}" ></h1><h2>Aplikasi Perizinan Air akan membantu anda dalam hal perizinan terkait air di Kota Bandung.</h2></div>
 			<ul class="social"></ul>
 			<h3 style="padding-left: 105px"> Perizinan Anda </h3>
 			<div class="documents container">
