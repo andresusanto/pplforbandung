@@ -106,7 +106,10 @@ class PerizinanAirController extends Controller {
 	public function getHomedinas()
 	{
 		$izinair = IzinAir::all();
-		return view('dinas/home')->with('izinair',$izinair);
+		return view('dinas/home')->with(array(
+												'izinair' => $izinair,
+												'dinas' => "",
+												'nav_masuk'=> ""));
 	}
 	
 	public function getListperizinan()

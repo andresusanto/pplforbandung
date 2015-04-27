@@ -66,6 +66,51 @@
 	</div> <!-- /navbar-inner -->
 	
 </div> <!-- /navbar -->
+@if (isset($dinas))
+<div class="subnavbar">
+<div class="subnavbar-inner">
+	
+		<div class="container">
+
+			<ul class="mainnav">
+			
+				<li{{ isset($nav_masuk) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getNewperizinan') }}">
+						<i class="icon-list-alt"></i>
+						<span>Permohonan Izin Baru</span>
+					</a>    				
+				</li>
+				<li{{ isset($nav_list) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListperizinan') }}">
+						<i class="icon-list"></i>
+						<span>Perpanjangan Izin</span>
+					</a>    				
+				</li>
+				<li{{ isset($nav_list) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListperizinan') }}">
+						<i class="icon-th-list"></i>
+						<span>Perubahan Izin</span>
+					</a>    				
+				</li>
+				<li{{ isset($nav_pengaduan) ? ' class=active' : '' }}>
+					<a href="#">
+						<i class="icon-exclamation-sign"></i>
+						<span>Daftar Pengaduan</span>
+					</a>    				
+				</li>
+				<li{{ isset($nav_faq) ? ' class=active' : '' }}>
+					<a href="#">
+						<i class="icon-question-sign"></i>
+						<span>FAQ</span>
+					</a>    				
+				</li>
+			</ul>
+
+		</div> <!-- /container -->
+	
+	</div> <!-- /subnavbar-inner -->
+</div> 
+@else
 <div class="subnavbar">
 <div class="subnavbar-inner">
 	
@@ -109,6 +154,7 @@
 	
 	</div> <!-- /subnavbar-inner -->
 </div> <!-- /subnavbar -->
+@endif
 
 @yield('content')
 

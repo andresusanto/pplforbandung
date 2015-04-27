@@ -8,9 +8,6 @@
 			<table class="table striped responsive span10">
 			<div class="control-group">		
 					<h2>Daftar Perizinan Masuk</h2>
-				<p style="text-align: right;">
-				<a href="{{ action('PerizinanAirController@getNewperizinan') }}" class="btn btn-success">Ajukan Perizinan Baru</a>
-				</p>	
 				
 				<table class="table table-striped table-hover ">
 					  <thead>
@@ -32,7 +29,7 @@
 								echo '<td>Izin Pengelolaan Air Bawah Tanah</td>';
 								echo '<td>'.$izin->deskripsi.'</td>';
 								echo '<td>'.$izin->status.'</td>';
-								echo '<td><a href="'.action("PerizinanAirController@detailperizinanuser",$izin->id).'">Detil</a></td>';
+								echo '<td><a href="'.action("PerizinanAirController@detailperizinanuser",$izin->id).'">Approve</a></td>';
 								echo '</tr>';
 								
 							}
