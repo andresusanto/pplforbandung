@@ -21,22 +21,23 @@ class AuthController extends Controller {
 	| a simple trait to add these behaviors. Why don't you explore it?
 	|
 	*/
-
+	protected $redirectPath = '/';
+	
 	use AuthenticatesAndRegistersUsers;
+	
+	
 
-	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-	 * @return void
-	 */
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
 		$this->auth = $auth;
 		$this->registrar = $registrar;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
+	}
+	
+	public function getSso()
+	{
+		return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=ucJpPsUshiUWoXne&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
 	}
 	
 	public function getCode()

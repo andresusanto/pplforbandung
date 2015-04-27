@@ -34,7 +34,7 @@ class WelcomeController extends Controller {
 		if (Auth::check())
 		{
 			redirect()->intended('perizinanair');
-		} else return view('homeguest');
+		} else return view('public/welcome');
 	}
 
 }

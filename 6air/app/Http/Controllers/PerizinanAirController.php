@@ -26,7 +26,7 @@ class PerizinanAirController extends Controller {
 	
 	public function getNewperizinan()
 	{
-		return view('FormPerizinanBaru');
+		return view('user/newizin')->with('nav_pengajuan','');
 	}
 	
 	
@@ -45,8 +45,41 @@ class PerizinanAirController extends Controller {
 												'message_title' => "Sukses",
 												'message_body' => "Perizinan anda berhasil dikirim",
 												'message_color' => "green",
-												'message_redirect' => action('PerizinanAirController@getHomeuser')
+												'message_redirect' => action('PerizinanAirController@getListperizinan')
 											));
+	}
+	
+	public function getNotifikasiuser()
+	{
+		
+		return view('home');
+	}
+	
+	public function approveizin($id, $status)
+	{
+		$izinair = IzinAir::find($id);
+		if ($izinair){
+			if ($status == 1)
+				$izinair->status = "APP";
+			else
+				$izinair->status = "REJ";
+			
+			$izinair->save();
+			
+			return view('message')->with(array(
+					'message_title' => "Sukses",
+					'message_body' => "Status perizinan sukses diubah",
+					'message_color' => "green",
+					'message_redirect' => action('PerizinanAirController@getHomedinas')
+				));
+		}else{
+			return view('message')->with(array(
+					'message_title' => "Error",
+					'message_body' => "Perizinan gagal disetujui",
+					'message_color' => "red",
+					'message_redirect' => action('PerizinanAirController@getHomedinas')
+				));
+		}
 	}
 	
 	public function perpanjangperizinan($id)
@@ -64,7 +97,7 @@ class PerizinanAirController extends Controller {
 		$izinair = IzinAir::where('id', '=', $id)->first();
 		$data = $izinair->toArray();
 		
-		return view('formperubahanizin', $data);
+		return view('user/ubahizin', $data);
 	}
 	
 	public function postUbahperizinan()
@@ -83,7 +116,9 @@ class PerizinanAirController extends Controller {
 
 	public function detailperizinanUser($id){
 		$izinair = IzinAir::find($id);
-		return view('DetailPerizinan')->with('izinair', $izinair);
+		return view('user/detilizin')->with(array(
+												'izinair' => $izinair,
+												'nav_list' => ""));
 	}
 	
 	public function detilperizinanDinas($id){
@@ -98,14 +133,26 @@ class PerizinanAirController extends Controller {
 	
 	public function getHomedinas()
 	{
-		return view('HomepageDinas');
+		$izinair = IzinAir::where('status', '=', 'NEW')->get();
+		return view('dinas/home')->with(array(
+												'izinair' => $izinair,
+												'dinas' => "",
+												'nav_masuk'=> ""));
+	}
+	
+	public function getListperizinan()
+	{
+		$izinair = IzinAir::all();
+		
+		return view('user/listizin')->with(array(
+												'izinair' => $izinair,
+												'nav_list' => "")
+											);
 	}
 	
 	public function getHomeuser()
 	{
-		$izinair = IzinAir::all();
-		
-		return view('HomepageUser')->with('izinair', $izinair);
+		return view('public/welcome')->with('nav_home','AS');
 	}
 	
 	public function getShowPerizinanMasuk()

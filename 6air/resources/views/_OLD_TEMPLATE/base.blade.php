@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"><title>Form Perizinan Baru</title>
+<meta charset="utf-8"><title>@yield('title')</title>
 	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
 	<link rel="shortcut icon" href="favicon_16.ico">
 	<link rel="bookmark" href="favicon_16.ico">
@@ -20,11 +20,16 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 					</button> 
-					<a class="navbar-brand" href="homeuser"><img src="{{asset('/img/title.png')}}" height="40"></a>
+					<a class="navbar-brand" href="{{action('WelcomeController@index')}}"><img src="{{asset('/img/title.png')}}" height="40"></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a class="nav-link current" href="FormPerizinanBaru.html">Ajukan Izin</a></li>
+						<li><a href="{{PerizinanAirController@getNewperizinan}}">Ajukan Izin</a></li>
+						@if (Auth::check())
+						<li><a href="PerizinanAirController@getNotifikasi">Notifikasi</a></li>
+						@endif
+						<!--<li><a href="PerizinanAirController@getNewperizinan">Perpanjang Izin</a></li>
+					-->
 					</ul>
 				</div>
 			</div>
@@ -33,8 +38,8 @@
 		<div class="topic">
 			<div class="container">
 				<div class="col-md-8">
-					<h3>Ajukan Izin</h3>
-					<h4>Silahkan mengajukan perizinan terkait air dengan mengisi form di bawah ini.</h4>
+					@yield('head')
+					
 				</div>
 			</div>
 			<div class="topic__infos">
@@ -46,6 +51,6 @@
 	
 	<br><br><br><br><br><br><br><br><br><br>
 	<div class="site-footer"><div class="container">
-			<div class="copyright clearfix"><p><b>Aplikasi Perizinan Air</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="FormPerizinanBaru">Ajukan Izin</a>&nbsp;&bull;&nbsp;<p>&copy; 2015  Pemerintah Kota Bandung</p></div></div></div></div>
+			<div class="copyright clearfix"><p><b>Aplikasi Perizinan Air</b>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{PerizinanAirController@getNewperizinan}}">Ajukan Izin</a>&nbsp;&bull;&nbsp;<p>&copy; 2015  Pemerintah Kota Bandung</p></div></div></div></div>
 	</body>
 </html>
