@@ -4,6 +4,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class IzinUsahaTokoModern extends Model {
 
-	protected $table = 'IzinUsahaTokoModern';
+	protected $table = 'izinusahatokomodern';
 
 }

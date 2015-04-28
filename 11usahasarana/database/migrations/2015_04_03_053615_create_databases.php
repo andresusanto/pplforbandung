@@ -12,7 +12,7 @@ class CreateDatabases extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Izin', function(Blueprint $table) {
+		Schema::create('izin', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('NamaPemohon')->default('');
             $table->string('NamaPerusahaan')->default('');
@@ -25,7 +25,7 @@ class CreateDatabases extends Migration {
 			$table->timestamps();
 		});
 		
-		Schema::create('TandaPendaftaranWaralaba', function(Blueprint $table) {
+		Schema::create('tandapendaftaranwaralaba', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
@@ -40,7 +40,7 @@ class CreateDatabases extends Migration {
             $table->tinyInteger('StatusAktaPendirianPerusahaan')->default(1);
 		});
 
-		Schema::create('IzinTempatPenjualanMinumanBeralkohol', function(Blueprint $table) {
+		Schema::create('izintempatpenjualanminumaberalkohol', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
@@ -58,19 +58,19 @@ class CreateDatabases extends Migration {
 			$table->string('KepemilikanTempat')->default('');
 		});
 
-        Schema::create('Admin', function(Blueprint $table) {
+        Schema::create('admin', function(Blueprint $table) {
             $table->increments('id');
             $table->string('username');
             $table->string('password');
             $table->string('nama');
         });
 
-		Schema::create('Pengguna', function(Blueprint $table) {
+		Schema::create('pengguna', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('nama');
 		});
 
-		Schema::create('IzinUsahaPusatPerbelanjaan', function(Blueprint $table) {
+		Schema::create('izinusahapusatperbelanjaan', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
@@ -97,7 +97,7 @@ class CreateDatabases extends Migration {
 			$table->string('DomisiliPerusahaan')->default('');
 		});
 
-		Schema::create('IzinUsahaTokoModern', function(Blueprint $table) {
+		Schema::create('izinusahatokomoern', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
@@ -124,7 +124,7 @@ class CreateDatabases extends Migration {
 			$table->string('DomisiliPerusahaan')->default('');
 		});
 
-		Schema::create('IzinUsahaPasarTradisional', function(Blueprint $table) {
+		Schema::create('izinusahapasartradisional', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
@@ -159,14 +159,14 @@ class CreateDatabases extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('TandaPendaftaranWaralaba');
-		Schema::drop('IzinTempatPenjualanMinumanBeralkohol');
-		Schema::drop('IzinUsahaPasarTradisional');
-		Schema::drop('IzinUsahaTokoModern');
-		Schema::drop('IzinUsahaPusatPerbelanjaan');
-		Schema::drop('Izin');
-		Schema::drop('Pengguna');
-        Schema::drop('Admin');
+		Schema::drop('tandapendaftaranwaralaba');
+		Schema::drop('izintempatpenjualanminumaberalkohol');
+		Schema::drop('izinusahapasartradisional');
+		Schema::drop('izinusahatokomoern');
+		Schema::drop('izinusahapusatperbelanjaan');
+		Schema::drop('izin');
+		Schema::drop('pengguna');
+        Schema::drop('admin');
 	}
 
 }
