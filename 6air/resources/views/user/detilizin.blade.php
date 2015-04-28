@@ -44,11 +44,11 @@
 			</div>
 			</table>
 			<div class="span4 offset1">
-				<a href="{{ action ('PerizinanAirController@ubahperizinan', $izinair->id) }}" class="btn btn-primary span2">Ubah</a>
+				<a href="{{ ($izinair->status == 'APPROVED') ? action ('PerizinanAirController@ubahperizinan', $izinair->id) : 'javascript:void(0);' }}" class="btn btn-primary span2{{ ($izinair->status == 'APPROVED') ? '' : ' disabled' }}">Ubah</a>
 				<br><br>
-				<a href="{{ action ('PerizinanAirController@perpanjangperizinan', $izinair->id) }}" class="btn btn-warning span2">Perpanjang</a>
+				<a href="{{ ($izinair->status == 'APPROVED') ? action ('PerizinanAirController@perpanjangperizinan', $izinair->id) : 'javascript:void(0);' }}" class="btn btn-warning span2{{ ($izinair->status == 'APPROVED') ? '' : ' disabled' }}">Perpanjang</a>
 				<br><br>
-				<a href="{{ action('PerizinanAirController@keberatanperizinan', $izinair->id) }}" class="btn btn-danger span2">Ajukan Keberatan</a>
+				<a href="{{ ($izinair->status == 'REJECTED') ? action('PerizinanAirController@keberatanperizinan', $izinair->id) : 'javascript:void(0);' }}" class="btn btn-danger span2{{ ($izinair->status == 'REJECTED') ? '' : ' disabled' }}">Ajukan Keberatan</a>
 			</div>
 			</div>
 			<br>
