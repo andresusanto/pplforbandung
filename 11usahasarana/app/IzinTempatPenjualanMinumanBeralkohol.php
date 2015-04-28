@@ -4,5 +4,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class IzinTempatPenjualanMinumanBeralkohol extends Model {
 
-	protected $table = 'IzinTempatPenjualanMinumanBeralkohol';
+	protected $table = 'izintempatpenjulanminumanberalkohol';
 }
