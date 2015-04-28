@@ -48,7 +48,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Notifikasi (0)</a></li>
+								<!--<li><a href="#">Notifikasi (0)</a></li>-->
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
@@ -56,7 +56,7 @@
 				</ul>
 			
 				<form class="navbar-search pull-right">
-					<input type="text" class="search-query" placeholder="Search">
+					<!--<input type="text" class="search-query" placeholder="Search">-->
 				</form>
 				
 			</div><!--/.nav-collapse -->	
@@ -75,25 +75,31 @@
 			<ul class="mainnav">
 			
 				<li{{ isset($nav_masuk) ? ' class=active' : '' }}>
-					<a href="{{ action('PerizinanAirController@getNewperizinan') }}">
+					<a href="{{ action('PerizinanAirController@getHomedinas') }}">
 						<i class="icon-list-alt"></i>
 						<span>Permohonan Izin Baru</span>
 					</a>    				
 				</li>
-				<li{{ isset($nav_list) ? ' class=active' : '' }}>
-					<a href="{{ action('PerizinanAirController@getListperizinan') }}">
+				<li{{ isset($nav_renew) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListperpanjangan') }}">
 						<i class="icon-list"></i>
 						<span>Perpanjangan Izin</span>
 					</a>    				
 				</li>
-				<li{{ isset($nav_list) ? ' class=active' : '' }}>
-					<a href="{{ action('PerizinanAirController@getListperizinan') }}">
+				<li{{ isset($nav_ubah) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListperubahan') }}">
 						<i class="icon-th-list"></i>
 						<span>Perubahan Izin</span>
 					</a>    				
 				</li>
+				<li{{ isset($nav_keberatan) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListkeberatan') }}">
+						<i class="icon-exclamation"></i>
+						<span>Daftar Keberatan</span>
+					</a>    				
+				</li>
 				<li{{ isset($nav_pengaduan) ? ' class=active' : '' }}>
-					<a href="#">
+					<a href="{{ action('PerizinanAirController@getListpengaduan') }}">
 						<i class="icon-exclamation-sign"></i>
 						<span>Daftar Pengaduan</span>
 					</a>    				

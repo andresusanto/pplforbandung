@@ -7,29 +7,29 @@
 		<div class="container">
 			<table class="table striped responsive span10">
 			<div class="control-group">		
-					<h2>Daftar Perizinan Masuk</h2>
+					<h2>Daftar Pengaduan</h2>
 				
 				<table class="table table-striped table-hover ">
 					  <thead>
 						<tr>
 						  <th>#</th>
-						  <th>Jenis Izin</th>
+						  <th>Judul</th>
 						  <th>Deskripsi</th>
-						  <th>Status</th>
+						  <th>Pelapor</th>
 						  <th>Aksi</th>
 						</tr>
 					  </thead>
 					  <tbody>
 					  <?php
 							$i = 1;
-							foreach($izinair as $izin)
+							foreach($pengaduans as $pengaduan)
 							{
 								echo '<tr>';
 								echo '<td>' . $i++ . '</td>';
-								echo '<td>'.$izin->kategori.'</td>';
-								echo '<td>'.$izin->deskripsi.'</td>';
-								echo '<td>'.$izin->status.'</td>';
-								echo '<td><a href="'.action("PerizinanAirController@approveizin",array($izin->id, 1)).'">Approve</a> <a href="'.action("PerizinanAirController@approveizin",array($izin->id, 0)).'">Reject</a></td>';
+								echo '<td>'.$pengaduan->judul.'</td>';
+								echo '<td>'.$pengaduan->aduan.'</td>';
+								echo '<td>'.$pengaduan->nama.' ('. $pengaduan->kontak .')</td>';
+								echo '<td><a href="'.action("PerizinanAirController@markpengaduan",array($pengaduan->id)).'">Mark Done</a></td>';
 								echo '</tr>';
 								
 							}

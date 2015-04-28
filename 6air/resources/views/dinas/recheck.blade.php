@@ -7,7 +7,7 @@
 		<div class="container">
 			<table class="table striped responsive span10">
 			<div class="control-group">		
-					<h2>Daftar Perizinan Masuk</h2>
+					<h2>Daftar Permohonan Keberatan</h2>
 				
 				<table class="table table-striped table-hover ">
 					  <thead>
