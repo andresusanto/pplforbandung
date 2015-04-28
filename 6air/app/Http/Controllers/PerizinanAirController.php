@@ -12,6 +12,7 @@ use Illuminate\Routing\Controller;
 use App\IzinAir;
 use App\IzinAirTemp;
 use App\User;
+use App\Pengaduan;
 
 
 class PerizinanAirController extends Controller {
@@ -173,6 +174,22 @@ class PerizinanAirController extends Controller {
 												'message_redirect' => action('PerizinanAirController@detailperizinanuser', $id)
 											));
 		}
+	}
+	
+	public function markpengaduan($id)
+	{
+		$pengaduan = Pengaduan::find($id);
+		$pengaduan->status = "DONE";
+		$pengaduan->save();
+			
+			
+		return view('message')->with(array(
+												'message_title' => "Sukses",
+												'message_body' => "Pengaduan berhasil diselesaikan",
+												'message_color' => "green",
+												'message_redirect' => action('PerizinanAirController@getListpengaduan', $id)
+											));
+	
 	}
 	
 	public function keberatanperizinan($id)
@@ -345,6 +362,18 @@ class PerizinanAirController extends Controller {
 		return view('user/listizin')->with(array(
 												'izinair' => $izinair,
 												'nav_list' => "")
+											);
+	}
+	
+	public function getListpengaduan()
+	{
+		$pengaduan = Pengaduan::where('status', '=', 'PENDING')->get();
+		
+		
+		return view('dinas/pengaduan')->with(array(
+												'pengaduans' => $pengaduan,
+												'dinas' => "",
+												'nav_pengaduan' => "")
 											);
 	}
 	

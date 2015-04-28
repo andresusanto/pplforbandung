@@ -99,7 +99,7 @@
 					</a>    				
 				</li>
 				<li{{ isset($nav_pengaduan) ? ' class=active' : '' }}>
-					<a href="#">
+					<a href="{{ action('PerizinanAirController@getListpengaduan') }}">
 						<i class="icon-exclamation-sign"></i>
 						<span>Daftar Pengaduan</span>
 					</a>    				
