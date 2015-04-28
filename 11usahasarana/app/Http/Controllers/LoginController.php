@@ -104,9 +104,9 @@ class LoginController extends Controller {
         $request = $client->createRequest('POST','http://dukcapil.pplbandung.biz.tm/oauth/access_token');
         $postBody = $request->getBody();
         $postBody->setField('grant_type','authorization_code');
-        $postBody->setField('client_id',$client_id_local);
-        $postBody->setField('client_secret',$client_secret_local);
-        $postBody->setField('redirect_uri',$redirect_uri_local);
+        $postBody->setField('client_id',$client_id);
+        $postBody->setField('client_secret',$client_secret);
+        $postBody->setField('redirect_uri',$redirect_uri);
         $postBody->setField('code',$code);
 
         $response = $client->send($request);
