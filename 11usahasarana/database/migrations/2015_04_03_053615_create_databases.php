@@ -28,7 +28,7 @@ class CreateDatabases extends Migration {
 		Schema::create('tandapendaftaranwaralaba', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
-			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
+			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
 			$table->string('STPWPemberiWaralaba')->default('');
 			$table->string('HAKI')->default('');
 			$table->string('PerjanjianWaralaba')->default('');
@@ -43,7 +43,7 @@ class CreateDatabases extends Migration {
 		Schema::create('izintempatpenjualanminumaberalkohol', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
-			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
+			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
 			$table->string('IzinUsahaKepariwisataan')->default('');
 			$table->string('NPWP')->default('');
             $table->tinyInteger('StatusNPWP')->default(1);
@@ -73,7 +73,7 @@ class CreateDatabases extends Migration {
 		Schema::create('izinusahapusatperbelanjaan', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
-			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
+			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
 			$table->string('PengesahanKehakiman')->default('');
 			$table->string('AktaPendirianPerusahaan')->default('');
             $table->tinyInteger('StatusAktaPendirianPerusahaan')->default(1);
@@ -100,7 +100,7 @@ class CreateDatabases extends Migration {
 		Schema::create('izinusahatokomoern', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
-			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
+			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
 			$table->string('PengesahanKehakiman')->default('');
 			$table->string('AktaPendirianPerusahaan')->default('');
             $table->tinyInteger('StatusAktaPendirianPerusahaan')->default(1);
@@ -127,7 +127,7 @@ class CreateDatabases extends Migration {
 		Schema::create('izinusahapasartradisional', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
-			$table->foreign('idIzin')->references('id')->on('Izin')->onDelete('cascade');
+			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
 			$table->string('PengesahanKehakiman')->default('');
 			$table->string('AktaPendirianPerusahaan')->default('');
             $table->tinyInteger('StatusAktaPendirianPerusahaan')->default(1);
