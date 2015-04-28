@@ -13,15 +13,15 @@
 				</div><br><br>	
 				<tr>
 					<td>Nama Pemohon </td>
-					<td>: Nisa</td>
+					<td>: {{ $nama }}</td>
 				</tr>
 				<tr>
 					<td>Lokasi </td>
-					<td>: Bandung Barat</td>
+					<td>: {{ $lahan }}</td>
 				</tr>
 				<tr>
 					<td>Kategori Izin</td>
-					<td>: Izin Pengelolaan Air Bawah Tanah</td>
+					<td>: {{ $kategori }}</td>
 				</tr>
 				<tr>
 					<td>Deskripsi </td>
@@ -30,8 +30,16 @@
 							?></td>
 				</tr>
 				<tr>
+					<td>Status </td>
+					<td>: {{ $izinair->status }}</td>
+				</tr>
+				<tr>
+					<td>Berlaku Dari </td>
+					<td>: {{$izinair->mulai_berlaku}}</td>
+				</tr>
+				<tr>
 					<td>Berlaku Hingga </td>
-					<td>: 17 April 2015</td>
+					<td>: {{$izinair->berlaku_hingga}}</td>
 				</tr>
 			</div>
 			</table>
@@ -40,7 +48,7 @@
 				<br><br>
 				<a href="{{ action ('PerizinanAirController@perpanjangperizinan', $izinair->id) }}" class="btn btn-warning span2">Perpanjang</a>
 				<br><br>
-				<a href="#" class="btn btn-danger span2">Ajukan Keberatan</a>
+				<a href="{{ action('PerizinanAirController@keberatanperizinan', $izinair->id) }}" class="btn btn-danger span2">Ajukan Keberatan</a>
 			</div>
 			</div>
 			<br>
