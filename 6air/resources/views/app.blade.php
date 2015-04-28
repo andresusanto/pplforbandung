@@ -143,7 +143,7 @@
 					</a>    				
 				</li>
 				<li{{ isset($nav_pengaduan) ? ' class=active' : '' }}>
-					<a href="#">
+					<a href="{{ action('PengaduanController@getIndex') }}">
 						<i class="icon-exclamation-sign"></i>
 						<span>Pengaduan</span>
 					</a>    				
@@ -187,7 +187,7 @@
                 <div class="span3">
                     <h4>Pengaduan</h4>
                     <ul>
-                        <li><a href="#">Form Pengaduan</a></li>
+                        <li><a href="{{ action('PengaduanController@getIndex') }}">Form Pengaduan</a></li>
                     </ul>
                 </div>
             </div> <!-- /row -->
