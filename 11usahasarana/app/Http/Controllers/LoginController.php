@@ -84,14 +84,13 @@ class LoginController extends Controller {
     {
         //test ke server
         //user
-        $name = 'izinusahasaranaperdagangan';
+        $name = 'usaha_sarana';
         $redirect_uri = 'http://usahasarana.pplbandung.biz.tm/login_callback';
-        $client_id = 'rcQHD0QUT8xxg8Aj';
-        $client_secret = 'LRWXgkS867lPcs26';
-        $login = 'http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=rcQHD0QUT8xxg8Aj&redirect_uri=http://usahasarana.pplbandung.biz.tm/login_callback&response_type=code';
+        $client_id = '0XiZ8LzQTmO9lEnt';
+        $client_secret = 'E8wMZsM3AJdWATl2';
+        $login = 'http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=0XiZ8LzQTmO9lEnt&redirect_uri=http://usahasarana.pplbandung.biz.tm/login_callback&response_type=code';
 
         //test ke localhost
-        //user
         $name_local = 'saranaperdaganganlocalhost';
         $client_id_local = 'ulP9hlsW74ahy2ND';
         $redirect_uri_local = 'http://localhost:8000/login_callback';
@@ -120,7 +119,7 @@ class LoginController extends Controller {
         $data = $response->getBody();
 
         $json = json_decode($data);
-        $nama = $json->nama;
+        $nama = $json->nama_penduduk;
 
         DB::table('pengguna')->where('id',1)->update(['nama'=>$nama]);
 

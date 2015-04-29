@@ -1,9 +1,9 @@
 <?php
-$name = 'izinusahasaranaperdagangan';
+$name = 'usaha_sarana';
 $redirect_uri = 'http://usahasarana.pplbandung.biz.tm/login_callback';
-$client_id = 'rcQHD0QUT8xxg8Aj';
-$client_secret = 'LRWXgkS867lPcs26';
-$login = 'http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=rcQHD0QUT8xxg8Aj&redirect_uri=http://usahasarana.pplbandung.biz.tm/login_callback&response_type=code';
+$client_id = '0XiZ8LzQTmO9lEnt';
+$client_secret = 'E8wMZsM3AJdWATl2';
+$login = 'http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=0XiZ8LzQTmO9lEnt&redirect_uri=http://usahasarana.pplbandung.biz.tm/login_callback&response_type=code';
 
 //test ke localhost
 $name_local = 'saranaperdaganganlocalhost';
