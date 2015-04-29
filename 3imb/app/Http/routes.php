@@ -11,6 +11,14 @@
 |
 */
 
+/* TESTING SSO */
+
+Route::get("reza/loginPemohon/code/",function(){
+    echo Input::all();
+});
+Route::get("/loginPemohon","LoginController@loginPemohon");
+/* END OF TESTING */
+
 Route::get('/', function(){
     return view('commonusers.welcome');
 });
@@ -24,7 +32,7 @@ Route::post('/informasis/create','InformasiController@store');
 Route::get('/informasis/informasi/{id}/edit','InformasiController@edit');
 Route::group(['prefix' => '/informasis/informasi/{id}'], function()
 {
-    
+    Route::get('/', 'AdminController@index');
     Route::get('/','InformasiController@show');
     Route::get('edit', 'InformasiController@edit');
     Route::post('update','InformasiController@update');
@@ -36,22 +44,57 @@ Route::group(['prefix' => '/informasis/informasi/{id}'], function()
 
 
 /* Bangunan Begin */
-Route::group(['prefix' => '/admin/'], function()
+Route::get('/admin', 'AdminController@index');
+Route::group(['prefix' => '/admin'], function()
 {
    Route::group(['prefix' => '/imb'], function()
     {
         Route::get('/','BangunanController@index');
         Route::get('setuju/{id}', 'BangunanController@setuju');
-        Route::get('tolak/{id}', 'BangunanController@tolak');
+        Route::post('tolak', 'BangunanController@tolak');
+        Route::get('sebelumTolak/{id}', 'BangunanController@sebelumTolak');
     }); 
    Route::group(['prefix' => '/lokasi'], function()
     {
         Route::get('/','LokasiController@index');
         Route::get('setuju/{id}', 'LokasiController@setuju');
-        Route::get('tolak/{id}', 'LokasiController@tolak');
+        Route::post('tolak', 'LokasiController@tolak');
+        Route::get('sebelumTolak/{id}', 'LokasiController@sebelumTolak');
         Route::get('/laporan', 'LokasiController@generateLaporan'); 
     }); 
 });
+
+Route::group(['prefix' => '/home'], function()
+{
+    Route::get('/','InformasiController@demo_index');
+
+    Route::get('/informasis/{id?}','InformasiController@demo_index');
+    Route::get('/pengajuan-lokasi', 'LokasiController@create');
+    Route::post('/pengajuan-lokasi', 'LokasiController@store');
+    Route::get('/pengajuan-IMB', 'BangunanController@create');
+    Route::post('/pengajuan-IMB', 'BangunanController@store');
+
+});
+
+Route::group(['prefix' => '/api'], function()
+{
+    Route::post('/lokasi', 'LokasiController@api');
+    Route::post('/imb', 'BangunanController@api');
+
+});
+
+Route::get('/', '/home');
+Route::get('/informasis/{id?}','InformasiController@demo_index');
+Route::get('/pemohons', 'PemohonController@demo_edit');
+Route::get('/pengajuan-lokasi', 'LokasiController@user_index');
+Route::get('/pengajuan-IMB', 'BangunanController@user_index');
+Route::get('/pengaduan', 'PengaduanController@index');
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
+
 // });
 
 /* Bangunan End */
@@ -186,7 +229,6 @@ Route::group(['prefix' => '/admin/'], function()
 //});
 
 /* Demo End */
-
 
 Route::group(['prefix' => '/home'], function()
 {
