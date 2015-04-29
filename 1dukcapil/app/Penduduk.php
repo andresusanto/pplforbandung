@@ -20,4 +20,14 @@ class Penduduk extends Model {
     {
         return $this->belongsToMany('App\KartuKeluarga', 'anggota_kartu_keluarga', 'idPenduduk', 'idKartuKeluarga');
     }
+
+    public function aktaKematian()
+    {
+        return $this->hasOne('App\AktaKematian', 'idPenduduk');
+    }
+
+    public function kartuTandaPenduduk()
+    {
+        return $this->hasOne('App\KartuTandaPenduduk', 'idPenduduk');
+    }
 }

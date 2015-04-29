@@ -16,4 +16,14 @@ class OAuthSession extends Model {
 	 * @var string
 	 */
 	protected $table = 'oauth_sessions';
+
+	public function user()
+    {
+        return $this->belongsTo('App\User', 'owner_id');
+    }
+
+    public function accessToken()
+    {
+    	return $this->hasOne('App\OAuthAccessToken', 'session_id');
+    }
 }

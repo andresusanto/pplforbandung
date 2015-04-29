@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration {
 			$table->string('name');
 			$table->string('email')->unique();
 			$table->string('password', 60);
-		    $table->integer('id_penduduk')->unsigned();
 			$table->rememberToken();
 			$table->timestamps();
 		});
