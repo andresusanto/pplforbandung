@@ -119,7 +119,7 @@ class LoginController extends Controller {
         $data = $response->getBody();
 
         $json = json_decode($data);
-        $nama = $json->nama;
+        $nama = $json->nama_penduduk;
 
         DB::table('pengguna')->where('id',1)->update(['nama'=>$nama]);
 
