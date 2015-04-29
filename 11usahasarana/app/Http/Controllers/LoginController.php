@@ -115,7 +115,7 @@ class LoginController extends Controller {
         $access_token = $body_json->access_token;
 
         $client = new Client();
-        $response = $client->get('http://dukcapil.pplbandung.biz.tm/api/penduduk/'.$access_token);
+        $response = $client->get('http://dukcapil.pplbandung.biz.tm/api/penduduk/',['headers'=>['Authorization'=>$access_token]]);
         $data = $response->getBody();
 
         $json = json_decode($data);
