@@ -1,10 +1,11 @@
 @extends('app')
 
 @section('guest')
+@section('guest')
 <ul class="nav navbar-nav">
-    <li><a href="home">Beranda</a></li>
-    <li class="active"><a href="form_permohonan">Permohonan</a></li>
-    <li><a href="daftar_permohonan">Daftar Permohonan</a></li>
+    <li><a href="{{URL::route('home')}}">Beranda</a></li>
+    <li class="active"><a href="{{URL::route('form_permohonan')}}">Permohonan</a></li>
+    <li><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
 </ul>
 @stop
 
@@ -12,7 +13,7 @@
 <br> <br> <br>
 <div class="container">
     <div class="row">
-        {!! Form::open(['url' => 'permohonan', 'role' => 'form', 'files' => 'true']) !!}
+        {!! Form::open(['route' => 'permohonan', 'role' => 'form', 'files' => 'true']) !!}
             <div class="col-lg-6">
                 <div class="well well-sm"><strong>Permohonan Izin</strong></div>    
                 <div class="form-group">

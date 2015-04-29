@@ -2,9 +2,9 @@
 
 @section('guest')
 <ul class="nav navbar-nav">
-    <li><a href="home">Beranda</a></li>
-    <li><a href="form_permohonan">Permohonan</a></li>
-    <li class="active"><a href="daftar_permohonan">Daftar Permohonan</a></li>
+    <li><a href="{{URL::route('home')}}">Beranda</a></li>
+    <li><a href="{{URL::route('form_permohonan')}}">Permohonan</a></li>
+    <li class="active"><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
 </ul>
 @stop
 
@@ -37,9 +37,6 @@
                         <button class="glyphicon glyphicon-cog"></button>
                     </div>
                 {!! Form::close() !!}
-                    <div class="col-sm-2">
-                        <button class="glyphicon glyphicon-trash" href="#" onclick="deleteFunction({{ $permohonan->id }}); return false();"></button>
-                    </div>
             </td>
             @endif
             @if($permohonan->status_permohonan == "Selesai Validasi")
@@ -57,14 +54,5 @@
 </table>
 
 @stop
-
-@section('script')
-<script type="text/javascript">
-    function deleteFunction(ID){ 
-        if (confirm("Delete Post?")){
-            location.href='delete_permohonan/' + ID ;
-        }
-    }
-</script>
 
 @endsection

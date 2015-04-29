@@ -27,7 +27,6 @@
 </ul>
 <ul class="nav navbar-nav navbar-right">
 	<li><a href="#">welcome {{$admin->name}}</a></li>
-	<li><a href="profile">Profile</a></li>
 	<li><a href="logout">Logout</a></li>
 </ul>
 

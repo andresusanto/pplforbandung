@@ -2,9 +2,9 @@
 
 @section('guest')
 <ul class="nav navbar-nav">
-    <li><a href="home">Beranda</a></li>
-    <li class="active"><a href="form_permohonan">Permohonan</a></li>
-    <li><a href="daftar_permohonan">Daftar Permohonan</a></li>
+    <li><a href="{{URL::route('home')}}">Beranda</a></li>
+    <li class="active"><a href="{{URL::route('form_permohonan')}}">Permohonan</a></li>
+    <li><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
 </ul>
 @stop
 

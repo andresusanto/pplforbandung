@@ -147,6 +147,8 @@ return [
 		'App\Providers\RouteServiceProvider',
 		
 		'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider', //Laravel IDE Helper
+
+    	'Barryvdh\DomPDF\ServiceProvider',
 	],
 
 	/*
@@ -196,7 +198,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
-
+        'PDF'		=> 'Barryvdh\DomPDF\Facade',
 	],
 
 ];

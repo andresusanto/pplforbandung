@@ -80,9 +80,20 @@
                 </div>
                 {!! Form::hidden('id', $permohonan->id) !!}
                 {!! Form::submit('Entri Pengaduan', ['class' => 'btn btn-info pull-right']) !!}
+                <button class="btn btn-info pull-left" href="#" onclick="deleteFunction({{ $permohonan->id }}); return false();">Hapus Pengaduan</button>
             </div>
         {!! Form::close() !!}
     </div>
 </div>
+@stop
+
+@section('script')
+<script type="text/javascript">
+    function deleteFunction(ID){ 
+        if (confirm("Delete Post?")){
+            location.href='delete_permohonan/' + ID ;
+        }
+    }
+</script>
 
 @endsection

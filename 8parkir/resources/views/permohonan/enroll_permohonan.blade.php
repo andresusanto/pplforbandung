@@ -2,7 +2,7 @@
 
 @section('guest')
 <ul class="nav navbar-nav">
-	<li><a href="home">Beranda</a></li>
+	<li><a href="{{URL::route('home')}}">Beranda</a></li>
 </ul>
 
 @stop

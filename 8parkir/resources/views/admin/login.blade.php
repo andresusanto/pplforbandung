@@ -21,12 +21,6 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    {!! Form::label('remember', 'Remember Me:')!!}
-                    <div class="input-group">
-                        {!! Form::checkbox('remember', 'remember me',  ['class' => 'form-control']) !!}
-                    </div>
-                </div>
                 @if ($errors->has('login')) <p class="help-block" style="color:red"> {{ $errors->first('login') }} </p> @endif      
                 {!! Form::submit('Login', ['class' => 'btn btn-info pull-right']) !!}
             </div>

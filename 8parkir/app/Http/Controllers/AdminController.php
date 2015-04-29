@@ -7,6 +7,7 @@ use App\Permohonan;
 use App\Admin;
 use Request;
 use Carbon\Carbon;
+use PDF;
 
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -82,9 +83,39 @@ class AdminController extends Controller {
     public function generateLaporan(){
         $input = Request::all();
         $admin = Session::get('admin');
-        $permohonan = 0;
+        $tanggal_awal = $input['tanggal_awal'];
+        $tanggal_akhir = $input['tanggal_akhir'];
+        $permohonans = Permohonan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
+        $sjpermohonan = 0;
+        $sjpemohon = 0;
+        foreach ($permohonans as $tmp) {
+            if($tmp->jenis_permohonan == 'Parkir'){
+                $sjpermohonan += 1;
+            }
+            if($tmp->jenis_pemohon == 'Organisasi'){
+                $sjpemohon += 1;
+            }
+        }
 
-        return view("admin.generate_laporan", compact('permohonan'), compact('admin'));
+        return view("admin.generate_laporan", compact('admin', 'permohonans', 'sjpemohon', 'sjpermohonan', 'tanggal_awal', 'tanggal_akhir'));
+    }
+
+    public function generatePDF(){
+        $input = Request::all();
+        $admin = Session::get('admin');
+        $tanggal_awal = $input['tanggal_awal'];
+        $tanggal_akhir = $input['tanggal_akhir'];
+        $permohonans = Permohonan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
+        
+        $data = [
+                'permohonans' => $permohonans,
+                'sjpemohon' => $input['sjpemohon'],
+                'sjpermohonan' => $input['sjpermohonan'],
+            ];
+
+
+        $pdf = PDF::loadView('admin.generate_pdf', $data);
+        return $pdf->stream('laporan-'.$tanggal_awal.'-'.$tanggal_akhir.'.pdf');
     }
 
     public function logout(){
