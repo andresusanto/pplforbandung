@@ -31,4 +31,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	public function ktp() {
+        return $this->belongsTo('App\KartuTandaPenduduk', 'email');
+	}
+
+	public function sessions() {
+        return $this->hasMany('App\OAuthSession', 'owner_id');
+	}
 }

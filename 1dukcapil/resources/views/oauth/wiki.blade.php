@@ -41,7 +41,7 @@
     <!-- Why use Skeleton -->
     <div class="docs-section" id="intro">
         <h6 class="docs-header">Langkah 1</h6>
-        <p>Lakukan pendaftaran di halaman <u>http://dukcapil.pplbandung.biz.tm/public/oauth/register</u> terlebih dahulu</p>
+        <p>Lakukan pendaftaran di halaman <u>http://dukcapil.pplbandung.biz.tm/oauth/register</u> terlebih dahulu</p>
         <p>Sistem akan mengembalikan client id dan secret id yang akan digunakan untuk melakukan <i>single-sign on</i>.</p> 
     </div>
 
@@ -53,7 +53,7 @@
     <p>Lakukan request ke sistem dengan melakukan</p>
     <div class="docs-example">
       <pre>
-        <code>GET /public/oauth/authorize?client_id=<b>CLIENT_ID</b>&redirect_uri=<b>REDIRECT_URI</b>&response_type=code HTTP/1.1
+        <code>GET /oauth/authorize?client_id=<b>CLIENT_ID</b>&redirect_uri=<b>REDIRECT_URI</b>&response_type=code HTTP/1.1
 Host: http://dukcapil.pplbandung.biz.tm</code>
       </pre>
     </div>
@@ -66,7 +66,7 @@ Host: http://dukcapil.pplbandung.biz.tm</code>
     <p>Klien wajib menukarkan <i>AUTHENTICATION_CODE</i> dengan <i>ACCESS_TOKEN</i> untuk dapat melakukan pengambilan data</p>
     <div class="docs-example">
       <pre>
-        <code>POST /public/oauth/access_token HTTP/1.1
+        <code>POST /oauth/access_token HTTP/1.1
 Host: http://dukcapil.pplbandung.biz.tm
 Content-Type: application/x-www-form-urlencoded
 
@@ -81,11 +81,44 @@ grant_type=authorization_code&client_id=<b>CLIENT_ID</b>&client_secret=<b>CLIENT
     <p>Klien menggunakan <i>ACCESS_TOKEN</i> ke <i>REST API</i> Sistem Kependudukan dan Pencatatan Sipil</p>
     <div class="docs-example">
       <pre>
-        <code>GET /public/api/penduduk/<b>ACCESS_TOKEN</b> HTTP/1.1
+        <code>GET /api/penduduk/ HTTP/1.1
+Authorization: Bearer <b>ACCESS_TOKEN</b>
 Host: http://dukcapil.pplbandung.biz.tm</code>
       </pre>
     </div>
     <p>Sistem akan mengembalikan data pengguna dalam format <i>JSON</i>.</p>
+    <pre>
+      <code>{
+  "id": <b>NIK</b>,
+  "nama_penduduk": <b>Nama</b>,
+  "alamat_penduduk": <b>Alamat</b>,
+  "tgl_lahir": <b>Tanggal Lahir</b>,
+  "tempat_lahir": <b>Tempat Lahir</b>
+}
+      </code>
+    </pre>
+    </div>
+
+    <div class="docs-section" id="code">
+    <h6 class="docs-header">Pengambil data berdasarkan Nomor Induk Kependudukan</h6>
+    <p>Klien dapat menggunakan <b>NIK</b> ke <i>REST API</i> Sistem Kependudukan dan Pencatatan Sipil untuk mendapatkan data Penduduk</p>
+    <div class="docs-example">
+      <pre>
+        <code>GET /api/penduduk/<b>NIK</b> HTTP/1.1
+Host: http://dukcapil.pplbandung.biz.tm</code>
+      </pre>
+    </div>
+    <p>Sistem akan mengembalikan data pengguna dalam format <i>JSON</i>.</p>
+    <pre>
+      <code>{
+  "id": <b>NIK</b>,
+  "nama_penduduk": <b>Nama</b>,
+  "alamat_penduduk": <b>Alamat</b>,
+  "tgl_lahir": <b>Tanggal Lahir</b>,
+  "tempat_lahir": <b>Tempat Lahir</b>
+}
+      </code>
+    </pre>
     </div>
 
 <!-- End Document
