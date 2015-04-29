@@ -68,9 +68,9 @@ class KartuTandaPendudukController extends Controller {
 		// $penduduk->tempatLahir = Request::input('tempatLahir');
 
 		// changing birth date only
-		$database = Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->waktuLahir);
-		$now = Carbon::createFromFormat('Y-m-d', Request::input('tanggalLahir'));
-		$database->setDate($now->year, $now->month, $now->day);
+		// $database = Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->waktuLahir);
+		// $now = Carbon::createFromFormat('Y-m-d', Request::input('tanggalLahir'));
+		// $database->setDate($now->year, $now->month, $now->day);
 
 		// $penduduk->waktuLahir = $database->toDateTimeString();
 		// $penduduk->pekerjaan = Request::input('pekerjaan');
