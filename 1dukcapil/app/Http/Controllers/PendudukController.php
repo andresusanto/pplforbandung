@@ -3,10 +3,11 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\KartuTandaPenduduk;
+use App\Penduduk;
+use Request;
 
 use App\OAuthAccessToken;
-use App\Penduduk;
 
 class PendudukController extends Controller {
 
@@ -17,7 +18,26 @@ class PendudukController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$data = array();
+		try {
+			$code = explode(" ", Request::header('Authorization'));
+			if ($code[0] !== 'Bearer')
+				App::abort(401, 'Not authenticated');
+			$ktp = OAuthAccessToken::findOrFail($code[1])->session->user->ktp;
+			$penduduk = $ktp->penduduk;
+			$kartuKeluarga = $penduduk->kartuKeluarga()->orderBy('created_at', 'desc')->first();
+			$data = array();
+			$data['id'] = $ktp['id'];
+			$data['nama_penduduk'] = $penduduk['nama'];
+			$data['alamat_penduduk'] = $kartuKeluarga['alamat'];
+			$data['tgl_lahir'] = $penduduk['waktuLahir'];
+			$data['tempat_lahir'] = $penduduk['tempatLahir'];
+		} catch (ModelNotFoundException $e) {
+			App::abort(401, 'Not authenticated');
+		} catch (Exception $e) {
+			$data = ['status' => 'error', 'description' => 'server error'];
+		}
+		return response()->json($data);
 	}
 
 	/**
@@ -48,11 +68,23 @@ class PendudukController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
-		if (OAuthAccessToken::find($id)->count() == 0)
-			return '';
-		$penduduk = Penduduk::find(1);
-		return response()->json($penduduk->toArray());
+		$data = array();
+		try {
+			$ktp = KartuTandaPenduduk::findOrFail($id);
+			$penduduk = $ktp->penduduk;
+			$kartuKeluarga = $penduduk->kartuKeluarga()->orderBy('created_at', 'desc')->first();
+			$data = array();
+			$data['id'] = $ktp['id'];
+			$data['nama_penduduk'] = $penduduk['nama'];
+			$data['alamat_penduduk'] = $kartuKeluarga['alamat'];
+			$data['tgl_lahir'] = $penduduk['waktuLahir'];
+			$data['tempat_lahir'] = $penduduk['tempatLahir'];
+		} catch (ModelNotFoundException $e) {
+			App::abort(401, 'Not authenticated');
+		} catch (Exception $e) {
+			$data = ['status' => 'error', 'description' => 'server error'];
+		}
+		return response()->json($data);
 	}
 
 	/**

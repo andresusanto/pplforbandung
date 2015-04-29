@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG', true),
+	'debug' => env('APP_DEBUG',true),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -145,9 +145,11 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/*
+		 * OAuth
+		 */
 		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
 		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
-
 	],
 
 	/*
@@ -195,8 +197,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
 
+        // ngide ya ini
+        'AuthAdmin' => 'App\Http\Controllers\AdminController',
+		'Authorizer' => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
 	],
 
 ];
