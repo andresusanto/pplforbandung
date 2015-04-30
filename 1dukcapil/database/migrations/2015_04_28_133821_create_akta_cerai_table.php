@@ -39,7 +39,7 @@ class CreateAktaCeraiTable extends Migration {
 	{
 		Schema::table('akta_cerai', function(Blueprint $table)
 		{
-            Schema::drop('akta_nikah');
+            Schema::drop('akta_cerai');
 		});
 	}
 

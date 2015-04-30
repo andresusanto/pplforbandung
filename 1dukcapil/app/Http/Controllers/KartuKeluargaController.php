@@ -79,7 +79,7 @@ class KartuKeluargaController extends Controller
                 return Redirect::back()->withInput(Request::all())->withErrors(['message' => 'Akta Lahir dengan kode ' . Request::input('kodeAktaLahir')[$i] . ' tidak ditemukan.']);
             }
             $penduduk = AktaKelahiran::find(Request::input('kodeAktaLahir')[$i])->penduduk;
-            // $penduduk->jenisKelamin = Request::input('jenisKelamin')[$i];
+            $penduduk->jenisKelamin = Request::input('jenisKelamin')[$i];
             $penduduk->golonganDarah = Request::input('golonganDarah')[$i];
             $penduduk->pendidikan = Request::input('pendidikan')[$i];
             $penduduk->pekerjaan = Request::input('pekerjaan')[$i];

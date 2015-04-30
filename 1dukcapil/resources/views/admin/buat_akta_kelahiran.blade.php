@@ -39,7 +39,7 @@
 			                </div>
 			                <label class="col-sm-2 control-label">Jam Lahir</label>
 			                <div class="col-sm-4">
-			                    <input class="form-control" placeholder="Jam Lahir" name="jamLahir">
+			                    <input type="time" value="00:00"  class="form-control" placeholder="Jam Lahir" name="jamLahir">
 			                </div>
 			            </div>
 			        </div>

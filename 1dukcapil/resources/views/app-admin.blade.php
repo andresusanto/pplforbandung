@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-
     <title>Pendudukan dan Pencatatan Sipil</title>
 
     <!-- Bootstrap core CSS -->
@@ -62,7 +61,6 @@
       @include('app-admin.footer')
       <!--footer end-->
   </section>
-
     <!-- js placed at the end of the document so the pages load faster -->
     <script src="{{ asset('assets-admin/js/jquery.js') }}"></script>
     <script src="{{ asset('assets-admin/js/jquery-1.8.3.min.js') }}"></script>
@@ -72,13 +70,11 @@
     <script src="{{ asset('assets-admin/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets-admin/js/jquery.sparkline.js') }}"></script>
 
-
     <!--common script for all pages-->
     <script src="{{ asset('assets-admin/js/common-scripts.js') }}"></script>
     
     <script type="text/javascript" src="{{ asset('assets-admin/js/gritter/js/jquery.gritter.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets-admin/js/gritter-conf.js') }}"></script>
     @yield('script')
-
   </body>
 </html>

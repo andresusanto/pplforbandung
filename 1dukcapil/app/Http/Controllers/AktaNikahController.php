@@ -47,36 +47,56 @@ class AktaNikahController extends Controller {
             return redirect()->back();
         }
     }
+
+    private function isAktaExist($id_suami,$id_istri){
+        $akta_nikah=DB::table('akta_nikah')->where('suami','=',$id_suami)->where('istri','=',$id_istri)->first();
+        return $akta_nikah;
+    }
+
+
     public function postBuataktanikah() {
-        $akta_nikah = new AktaNikah();
-        $akta_nikah->waktuNikah = Input::get('tanggal');
-        $akta_nikah->tempatNikah = Input::get('tempat');
-        $akta_nikah->waktuCetak = Carbon::now();
-        $nik_pria = Input::get('nik-pria');
-        $nik_wanita = Input::get('nik-wanita');
-        $akta_nikah->created_at = Carbon::now();
-        $akta_nikah->updated_at = Carbon::now();
-        //DB query exception
         try {
-            $akta_nikah->suami = DB::table('kartu_tanda_penduduk')->find($nik_pria)->idPenduduk;
-            $akta_nikah->istri = DB::table('kartu_tanda_penduduk')->find($nik_wanita)->idPenduduk;
-            if($akta_nikah->save()){
-                $penduduk_pria=Penduduk::find($akta_nikah->suami);
-                $penduduk_pria->statusPernikahan="Sudah Kawin";
-                $penduduk_pria->save();
-                $penduduk_wanita=Penduduk::find($akta_nikah->istri);
-                $penduduk_wanita->statusPernikahan="Sudah Kawin";
-                $penduduk_wanita->save();
-                return redirect('/aktanikah/buat');
+
+            $nik_pria = Input::get('nik-pria');
+            $nik_wanita = Input::get('nik-wanita');
+            $id_suami=DB::table('kartu_tanda_penduduk')->find($nik_pria)->idPenduduk;
+            $id_istri=DB::table('kartu_tanda_penduduk')->find($nik_wanita)->idPenduduk;
+            $akta_nikah=$this->isAktaExist($id_suami,$id_istri);
+            if(is_null($akta_nikah)){
+                $akta_nikah = new AktaNikah();
+                $akta_nikah->waktuNikah = Input::get('tanggal');
+                $akta_nikah->tempatNikah = Input::get('tempat');
+                $akta_nikah->waktuCetak = Carbon::now();
+                $akta_nikah->created_at = Carbon::now();
+                $akta_nikah->updated_at = Carbon::now();
+                //DB query exception
+                $akta_nikah->suami = $id_suami;
+                $akta_nikah->istri = $id_istri;
+                if ($akta_nikah->save()) {
+                    $suami = Penduduk::find($id_suami);
+                    $suami->statusPernikahan = "Sudah Kawin";
+                    $suami->save();
+                    $istri = Penduduk::find($id_istri);
+                    $istri->statusPernikahan = "Sudah Kawin";
+                    $istri->save();
+                    $no_akta = $akta_nikah->id;
+                    return view('admin.akta_nikah', compact('no_akta', 'suami', 'istri'));
+                } else {
+                    return redirect()->back();
+                }
+            }else{
+                $no_akta=$akta_nikah->id;
+                $suami = Penduduk::find($id_suami);
+                $istri = Penduduk::find($id_istri);
+                $exist=true;
+                return view('admin.akta_nikah', compact('no_akta', 'suami', 'istri','exist'));
             }
-            else{
-                return redirect()->back();
-            }
-        } catch (ErrorException $e){
-            return $e;
+        } catch (\ErrorException $e){
+            return redirect()->back()->with('error','No KTP Tidak Ada pada DB');
         }
     }
-    public function postSearchnik(){
+
+    public function getSearchnik(){
         if(Request::ajax()) {
             $nikpria = Input::get('nik_pria');
             $nikwanita = Input::get('nik_wanita');
