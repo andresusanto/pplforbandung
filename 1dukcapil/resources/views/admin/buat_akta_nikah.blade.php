@@ -110,7 +110,7 @@
 	        if(nikpria.length>0 && nikwanita.length>0) {
 	            $.ajax({
 	                type: "GET",
-	                url: 'http://localhost/dukcapil/public/aktanikah/searchnik',
+	                url: 'http://dukcapil.pplbandung.biz.tm/aktanikah/searchnik',
 	                data: {nik_pria: nikpria, nik_wanita: nikwanita},
 	                success: function (response) {
 	                    var error='';
