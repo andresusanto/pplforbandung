@@ -72,13 +72,17 @@ class AktaCeraiController extends Controller {
                     $no_akta = $akta_cerai->id;
                     return view('admin.akta_cerai', compact('no_akta', 'suami', 'istri'));
                 } else {
-                    return view('admin.buat_akta_cerai');
+                    echo 'a';
+                    // return view('admin.buat_akta_cerai');
                 }
             } else {
-                return view('admin.buat_akta_cerai');
+                    echo 'b';
+                // return view('admin.buat_akta_cerai');
             }
         }catch (\Exception $e){
-            return view('admin.buat_akta_cerai');
+
+                    echo 'c';
+            // return view('admin.buat_akta_cerai');
         }
     }
 }
