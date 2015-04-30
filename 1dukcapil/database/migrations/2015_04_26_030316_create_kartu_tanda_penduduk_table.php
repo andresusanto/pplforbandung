@@ -36,6 +36,8 @@ class CreateKartuTandaPendudukTable extends Migration {
 	 */
 	public function down()
 	{
+
+        Schema::drop('users');
 		Schema::drop('kartu_tanda_penduduk');
 	}
 

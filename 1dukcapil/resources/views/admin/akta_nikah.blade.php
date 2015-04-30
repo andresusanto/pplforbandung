@@ -20,31 +20,66 @@
                     </span>
                 </div>
             </form>
+            @if(!isset($exist))
                 @if(isset($suami) && isset($istri))
                     <div class="form-panel">
-                        <h4 class="mb"><i class="fa fa-angle-right"></i> {{ $suami->nama }} </h4>
-                        <div class="form-horizontal tasi-form" method="get">
+                        <h4 class="mb"><i class="fa fa-angle-right"></i> NO Akta:{{ sprintf('%010d', $no_akta) }} </h4>
+                        <div class="form-horizontal tasi-form">
                             <div class="form-group">
-                                <div class="col-sm-2">Kewarganegaraan</div>
-                                <div class="col-sm-6">{{ sprintf('%010d', $suami->kewarganegaraan) }}</div>
+                                <div class="col-sm-2">Nama Lengkap Suami:</div>
+                                <div class="col-sm-4">{{ $suami->nama }}</div>
+                                <div class="col-sm-2">Nama Lengkap Istri:</div>
+                                <div class="col-sm-4">{{ $istri->nama }}</div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2">Nama Lengkap</div>
-                                <div class="col-sm-6">{{ $suami->nama }}</div>
+                                <div class="col-sm-2">Agama Suami:</div>
+                                <div class="col-sm-4">{{ $suami->agama }}</div>
+                                <div class="col-sm-2">Agama Istri:</div>
+                                <div class="col-sm-4">{{ $istri->agama }}</div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-2">Tempat Lahir</div>
-                                <div class="col-sm-6">{{ $suami->tempatLahir }}</div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-2">Waktu Lahir</div>
-                                <div class="col-sm-6">{{ $suami->waktuLahir }}</div>
+                                <div class="col-sm-2">Kewarganegaraan Suami:</div>
+                                <div class="col-sm-4">{{ $suami->kewarganegaraan }}</div>
+                                <div class="col-sm-2">Kewarganegaraan Istri:</div>
+                                <div class="col-sm-4">{{ $istri->kewarganegaraan }}</div>
                             </div>
                         </div>
                     </div>
                 @else
                     <p>Data tidak ditemukan</p>
                 @endif
+            @else
+                <div class="form-panel">
+                    <h4 class="mb"><i class="fa fa-angle-right"></i> NO Akta:{{ sprintf('%010d', $no_akta) }} </h4>
+                    <div class="form-horizontal tasi-form">
+                        <div class="form-group">
+                            <div class="col-sm-2">Nama Lengkap Suami:</div>
+                            <div class="col-sm-4">{{ $suami->nama }}</div>
+                            <div class="col-sm-2">Nama Lengkap Istri:</div>
+                            <div class="col-sm-4">{{ $istri->nama }}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">Agama Suami:</div>
+                            <div class="col-sm-4">{{ $suami->agama }}</div>
+                            <div class="col-sm-2">Agama Istri:</div>
+                            <div class="col-sm-4">{{ $istri->agama }}</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2">Kewarganegaraan Suami:</div>
+                            <div class="col-sm-4">{{ $suami->kewarganegaraan }}</div>
+                            <div class="col-sm-2">Kewarganegaraan Istri:</div>
+                            <div class="col-sm-4">{{ $istri->kewarganegaraan }}</div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+                <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+                <script>
+                  $(document).ready(function(){
+                    alert('Akta Sudah Ada pada Database');
+                  });
+                </script>
+            @endif
         </div><!--/content-panel -->
     </div><!--/col-md-4 -->
 </div>

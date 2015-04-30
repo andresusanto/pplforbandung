@@ -45,43 +45,43 @@
                 <div class="container">
                     <ul class="mainnav">
                         <li>
-                            <a href="index.html">
+                            <a href="http://www.pplbandung.biz.tm">
                                 <i class="icon-dashboard"></i>
                                 <span>Dashboard</span>
                             </a>                        
                         </li>
                         <li class="active">
-                            <a href="reports.html">
+                            <a href="#">
                                 <i class="icon-list-alt"></i>
                                 <span>Profil</span>
                             </a>                    
                         </li>
                         <li>
-                            <a href="reports.html">
+                            <a href="http://pajak.pplbandung.biz.tm">
                                 <i class="icon-list-alt"></i>
                                 <span>Pelayanan Pajak</span>
                             </a>                    
                         </li>
                         <li>
-                            <a href="reports.html">
+                            <a href="http://imb.pplbandung.biz.tm">
                                 <i class="icon-list-alt"></i>
                                 <span>IMB dan Izin Lokasi</span>
                             </a>                    
                         </li>
                         <li>
-                            <a href="reports.html">
+                            <a href="http://usahaterpadu.pplbandung.biz.tm">
                                 <i class="icon-list-alt"></i>
                                 <span>Izin Usaha Terpadu</span>
                             </a>                    
                         </li>
                         <li>
-                            <a href="reports.html">
+                            <a href="http://air.pplbandung.biz.tm">
                                 <i class="icon-list-alt"></i>
                                 <span>Izin Air</span>
                             </a>                    
                         </li>
                         <li>
-                            <a href="reports.html">
+                            <a href="http://usahasarana.pplbandung.biz.tm">
                                 <i class="icon-list-alt"></i>
                                 <span>Ijin Usaha dan Sarana Perdangangan</span>
                             </a>                    
