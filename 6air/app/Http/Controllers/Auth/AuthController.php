@@ -79,7 +79,7 @@ class AuthController extends Controller {
 					if (!User::find($result['id'])){
 						$user = new User;
 						$user->id = $result['id'];
-						$user->name = $result['nama'];
+						$user->name = $result['nama_penduduk'];
 						$user->save();
 					}
 					Auth::loginUsingId($result['id']);
