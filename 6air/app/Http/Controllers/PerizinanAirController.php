@@ -353,7 +353,7 @@ class PerizinanAirController extends Controller {
 	
 	public function getListperizinan()
 	{
-		$izinair = IzinAir::all();
+		$izinair = IzinAir::where('id_penduduk', '=', Auth::user()->id)->get();
 		
 		foreach($izinair as $izin)
 		{
