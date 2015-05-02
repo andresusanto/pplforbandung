@@ -37,7 +37,7 @@ class AuthController extends Controller {
 	
 	public function getSso()
 	{
-		return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=ucJpPsUshiUWoXne&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
+		return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=6nMaHHVgt8EtQ3Os&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
 	}
 	
 	public function getCode()
@@ -46,8 +46,8 @@ class AuthController extends Controller {
 		if (Request::has('code'))
 		{
 			$data = array (	'grant_type' => 'authorization_code',
-							'client_id' => 'ucJpPsUshiUWoXne',
-							'client_secret' => 'JM7ipwqjX5KX13KD',
+							'client_id' => '6nMaHHVgt8EtQ3Os',
+							'client_secret' => 'QDGxTiIDsajjfmXk',
 							'redirect_uri' => 'http://air.pplbandung.biz.tm/auth/code',
 							'code'=> Request::input('code'));
 			$data = http_build_query($data);
