@@ -79,6 +79,7 @@ class AuthController extends Controller {
 					if (!User::find($result['id'])){
 						$user = new User;
 						$user->id = $result['id'];
+						$user->email = $result['id'] . '@dukcapil.biz';
 						$user->name = $result['nama_penduduk'];
 						$user->save();
 					}
