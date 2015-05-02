@@ -68,7 +68,7 @@ class AuthController extends Controller {
 				$options = array(
 					'http' => array(
 						'method'  => 'GET',
-						'header' => "Authorization: Bearer " . $result['access_token']  . "\r\n";
+						'header' => "Authorization: Bearer " . $result['access_token']  . "\r\n"
 					),
 				);
 				$context  = stream_context_create($options);
