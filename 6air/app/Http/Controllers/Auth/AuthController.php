@@ -67,11 +67,12 @@ class AuthController extends Controller {
 			if ($result['access_token']){
 				$options = array(
 					'http' => array(
-						'method'  => 'GET'
+						'method'  => 'GET',
+						'header' => "Authorization: Bearer " . $result['access_token']  . "\r\n";
 					),
 				);
 				$context  = stream_context_create($options);
-				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/" . $result['access_token'], false, $context);
+				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/", false, $context);
 				$result = json_decode($result, true);
 				
 				if ($result['nama']){
