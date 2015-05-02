@@ -76,14 +76,14 @@ class AuthController extends Controller {
 				$result = json_decode($result, true);
 				
 				if ($result['nama_penduduk']){
-					if (!User::find($result['id'])){
+					$user = User::where('ktp', '=', $result['id'])->first();
+					if (!$user){
 						$user = new User;
-						$user->id = $result['id'];
-						$user->email = $result['id'] . '@dukcapil.biz';
+						$user->ktp = $result['id'];
 						$user->name = $result['nama_penduduk'];
 						$user->save();
 					}
-					Auth::loginUsingId($result['id']);
+					Auth::loginUsingId($user->id);
 					return new RedirectResponse(action('PerizinanAirController@getHomeuser'));
 				}else{
 					return "OAuth Failed (2)!";
