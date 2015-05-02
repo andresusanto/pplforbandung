@@ -75,7 +75,7 @@ class AuthController extends Controller {
 				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/", false, $context);
 				$result = json_decode($result, true);
 				
-				if ($result['nama']){
+				if ($result['nama_penduduk']){
 					if (!User::find($result['id'])){
 						$user = new User;
 						$user->id = $result['id'];
