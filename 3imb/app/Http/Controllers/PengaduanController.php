@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Pengaduan;
 use Carbon\Carbon;
+use Session;
 //use Illuminate\Http\Request;
 use Request;
 
@@ -14,19 +15,24 @@ class PengaduanController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($jenis)
 	{
-		$pengaduans = Pengaduan::all();
+		$pengaduans = Pengaduan::where('jenis','=', $jenis)->get();
 		if($pengaduans == []){
 			return 'Kosong';
 		}
 		else{
-			$message = array();
+			if($jenis == 1)
+				$message = "Izin Mendirikan Bangunan";
+			else if($jenis == 2)
+				$message = "Izin Lokasi";
+			else
+				$message = "Tata Ruang";
 			$block = [
 				'pengaduans'=>$pengaduans,
 				'message'=>$message
 			];
-			return view('commonusers.pengaduan',compact('block'));
+			return view('admin.pengaduan',compact('block'));
 		}
 	}
 
@@ -37,7 +43,24 @@ class PengaduanController extends Controller {
 	 */
 	public function create()
 	{
-		return view('pengaduans.create');
+		$pengaduans = Pengaduan::all();
+		if($pengaduans == []){
+			return 'Kosong';
+		}
+		else{
+			if(Session::get('message')){
+				$message = Session::get('message');
+				Session::forget('message');
+			}
+			else
+				$message = array();
+			$block = [
+				'pengaduans'=>$pengaduans,
+				'message'=>$message
+			];
+			return view('commonusers.pengaduan',compact('block'));
+		}
+
 	}
 
 	/**
@@ -47,10 +70,11 @@ class PengaduanController extends Controller {
 	 */
 	public function store()
 	{
-		//$var = (new Request)->all();
 		$var = Request::all();
 		Pengaduan::create($var);
-		return redirect('/pengaduans');
+		$message = "Pengaduan telah dikirim.";
+		Session::put('message', $message);
+		return redirect('/pengaduan');
 	}
 
 	/**
