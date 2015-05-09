@@ -37,7 +37,7 @@ class AuthController extends Controller {
 	
 	public function getSso()
 	{
-		return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=ucJpPsUshiUWoXne&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
+		return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=6nMaHHVgt8EtQ3Os&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
 	}
 	
 	public function getCode()
@@ -46,8 +46,8 @@ class AuthController extends Controller {
 		if (Request::has('code'))
 		{
 			$data = array (	'grant_type' => 'authorization_code',
-							'client_id' => 'ucJpPsUshiUWoXne',
-							'client_secret' => 'JM7ipwqjX5KX13KD',
+							'client_id' => '6nMaHHVgt8EtQ3Os',
+							'client_secret' => 'QDGxTiIDsajjfmXk',
 							'redirect_uri' => 'http://air.pplbandung.biz.tm/auth/code',
 							'code'=> Request::input('code'));
 			$data = http_build_query($data);
@@ -67,21 +67,23 @@ class AuthController extends Controller {
 			if ($result['access_token']){
 				$options = array(
 					'http' => array(
-						'method'  => 'GET'
+						'method'  => 'GET',
+						'header' => "Authorization: Bearer " . $result['access_token']  . "\r\n"
 					),
 				);
 				$context  = stream_context_create($options);
-				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/" . $result['access_token'], false, $context);
+				$result = file_get_contents("http://dukcapil.pplbandung.biz.tm/api/penduduk/", false, $context);
 				$result = json_decode($result, true);
 				
-				if ($result['nama']){
-					if (!User::find($result['id'])){
+				if ($result['nama_penduduk']){
+					$user = User::where('ktp', '=', $result['id'])->first();
+					if (!$user){
 						$user = new User;
-						$user->id = $result['id'];
-						$user->name = $result['nama'];
+						$user->ktp = $result['id'];
+						$user->name = $result['nama_penduduk'];
 						$user->save();
 					}
-					Auth::loginUsingId($result['id']);
+					Auth::loginUsingId($user->id);
 					return new RedirectResponse(action('PerizinanAirController@getHomeuser'));
 				}else{
 					return "OAuth Failed (2)!";

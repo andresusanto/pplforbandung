@@ -40,7 +40,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=ucJpPsUshiUWoXne&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
+				return redirect()->guest('http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=6nMaHHVgt8EtQ3Os&redirect_uri=http://air.pplbandung.biz.tm/auth/code&response_type=code');
 			}
 		}
 

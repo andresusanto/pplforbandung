@@ -11,7 +11,7 @@
 					<h6>Formulir Pembuatan</h6>
 				</div>
 				<div class="form-panel">
-			        <div class="form-horizontal tasi-form" method="get">
+			        <div class="form-horizontal tasi-form">
 			            <div class="form-group">
 			                <label class="col-sm-2 control-label">Tanggal Pernikahan</label>
 			                <div class="col-sm-4">
@@ -25,16 +25,16 @@
 			            <div class="form-group">
 			                <label class="col-sm-2 control-label">Nomor Induk Kependudukan Laki-Laki</label>
 			                <div class="col-sm-4">
-			                    <input type="text" class="form-control" name="nik-pria">
+			                    <input type="text" class="form-control" name="nik-pria" value="2132546615297075">
 			                </div>
 			                <label class="col-sm-2 control-label">Nomor Induk Kependudukan Perempuan</label>
 			                <div class="col-sm-4">
-			                    <input type="text" class="form-control" name="nik-wanita">
+			                    <input type="text" class="form-control" name="nik-wanita" value="5075110202027282">
 			                </div>
 			            </div>
 			        </div>
 			        <button type="button" class="btn btn-theme03" id="detail">Validasi Nomor Induk Kependudukan</button>
-					<button type="submit" class="btn btn-theme03">Lanjut</button>
+					<button id="submit_button" type="submit" class="btn btn-theme03" disabled>Lanjut</button>
 		    	</div>
 			</div><!--/content-panel -->
 		</form>
@@ -47,25 +47,21 @@
 				<h3>Detil Mempelai Pria</h3>
 			</div>
 			<div class="form-panel">
-		        <div class="form-horizontal tasi-form" method="get">
+		        <div class="form-horizontal tasi-form" method="GET">
 		            <div class="form-group">
 		                <label class="col-sm-2 control-label">Nama Lengkap</label>
-		                <div class="col-sm-4">
+		                <div class="col-sm-10">
 		                    <input type="text" class="form-control" name="nama_lengkap_pria" disabled>
-		                </div>
-		                <label class="col-sm-2 control-label">Jenis Kelamin</label>
-		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
 		                </div>
 		            </div>
 		            <div class="form-group">
 		                <label class="col-sm-2 control-label">Tempat Lahir</label>
 		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
+		                    <input type="text" class="form-control" name="tempat_lahir_pria" disabled>
 		                </div>
 		                <label class="col-sm-2 control-label">Tanggal Lahir</label>
 		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
+		                    <input type="text" class="form-control" name="tanggal_lahir_pria" disabled>
 		                </div>
 		            </div>
 		        </div>
@@ -78,25 +74,21 @@
 				<h3>Detil Mempelai Perempuan</h3>
 			</div>
 			<div class="form-panel">
-		        <div class="form-horizontal tasi-form" method="get">
+		        <div class="form-horizontal tasi-form" method="GET">
 		            <div class="form-group">
 		                <label class="col-sm-2 control-label">Nama Lengkap</label>
-		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
-		                </div>
-		                <label class="col-sm-2 control-label">Jenis Kelamin</label>
-		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
+		                <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="nama_lengkap_wanita" disabled>
 		                </div>
 		            </div>
 		            <div class="form-group">
 		                <label class="col-sm-2 control-label">Tempat Lahir</label>
 		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
+		                    <input type="text" name="tempat_lahir_wanita" class="form-control" disabled>
 		                </div>
 		                <label class="col-sm-2 control-label">Tanggal Lahir</label>
 		                <div class="col-sm-4">
-		                    <input type="text" class="form-control" disabled>
+		                    <input type="text" name="tanggal_lahir_wanita" class="form-control" disabled>
 		                </div>
 		            </div>
 		        </div>
@@ -117,8 +109,8 @@
 	        var tempat_pernikahan=$('[name="tempat"]').val();
 	        if(nikpria.length>0 && nikwanita.length>0) {
 	            $.ajax({
-	                type: "POST",
-	                url: 'http://localhost/dukcapil/public/aktanikah/searchnik',
+	                type: "GET",
+	                url: 'http://dukcapil.pplbandung.biz.tm/aktanikah/searchnik',
 	                data: {nik_pria: nikpria, nik_wanita: nikwanita},
 	                success: function (response) {
 	                    var error='';

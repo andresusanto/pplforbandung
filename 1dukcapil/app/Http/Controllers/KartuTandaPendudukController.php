@@ -62,20 +62,20 @@ class KartuTandaPendudukController extends Controller {
 
 		// update penduduk instance
 		$penduduk = Penduduk::find($aktaLahir->idPenduduk);
-		// $penduduk->nama = Request::input('nama');
-		// $penduduk->jenisKelamin = Request::input('jenisKelamin');
-		// $penduduk->golonganDarah = Request::input('golonganDarah');
-		// $penduduk->tempatLahir = Request::input('tempatLahir');
+		$penduduk->nama = Request::input('nama');
+		$penduduk->jenisKelamin = Request::input('jenisKelamin');
+		$penduduk->golonganDarah = Request::input('golonganDarah');
+		$penduduk->tempatLahir = Request::input('tempatLahir');
 
 		// changing birth date only
-		// $database = Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->waktuLahir);
-		// $now = Carbon::createFromFormat('Y-m-d', Request::input('tanggalLahir'));
-		// $database->setDate($now->year, $now->month, $now->day);
+		$database = Carbon::createFromFormat('Y-m-d H:i:s', $penduduk->waktuLahir);
+		$now = Carbon::createFromFormat('Y-m-d', Request::input('tanggalLahir'));
+		$database->setDate($now->year, $now->month, $now->day);
 
-		// $penduduk->waktuLahir = $database->toDateTimeString();
-		// $penduduk->pekerjaan = Request::input('pekerjaan');
-		// $penduduk->statusPernikahan = Request::input('statusPernikahan');
-		// $penduduk->kewarganegaraan = Request::input('kewarnegaraan');
+		$penduduk->waktuLahir = $database->toDateTimeString();
+		$penduduk->pekerjaan = Request::input('pekerjaan');
+		$penduduk->statusPernikahan = Request::input('statusPernikahan');
+		$penduduk->kewarganegaraan = Request::input('kewarnegaraan');
 		$penduduk->save();
 
 		$user = new User();

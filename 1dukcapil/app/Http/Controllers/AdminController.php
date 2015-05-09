@@ -28,13 +28,12 @@ class AdminController extends Controller {
         $admin = Admin::where('username', '=', $username)->first();
         if ($admin == null) {
             return false;
-        } else if (!Hash::check($password, $admin->password)) {
+        } else if (!Hash::check($password, $admin->password)){
             return false;
         } else {
             return true;
         }
     }
-
 	/**
 	 * Display a listing of the resource.
 	 *
