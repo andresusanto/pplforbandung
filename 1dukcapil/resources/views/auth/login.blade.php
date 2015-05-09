@@ -55,11 +55,11 @@
                                     <p>Mohon isi detil akun anda</p>
                                     <div class="field">
                                         <label for="username">Nomor Induk Kependudukan</label>
-                                        <input type="text" id="username" name="email" value="putri@gmail.com" placeholder="Nomor Induk Kependudukan" class="login username-field">
+                                        <input type="text" id="username" name="email" placeholder="Nomor Induk Kependudukan" class="login username-field">
                                     </div> <!-- /field -->
                                     <div class="field">
                                         <label for="password">Sandi</label>
-                                        <input type="password" id="password" name="password" value="putriputri" placeholder="Sandi" class="login password-field">
+                                        <input type="password" id="password" name="password" placeholder="Sandi" class="login password-field">
                                     </div> <!-- /password -->
                                 </div> <!-- /login-fields -->
                                 <div class="login-actions">

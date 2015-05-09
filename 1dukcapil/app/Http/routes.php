@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function() {
+	return Redirect('user');
+});
 
 Route::get('home', 'HomeController@index');
 
@@ -20,16 +22,45 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('oauth/wiki', function() {
-	return view('oauth.wiki');
+// admin stuffs
+Route::group(['middleware' => 'admin'], function() {
+    Route::controller('kartukeluarga', 'KartuKeluargaController');
+    Route::controller('kartutandapenduduk', 'KartuTandaPendudukController');
+    Route::controller('aktakelahiran','AktaKelahiranController');
+    Route::controller('aktakematian','AktaKematianController');
+    Route::controller('aktanikah','AktaNikahController');
+    Route::controller('aktacerai', 'AktaCeraiController');
 });
-Route::get('oauth/register', 'OAuthController@getRegister');
-Route::post('oauth/register', 'OAuthController@doRegister');
 
-Route::get('oauth/authorize', 'OAuthController@getAuthorize');
+Route::group(['prefix' => 'admin'], function() {
+	Route::get('/', function() {
+		return Redirect('kartutandapenduduk');
+	});
+    Route::get('login', 'AdminController@index');
+    Route::post('login', 'AdminController@login');
+    Route::get('logout', 'AdminController@logout');
+});
 
-Route::post('oauth/authorize', 'OAuthController@doAuthorize');
+// user stuffs
+Route::group(array('prefix' => 'user'), function() {
+	Route::controller('/', 'UserController');
+});
 
-Route::post('oauth/access_token', 'OAuthController@getAccessToken');
+// API stuffs
+Route::group(array('prefix' => 'api'), function() {
+	Route::resource('penduduk', 'PendudukController');
+});
 
-Route::resource('api/penduduk', 'PendudukController');
+// OAuth stuffs
+Route::group(array('prefix' => 'oauth'), function() {
+	Route::get('wiki', function() {
+		return view('oauth.wiki');
+	});
+	
+	Route::get('register', 'OAuthController@getRegister');
+	Route::post('register', 'OAuthController@doRegister');
+	Route::get('authorize', 'OAuthController@getAuthorize');
+	Route::post('authorize', 'OAuthController@doAuthorize');
+	Route::post('access_token', 'OAuthController@getAccessToken');
+});
+
