@@ -17,9 +17,9 @@ Route::get('home', 'HomeController@index');
 
 Route::get('daftar-usaha', "UsahaController@index");
 
-Route::post('daftar-usaha/search', "UsahaController@search");
+Route::post('search', "UsahaController@search");
 
-Route::get('daftar-usaha/sort/{category}', "UsahaController@sort");
+Route::get('sort/{category}', "UsahaController@sort");
 
 Route::get('getlaporan', "UsahaController@createpdf");
 

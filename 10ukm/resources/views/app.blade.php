@@ -45,7 +45,7 @@
                 </a>        
                 
                 <div class="navbar-search pull-right">
-                    {!! Form::open(['url'=>'daftar-usaha/search']) !!}
+                    {!! Form::open(['url'=>'/search']) !!}
                     {!! Form::text('query', null, array( 'placeholder' => 'Search' )) !!}
                     {!! Form::submit('Search') !!}
                     {!! Form::close() !!}
@@ -93,15 +93,15 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/daftar-usaha/sort/0">Agro</a></li>
-                        <li><a href="/daftar-usaha/sort/1">Kimia</a></li>
-                        <li><a href="/daftar-usaha/sort/2">Logam</a></li>
-                        <li><a href="/daftar-usaha/sort/3">Alat Transportasi</a></li>
-                        <li><a href="/daftar-usaha/sort/4">Elektronika</a></li>
-                        <li><a href="/daftar-usaha/sort/5">Tekstil</a></li>
-                        <li><a href="/daftar-usaha/sort/6">Produk Tekstil</a></li>
-                        <li><a href="/daftar-usaha/sort/7">Mesin Elektronika dan Aneka</a></li>
-                        <li><a href="/daftar-usaha/sort/8">Non-Formal</a></li>
+                        <li><a href="/sort/0">Agro</a></li>
+                        <li><a href="/sort/1">Kimia</a></li>
+                        <li><a href="/sort/2">Logam</a></li>
+                        <li><a href="/sort/3">Alat Transportasi</a></li>
+                        <li><a href="/sort/4">Elektronika</a></li>
+                        <li><a href="/sort/5">Tekstil</a></li>
+                        <li><a href="/sort/6">Produk Tekstil</a></li>
+                        <li><a href="/sort/7">Mesin Elektronika dan Aneka</a></li>
+                        <li><a href="/sort/8">Non-Formal</a></li>
                     </ul>
                 </li>
             </ul>
