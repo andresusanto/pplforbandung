@@ -67,9 +67,9 @@
             <ul class="mainnav">
             
                 <li>
-                    <a href="#">
+                    <a href="http://www.pplbandung.biz.tm/">
                         <i class="fa fa-tachometer"></i>
-                        <span>About</span>
+                        <span>Dashboard</span>
                     </a>                        
                 </li> 
                 
@@ -155,14 +155,6 @@
                     <!-- /span3 -->
                     <div class="span3">
                         <h4>
-                            Support</h4>
-							<ul>
-							</ul>
-                      
-                    </div>
-                    <!-- /span3 -->
-                    <div class="span3">
-                        <h4>
                            Ketentuan</h4>
                         <ul>
                             <li>Anda Harus Login Dahulu sebelum entri data ukm</li>
@@ -173,10 +165,9 @@
                         <h4>
                             Also Visit Another Page</h4>
                         <ul>
-                            <li><a href="http://www.egrappler.com">Dukcapil</a></li>
-                            <li><a href="http://www.egrappler.com;">Perizinan</a></li>
-                            <li><a href="http://www.egrappler.com;">Sampah</a></li>
-                            <li><a href="http://www.egrappler.com;">Pemkot</a></li>
+                            <li><a href="http://dukcapil.pplbandung.biz.tm/">Dukcapil</a></li>
+                            <li><a href="http://sampah.pplbandung.biz.tm/">Sampah</a></li>
+                            <li><a href="http://parkir.pplbandung.biz.tm/">Parkir</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
