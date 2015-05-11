@@ -260,7 +260,13 @@ class UsahaController extends Controller {
 		
 		
 		
-        $fpdf->Output('dokumen/coba2.pdf');
+        $fpdf->Output('dokumen/UKM_Laporan.pdf');
+
+        $headers = array(
+				'Content-Type => application/octet-stream',
+			);
+		
+		return Response::download('dokumen/UKM_Laporan.pdf', 'UKM_Laporan.pdf', $headers);
 
 	}
 }
