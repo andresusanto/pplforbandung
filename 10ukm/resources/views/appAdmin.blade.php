@@ -79,7 +79,13 @@
                       </a>
                   </li>
 
-                  <li class="sub-menu">
+                  <li class="mt">
+                    <a class="active" href="getlaporan">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <span>Laporan Usaha</span>
+                    </a>
+                  </li>
+                  <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-th"></i>
                           <span>Tabel Basis Data</span>
@@ -90,7 +96,7 @@
                           <li><a  href="responsive_table.html">Industri TPTME</a></li>
                           <li><a  href="responsive_table.html">Produk</a></li>
                       </ul>
-                  </li>
+                  </li> -->
               </ul>
               <!-- sidebar menu end-->
           </div>
