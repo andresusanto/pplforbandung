@@ -54,7 +54,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="/">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -69,7 +69,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="{{ asset('/adminAssets/img/ui-sam.png') }}" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/admin"><img src="{{ asset('/adminAssets/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Admin</h5>
               	  	
                   <li class="mt">
@@ -79,17 +79,11 @@
                       </a>
                   </li>
 
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <i class="fa fa-th"></i>
-                          <span>Tabel Basis Data</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="basic_table.html">Industri Kecil Non-Formal</a></li>
-                          <li><a  href="responsive_table.html">Industri AKLATE</a></li>
-                          <li><a  href="responsive_table.html">Industri TPTME</a></li>
-                          <li><a  href="responsive_table.html">Produk</a></li>
-                      </ul>
+                  <li class="mt">
+                    <a class="active" href="getlaporan">
+                      <i class="fa fa-file-pdf-o"></i>
+                      <span>Laporan Usaha</span>
+                    </a>
                   </li>
               </ul>
               <!-- sidebar menu end-->

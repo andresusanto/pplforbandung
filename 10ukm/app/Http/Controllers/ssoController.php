@@ -14,9 +14,9 @@ class ssoController extends Controller {
 		$postBody = $request->getBody();
 		// $postBody is an instance of GuzzleHttp\Post\PostBodyInterface
 		$postBody->setField('grant_type', 'authorization_code');
-		$postBody->setField('client_id', 'xOmoRlzwpDBXDZJz');
-		$postBody->setField('client_secret', 'pX1SgmgfADBQyJ2f');
-		$postBody->setField('redirect_uri', 'http://localhost:8888/loginsso');
+		$postBody->setField('client_id', 'LvX3nG9NeRhKG2t8');
+		$postBody->setField('client_secret', 'LW8bq0tMlqLyYItn');
+		$postBody->setField('redirect_uri', 'http://ukm.pplbandung.biz.tm/loginsso');
 		$postBody->setField('code', $req->get('code'));
 
 		// {"foo": "bar"}

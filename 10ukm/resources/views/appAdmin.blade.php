@@ -54,7 +54,7 @@
             </div>
             <div class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="login.html">Logout</a></li>
+                    <li><a class="logout" href="/">Logout</a></li>
             	</ul>
             </div>
         </header>
@@ -69,7 +69,7 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               
-              	  <p class="centered"><a href="profile.html"><img src="{{ asset('/adminAssets/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
+              	  <p class="centered"><a href="/admin"><img src="{{ asset('/adminAssets/img/ui-sam.jpg') }}" class="img-circle" width="60"></a></p>
               	  <h5 class="centered">Admin</h5>
               	  	
                   <li class="mt">

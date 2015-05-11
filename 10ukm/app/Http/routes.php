@@ -55,6 +55,8 @@ Route::post('gantiusahaAdmin/{id}',"AdminController@update");
 
 Route::get('pemberian-izin/{id}',"AdminController@izin");
 
+Route::delete('deleteusahaAdmin/{id}', "AdminController@destroy");
+
 Route::get('loginsso', 'ssoController@login');
 //Route::get('registrasi-produk',"ProdukController@create");
 
