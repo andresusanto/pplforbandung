@@ -28,7 +28,7 @@
 			<h3>{{$usaha->nama}}</h3>
 			<h4>Kategori: {{$bdg[0]}}</h4>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-			<a class="btn btn-primary" href="/daftar-usaha/{{$usaha->id}}">Lihat Data Lengkap<span class="glyphicon glyphicon-chevron-right"></span></a>
+			<a class="btn btn-primary" href="daftar-usaha/{{$usaha->id}}">Lihat Data Lengkap<span class="glyphicon glyphicon-chevron-right"></span></a>
 		</div>
 	</div>
 	<!-- /.row -->
