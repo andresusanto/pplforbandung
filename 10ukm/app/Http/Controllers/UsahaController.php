@@ -183,12 +183,10 @@ class UsahaController extends Controller {
 	{	
 		$usaha = Usaha::find($id);
 		$namausaha = $usaha['nama'];
+		$files = glob('dokumen/'. $namausaha);
+		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files)->close();
 		
-		$headers = array(
-				'Content-Type => application/octet-stream',
-			);
-		
-		return Response::download('dokumen/' . $namausaha, $namausaha, $headers);
+		return Response::download('dokumen/' . $namausaha.'.zip');
 		
 		//return redirect('daftar-usaha');
 	}
@@ -209,7 +207,7 @@ class UsahaController extends Controller {
 	private function zipfile($nama) {
 		$namausaha = $nama;
 		$files = glob('dokumen/'. $namausaha);
-		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files);
+		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files)->close();
 	}
 
 	public function createpdf(){
