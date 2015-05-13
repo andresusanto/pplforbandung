@@ -188,7 +188,7 @@ class UsahaController extends Controller {
 				'Content-Type => application/octet-stream',
 			);
 		
-		return Response::download('dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
+		return Response::download('public/dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
 		
 		//return redirect('daftar-usaha');
 	}
