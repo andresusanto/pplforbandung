@@ -188,7 +188,6 @@ class UsahaController extends Controller {
 				'Content-Type => application/octet-stream',
 			);
 		
-		return Response::download('public/dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
 		
 		//return redirect('daftar-usaha');
 	}
@@ -208,8 +207,8 @@ class UsahaController extends Controller {
 
 	private function zipfile($nama) {
 		$namausaha = $nama;
-		$files = glob('public/dokumen/'. $namausaha);
-		$makezip = Zipper::make('public/dokumen/'. $namausaha .'.zip')->add($files);
+		$files = glob('dokumen/'. $namausaha);
+		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files);
 	}
 
 	public function createpdf(){
