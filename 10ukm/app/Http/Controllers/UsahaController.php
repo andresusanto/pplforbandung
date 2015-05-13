@@ -208,8 +208,8 @@ class UsahaController extends Controller {
 
 	private function zipfile($nama) {
 		$namausaha = $nama;
-		$files = glob('dokumen/'. $namausaha);
-		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files);
+		$files = glob('public/dokumen/'. $namausaha);
+		$makezip = Zipper::make('public/dokumen/'. $namausaha .'.zip')->add($files);
 	}
 
 	public function createpdf(){
