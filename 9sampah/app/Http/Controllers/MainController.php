@@ -191,7 +191,11 @@ use Session;
 			return view('formIsiVolume')->with('tpa', $tpa)->with('tps', $tps);
 		}
 		public function laporan(){
-			return view('laporan');
+			$TPA = TPA::all();
+			$TPS = TPS::all();
+			$Sarana = Sarana::all();
+			$Petugas = Petugas::all();
+			return view('laporan')->with('TPA', $TPA)->with('TPS', $TPS)->with('Sarana', $Sarana)->with('Petugas', $Petugas);
 		}
 		public function getPenjadwalanSarana() {
 			$tpa = DB::select('SELECT * from tpa');
