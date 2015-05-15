@@ -40,7 +40,7 @@ class CreateDatabases extends Migration {
             $table->tinyInteger('StatusAktaPendirianPerusahaan')->default(1);
 		});
 
-		Schema::create('izintempatpenjualanminumaberalkohol', function(Blueprint $table) {
+		Schema::create('izintempatpenjualanminumanberalkohol', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
@@ -160,9 +160,9 @@ class CreateDatabases extends Migration {
 	public function down()
 	{
 		Schema::drop('tandapendaftaranwaralaba');
-		Schema::drop('izintempatpenjualanminumaberalkohol');
+		Schema::drop('izintempatpenjualanminumanberalkohol');
 		Schema::drop('izinusahapasartradisional');
-		Schema::drop('izinusahatokomoern');
+		Schema::drop('izinusahatokomodern');
 		Schema::drop('izinusahapusatperbelanjaan');
 		Schema::drop('izin');
 		Schema::drop('pengguna');
