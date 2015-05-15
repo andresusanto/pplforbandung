@@ -1,0 +1,131 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
+.logo {
+	font-family: 'Pacifico', cursive;
+}
+
+a.logo {
+	font-size: 28px;
+	text-transform: none;
+}
+
+.site-min-height {
+	min-height: 630px;
+}
+
+.black-bg {
+	background: #37bc9b;
+	border-bottom: 1px solid #37bc9b;
+}
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+	background: #FFC477;
+}
+
+.bg-theme {
+	background-color: #FFC477;
+}
+
+ul.top-menu > li > .logout {
+	background: #FFC477;
+	border: 1px solid #FFC477;
+}
+
+.ds a {
+	color: #FFC477;
+}
+
+element.style {
+	background-color: rgb(41, 166, 221);
+}
+
+.site-footer {
+	background: #FFC477;
+}
+
+.green-panel {
+	background: #FFC477;
+}
+
+.calendar-month-header {
+	background: #FFC477;
+}
+
+.ds h3 {
+	background: #E23D3D;
+}
+
+.col-lg-3 {
+	height: 780px;
+}
+
+.wrapper {
+	padding-bottom: 0;
+}
+
+.custom-bar-chart .bar .value{
+	background: #F55D5D;
+}
+
+.form-control {
+	margin-bottom: 15px;
+}
+
+.btn-primary {
+	background-color: #FFC477;
+	border-color: #FFC477;
+	text-align: center;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+	background-color: #FAB459;
+	border-color: #FAB459;
+}
+
+.center {
+	margin-left: 45%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.btn-primary:visited {
+	background-color: #FAB459;
+	border-color: #FAB459;
+}
+
+.form-horizontal.style-form .form-group {
+	border-bottom: none;
+}
+
+a {
+	color: #FFC477;
+}
+
+.modal-header {
+	background: #FFC477;
+}
+
+.form-login h2.form-login-heading {
+	background: #FFC477;
+}
+
+.form-login {
+	margin-top: 200px;
+}
+
+hr {
+	border-top: none;
+}
+
+.btn-theme {
+	background-color: #FFC477;
+	border-color: #FFC477;
+}
+
+.btn-theme:hover {
+	background-color: #1A88B8;
+	border-color: #1A88B8; 
+}
+ul.sidebar-menu li ul.sub li.active a {
+	color: #FFC477;
+}
