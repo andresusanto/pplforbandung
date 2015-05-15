@@ -114,7 +114,7 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 		$TandaDaftarPerusahaanFile->move($DestinationPath, $TandaDaftarPerusahaanFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('IzinTempatPenjualanMinumanBeralkohol')->insert(
+		DB::table('izintempatpenjualanminumanberalkohol')->insert(
 			[
 			'idIzin' => $id,
 			'IzinusahaKepariwisataan' => $DestinationPath.$SuratIzinUsahaKepariwisataanFileName,
