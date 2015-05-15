@@ -97,7 +97,7 @@ class CreateDatabases extends Migration {
 			$table->string('DomisiliPerusahaan')->default('');
 		});
 
-		Schema::create('izinusahatokomoern', function(Blueprint $table) {
+		Schema::create('izinusahatokomodern', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('idIzin')->unsigned()->default(0);
 			$table->foreign('idIzin')->references('id')->on('izin')->onDelete('cascade');
