@@ -9,7 +9,7 @@ class TPS extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'TPS';
+	protected $table = 'tps';
 
 	// /**
 	//  * The attributes that are mass assignable.

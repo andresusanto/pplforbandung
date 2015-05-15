@@ -9,7 +9,7 @@ class Petugas extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Petugas';
+	protected $table = 'petugas';
 
 	// /**
 	//  * The attributes that are mass assignable.
