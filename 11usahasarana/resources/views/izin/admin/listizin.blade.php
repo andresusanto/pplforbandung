@@ -5,6 +5,7 @@
 	<tr style="border-style: solid;">
 		<td>ID</td>
 		<td>Nama Pemohon</td>
+		<td>Alamat</td>
 		<td>Perusahaan</td>
 		<td>Tanggal Masuk</td>
 		<td>Berlaku Sampai</td>
@@ -16,6 +17,7 @@
 	<tr>
 		<td style="vertical-align: middle">{{ $i->id }}</td>
 		<td style="vertical-align: middle">{{ $i->NamaPemohon }}</td>
+		<td style="vertical-align: middle">{{$i->AlamatPerusahaan}}</td>
 		<td style="vertical-align: middle">{{$i->NamaPerusahaan}}</td>
 		<td style="vertical-align: middle">
 			<?php
@@ -41,7 +43,7 @@
 				</ul>
 			</div>
 		</td>
-		<td style="vertical-align: middle"><a href ="{{url('/Admin/izin/'.$jenis.'/'.$i->id.'/Download') }}">Download </a></td>
+		<td style="vertical-align: middle"><a href ="{{url('/Admin/izin/'.$jenis.'/'.$i->id.'/Download') }}">Lihat</a></td>
 		<td>
             <form method="get" onclick="return validate({{$i->id}});" action="#">
                 <button type="submit" class="btn btn-danger">Hapus</button>
