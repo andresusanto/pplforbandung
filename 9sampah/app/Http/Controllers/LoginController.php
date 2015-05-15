@@ -10,7 +10,7 @@ class LoginController extends Controller {
 		$username = Input::get('username');
 		$password = Input::get('password');
 		
-		$user = DB::table('Petugas')->where('username',$username)->first();
+		$user = DB::table('petugas')->where('username',$username)->first();
 		if($user != NULL){
 			if( $user->password == $password){
 				Session::put('username',$user->username);

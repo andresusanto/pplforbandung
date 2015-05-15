@@ -9,7 +9,7 @@ class Sarana extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Sarana';
+	protected $table = 'sarana';
 
 	// /**
 	//  * The attributes that are mass assignable.

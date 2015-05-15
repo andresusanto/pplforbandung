@@ -100,14 +100,14 @@
                                   
                                 </div>
                                 <br>
-                                <font size = "6">{{round((float)($jumlahPAssigned / ($jumlahPAssigned+$jumlahPnonAssigned))*100) . '%'}}</font>
+                                <font size = "5">{{round((float)($jumlahPAssigned / ($jumlahPAssigned+$jumlahPnonAssigned))*100) . '%'}}</font>
                                 
                                 <div class="col-sm-6 col-xs-6">
                                   <br>
                                   <br>
                                   <br>
                                   <br>
-                                  <font size = "4"><p>Yang telah dijadwalkan</p></font>
+                                  <font size = "3"><p>Yang telah dijadwalkan</p></font>
                                 </div>
                                 <canvas id="serverstatus01" height="120" width="120"></canvas>
                                 <script>
@@ -141,14 +141,14 @@
                                   
                                 </div>                                
                                 <br>
-                                <font size = "6">{{round((float)($jumlahSAssigned / count($Sarana))*100) . '%'}}</font>
+                                <font size = "5">{{round((float)($jumlahSAssigned / count($Sarana))*100) . '%'}}</font>
                                 
                                 <div class="col-sm-6 col-xs-6">
                                   <br>
                                   <br>
                                   <br>
                                   <br>
-                                  <font size = "4"><p>Yang telah dijadwalkan</p></font>
+                                  <font size = "3"><p>Yang telah dijadwalkan</p></font>
                                 </div>                                
                                 <canvas id="serverstatus02" height="120" width="120"></canvas>
                                 <script>
