@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class TPS extends Model {
+class tps extends Model {
 
 	/**
 	 * The database table used by the model.
