@@ -122,7 +122,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'/Izin/STPW/'.$id.'/';
+		$DestinationPath = public_path().'/File/Izin/STPW/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPFileName = $KTPFile->getClientOriginalName();
@@ -143,7 +143,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		$STPWFile->move($DestinationPath, $STPWFileName);		
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('tandapendaftaranwaralaba')->insert(
+		DB::table('TandaPendaftaranWaralaba')->insert(
 			[
 			'idIzin' => $id, 
 			'STPWPemberiWaralaba' => $DestinationPath.$STPWFileName,

@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
 
@@ -45,8 +46,9 @@ class IzinController extends Controller {
 
 	}
 
-    public function download($filename)
+    public function download()
     {
+        $filename = Request::input('path');
         if (file_exists($filename))
         {
             // Send Download

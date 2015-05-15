@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class ZipController extends Controller {
 
-    public function downloadZip($filess)
+    public function downloadZip(Request $request)
     {
+        $filess = $request->input('filess');
         $files = unserialize($filess);
         $zipname = 'berkas.zip';
         $zip = new \ZipArchive;

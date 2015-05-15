@@ -138,7 +138,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'/Izin/IUPT/'.$id.'/';
+		$DestinationPath = public_path().'/File/Izin/IUPT/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPPimpinanFileName = $KTPPimpinan->getClientOriginalName();
@@ -167,7 +167,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		$SuratPernyataanKebenaran->move($DestinationPath, $SuratPernyataanKebenaranFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('izinusahapasartradisional')->insert(
+		DB::table('IzinUsahaPasarTradisional')->insert(
 			[
 			'idIzin' => $id, 
 			'PengesahanKehakiman' => $DestinationPath.$FotokopiPengesahanKehakimanFileName,
