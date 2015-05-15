@@ -167,7 +167,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		$SuratPernyataanKebenaran->move($DestinationPath, $SuratPernyataanKebenaranFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('IzinUsahaPasarTradisional')->insert(
+		DB::table('izinusahapasartradisional')->insert(
 			[
 			'idIzin' => $id, 
 			'PengesahanKehakiman' => $DestinationPath.$FotokopiPengesahanKehakimanFileName,

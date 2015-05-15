@@ -143,7 +143,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		$STPWFile->move($DestinationPath, $STPWFileName);		
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('TandaPendaftaranWaralaba')->insert(
+		DB::table('tandapendaftaranwaralaba')->insert(
 			[
 			'idIzin' => $id, 
 			'STPWPemberiWaralaba' => $DestinationPath.$STPWFileName,
