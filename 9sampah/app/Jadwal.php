@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class jadwal extends Model {
+class Jadwal extends Model {
 
 	/**
 	 * The database table used by the model.

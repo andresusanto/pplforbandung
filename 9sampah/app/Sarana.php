@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class sarana extends Model {
+class Sarana extends Model {
 
 	/**
 	 * The database table used by the model.
