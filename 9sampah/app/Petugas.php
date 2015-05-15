@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Petugas extends Model {
+class petugas extends Model {
 
 	/**
 	 * The database table used by the model.

@@ -2,10 +2,10 @@
 namespace App\Http\Controllers;
 use Request;
 use DB;
-use App\TPA;
-use App\TPS;
-use App\Sarana;
-use App\Petugas;
+use App\tpa;
+use App\tps;
+use App\sarana;
+use App\petugas;
 
 	class AddController extends Controller {
 		public function __construct()

@@ -1,10 +1,10 @@
 <?php 
 namespace App\Http\Controllers;
 use Request;
-use App\TPA;
-use App\TPS;
-use App\Sarana;
-use App\Petugas;
+use App\tpa;
+use App\tps;
+use App\sarana;
+use App\petugas;
 
 	class DelController extends Controller {
 		public function __construct()
