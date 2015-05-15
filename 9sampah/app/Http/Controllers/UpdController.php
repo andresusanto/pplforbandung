@@ -3,10 +3,10 @@ namespace App\Http\Controllers;
 use Request;
 use DB;
 use Session;
-use App\tpa;
-use App\tps;
-use App\sarana;
-use App\petugas;
+use App\TPA;
+use App\TPS;
+use App\Sarana;
+use App\Petugas;
 
 	class UpdController extends Controller {
 		public function __construct()
