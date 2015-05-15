@@ -1,0 +1,87 @@
+#header {
+    margin-top:20px;
+    background: #E6E9ED;
+    border-radius: 0px;
+    border-color: #CCD1D9;
+    color: #37BC9B;
+}
+
+#header a {
+    color: #37BC9B !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#header a:hover {
+    color:white !important;
+}
+
+#header .open a{
+    background: #E6E9ED !important;
+}
+
+#header .dropdown-menu {
+    background: #E6E9ED;
+}
+
+#header .navbar-brand{
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.sidebar a {
+    color: black;
+}
+.sidebar .list-group-item:hover {
+    background-color: #e6e9ed;
+}
+.form-header {
+    border-bottom: 3px solid #FFCE54;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.detail-izin-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.notification {
+    margin-bottom : 0px;
+}
+
+
+.sidebar .list-group-item.active {
+    background-color: #e6e9ed;
+    color: black;
+}
+
+#main-content {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.subnavbar-inner {
+  height: 60px;
+  background: #fff;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.subnavbar .container > ul {
+  display: inline-block;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+}
+
+.subnavbar .container > ul > li {
+  float: left;
+  min-width: 90px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  list-style: none;
+  border-left: 1px solid #d9d9d9;
+}
