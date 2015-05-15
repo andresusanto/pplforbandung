@@ -48,6 +48,9 @@ class IzinUsahaPasarTradisionalController extends Controller {
 
     public function downloadFile($id) {
         $downloadLink = array();
+        $statusIzin = array();
+        $judul = "Izin Usaha Pasar Tradisional";
+        $back = "IzinUsahaPasarTradisional";
         $izin = IzinUsahaPasarTradisional::where('idIzin','=',$id)->first();
 
         if ($izin != null) {
@@ -62,7 +65,13 @@ class IzinUsahaPasarTradisionalController extends Controller {
             $downloadLink['Surat Izin BKPM'] = $izin->SuratIzinBKPM;
             $downloadLink['Neraca Modal Perusahaan'] = $izin->NeracaModalPerusahaan;
             $downloadLink['Domisili Perusahaan'] = $izin->DomisiliPerusahaan;
-            return view('izin.admin.tokomodern',compact('downloadLink'));
+
+            $statusIzin['Akta Pendirian Perusahaan'] = $izin->StatusAktaPendirianPerusahaan;
+            $statusIzin['Izin Gangguan'] = $izin->StatusIzinGangguan;
+            $statusIzin['NPWP'] = $izin->StatusNPWP;
+            $statusIzin['Pelunasan PBB'] = $izin->StatusPelunasanPBB;
+            $statusIzin['IMB'] = $izin->StatusIMB;
+            return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','judul','back'));
         }
         else {
             $izin = Izin::where('JenisIzin','=','IUPT')->get();
@@ -129,7 +138,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\IUPT\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/IUPT/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPPimpinanFileName = $KTPPimpinan->getClientOriginalName();
@@ -158,7 +167,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		$SuratPernyataanKebenaran->move($DestinationPath, $SuratPernyataanKebenaranFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('IzinUsahaPasarTradisional')->insert(
+		DB::table('izinusahapasartradisional')->insert(
 			[
 			'idIzin' => $id, 
 			'PengesahanKehakiman' => $DestinationPath.$FotokopiPengesahanKehakimanFileName,

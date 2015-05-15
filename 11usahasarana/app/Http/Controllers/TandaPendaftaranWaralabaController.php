@@ -40,6 +40,9 @@ class TandaPendaftaranWaralabaController extends Controller {
     public function downloadFile($id) {
         $downloadLink = array();
         $izin = TandaPendaftaranWaralaba::where('idIzin','=',$id)->first();
+        $statusIzin = array();
+        $judul='Izin Tanda Pendaftaran Waralaba';
+        $back='TandaPendaftaranWaralaba';
 
         if ($izin != null) {
             $downloadLink['STPW Pemberi Waralaba'] = $izin->STPWPemberiWaralaba;
@@ -49,7 +52,9 @@ class TandaPendaftaranWaralabaController extends Controller {
             $downloadLink['Prospektus Penawaran Waralaba'] = $izin->ProspektusPenawaranWaralaba;
             $downloadLink['KTP Pimpinan'] = $izin->KTPPimpinan;
             $downloadLink['Tanda Daftar Perusahaan'] = $izin->TandaDaftarPerusahaan;
-            return view('izin.admin.tokomodern',compact('downloadLink'));
+
+            $statusIzin['Akta Pendirian Perusahaan'] = $izin->StatusAktaPendirianPerusahaan;
+            return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','back','judul'));
         }
         else {
             $izin = Izin::where('JenisIzin','=','STPW')->get();
@@ -117,7 +122,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\STPW\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/STPW/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPFileName = $KTPFile->getClientOriginalName();
@@ -138,7 +143,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		$STPWFile->move($DestinationPath, $STPWFileName);		
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('TandaPendaftaranWaralaba')->insert(
+		DB::table('tandapendaftaranwaralaba')->insert(
 			[
 			'idIzin' => $id, 
 			'STPWPemberiWaralaba' => $DestinationPath.$STPWFileName,

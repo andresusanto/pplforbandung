@@ -5,6 +5,7 @@
 	<tr style="border-style: solid;">
 		<td>ID</td>
 		<td>Nama Pemohon</td>
+		<td>Alamat</td>
 		<td>Perusahaan</td>
 		<td>Tanggal Masuk</td>
 		<td>Berlaku Sampai</td>
@@ -16,6 +17,7 @@
 	<tr>
 		<td style="vertical-align: middle">{{ $i->id }}</td>
 		<td style="vertical-align: middle">{{ $i->NamaPemohon }}</td>
+		<td style="vertical-align: middle">{{$i->AlamatPerusahaan}}</td>
 		<td style="vertical-align: middle">{{$i->NamaPerusahaan}}</td>
 		<td style="vertical-align: middle">
 			<?php
@@ -41,9 +43,9 @@
 				</ul>
 			</div>
 		</td>
-		<td style="vertical-align: middle"><a href ="{{url('/Admin/izin/'.$jenis.'/'.$i->id.'/Download') }}">Download </a></td>
+		<td style="vertical-align: middle"><a href ="{{url('/Admin/izin/'.$jenis.'/'.$i->id.'/Download') }}">Lihat</a></td>
 		<td>
-            <form method="get" onclick="return validate({{$i->id}});" action="#">
+            <form method="get" onclick="return validate({{$i->id}},'{{$i->JenisIzin}}');" action="#">
                 <button type="submit" class="btn btn-danger">Hapus</button>
             </form>
 		</td>
@@ -52,11 +54,11 @@
 	</table>
 
 	<script>
-	    function validate(id)
+	    function validate(id, izin)
 	    {
 	        if (confirm('Apakah anda yakin ingin menghapus izin dengan ID= '+id+'?'))
 	        {
-                window.location.href = "{{route('deleteIzin',['id'=>$i->id,'jenisizin'=>$i->JenisIzin])}}";
+                window.location.href = "delete/"+id+"/"+izin;
 	        }
 	        return false;
 	    }

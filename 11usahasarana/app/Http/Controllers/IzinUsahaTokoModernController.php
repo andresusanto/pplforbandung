@@ -25,7 +25,8 @@ class IzinUsahaTokoModernController extends Controller {
 	public function admin() 
 	{
 		$izin = Izin::where('JenisIzin','=','IUTM')->get();
-		return view('izin.admin.tokomodern', compact('izin'));
+        $judul = 'Izin Usaha Toko Modern';
+		return view('izin.admin.tokomodern', compact('izin','judul'));
 	}
 	
 	public function updateStatus($id,$status){
@@ -40,6 +41,9 @@ class IzinUsahaTokoModernController extends Controller {
 	
 	public function downloadFile($id) {
 		$downloadLink = array();
+        $statusIzin = array();
+        $back = 'IzinUsahaTokoModern';
+        $judul = 'Izin Usaha Toko Modern';
 		$izin = IzinUsahaTokoModern::where('idIzin','=',$id)->first();
 		
 		if ($izin != null) {
@@ -54,7 +58,13 @@ class IzinUsahaTokoModernController extends Controller {
             $downloadLink['Surat Izin BKPM'] = $izin->SuratIzinBKPM;
             $downloadLink['Neraca Modal Perusahaan'] = $izin->NeracaModalPerusahaan;
             $downloadLink['Domisili Perusahaan'] = $izin->DomisiliPerusahaan;
-			return view('izin.admin.tokomodern',compact('downloadLink'));
+
+            $statusIzin['Akta Pendirian Perusahaan'] = $izin->StatusAktaPendirianPerusahaan;
+            $statusIzin['Izin Gangguan'] = $izin->StatusIzinGangguan;
+            $statusIzin['NPWP'] = $izin->StatusNPWP;
+            $statusIzin['Pelunasan PBB'] = $izin->StatusPelunasanPBB;
+            $statusIzin['IMB'] = $izin->StatusIMB;
+			return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','judul','back'));
 		}
 		else {
 			$izin = Izin::where('JenisIzin','=','IUTM')->get();
@@ -131,7 +141,7 @@ class IzinUsahaTokoModernController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\IUTM\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/IUTM/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPPimpinanFileName = $KTPPimpinan->getClientOriginalName();
@@ -160,7 +170,7 @@ class IzinUsahaTokoModernController extends Controller {
 		$SuratPernyataanKebenaran->move($DestinationPath, $SuratPernyataanKebenaranFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('IzinUsahaTokoModern')->insert(
+		DB::table('izinusahatokomodern')->insert(
 			[
 			'idIzin' => $id, 
 			'PengesahanKehakiman' => $DestinationPath.$FotokopiPengesahanKehakimanFileName,

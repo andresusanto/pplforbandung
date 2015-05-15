@@ -89,7 +89,7 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 			'JenisIzin' => 'ITPMB',
 			'TanggalMasuk' => $date, 
 			'BerlakuSampai' => $date, 
-			'StatusIzin' => 'Sudah Diterima', 
+			'StatusIzin' => 'Diterima',
 			'DokumenPersetujuan' => 'localhost:8000', 
 			'created_at' => $date, 
 			'updated_at' => $date
@@ -97,7 +97,7 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\Izin Tempat Penjualan Minuman Beralkohol\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/Izin Tempat Penjualan Minuman Beralkohol/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPFileName = $KTPFile->getClientOriginalName();
@@ -114,7 +114,7 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 		$TandaDaftarPerusahaanFile->move($DestinationPath, $TandaDaftarPerusahaanFileName);
 
 		/* Insert izin to table IzinUsahaPusatPerbelanjaan */
-		DB::table('IzinTempatPenjualanMinumanBeralkohol')->insert(
+		DB::table('izintempatpenjualanminumanberalkohol')->insert(
 			[
 			'idIzin' => $id,
 			'IzinusahaKepariwisataan' => $DestinationPath.$SuratIzinUsahaKepariwisataanFileName,
@@ -178,6 +178,9 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 
     public function downloadFile($id) {
         $downloadLink = array();
+        $statusIzin = array();
+        $judul = "Izin Tempat Penjualan Minuman Beralkohol";
+        $back = "IzinTempatPenjualanMinumanBeralkohol";
         $izin = IzinTempatPenjualanMinumanBeralkohol::where('idIzin','=',$id)->first();
 
         if ($izin != null) {
@@ -186,7 +189,12 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
             $downloadLink['Izin Usaha Perdagangan'] = $izin->IzinUsahaPerdagangan;
             $downloadLink['Tanda Daftar Perusahaan'] = $izin->TandaDaftarPerusahaan;
             $downloadLink['Kepemilikan Tempat'] = $izin->KepemilikanTempat;
-            return view('izin.admin.tokomodern',compact('downloadLink'));
+
+            $statusIzin['NPWP'] = $izin->StatusNPWP;
+            $statusIzin['Akta Pendirian Perusahaan'] = $izin->StatusAktaPendirianPerusahaan;
+            $statusIzin['Izin Gangguan'] = $izin->StatusIzinGangguan;
+
+            return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','back','judul'));
         }
         else {
             $izin = Izin::where('JenisIzin','=','ITPMB')->get();
