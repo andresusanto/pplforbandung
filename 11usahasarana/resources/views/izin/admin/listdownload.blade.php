@@ -6,7 +6,7 @@
     <?php $arrays = array(); ?>
 	@foreach($downloadLink as $jns => $link)
 	<tr>
-		<td><a href = "{{route('downloadfile',array('filename'=>$link))}}"> {{ $jns }} </a></td>
+		<td><a href = "/Download?path={{$link}}"> {{ $jns }} </a></td>
 		<?php array_push($arrays,$link); ?>
 	</tr>
 	@endforeach
@@ -19,7 +19,7 @@
 	<tr>
 	    <td>
 	        <?php $arrayss = serialize($arrays);?>
-	        <a href="{{route('downloadZip',['filess'=>$arrayss])}}">Download</a>
+	        <a href="/zip?filess={{$arrayss}}">Download</a>
 	    </td>
 	</tr>
 </table>

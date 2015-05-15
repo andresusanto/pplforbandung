@@ -55,7 +55,7 @@ Route::get('Admin/izin/IzinTempatPenjualanMinumanBeralkohol/{id}/Download', 'Izi
 Route::get('Admin/izin/IzinUsahaTokoModern/{id}/Download', 'IzinUsahaTokoModernController@downloadFile');
 Route::get('Admin/izin/IzinUsahaPasarTradisional/{id}/Download', 'IzinUsahaPasarTradisionalController@downloadFile');
 Route::get('Admin/izin/TandaPendaftaranWaralaba/{id}/Download', 'TandaPendaftaranWaralabaController@downloadFile');
-Route::get('Download/{filename}',['uses'=>'IzinController@download','as'=>'downloadfile']);
+Route::get('Download',['uses'=>'IzinController@download','as'=>'downloadfile']);
 
 /* Admin: Delete Izin */
 Route::get('Admin/izin/delete/{id}/{jenisizin}',['uses'=>'IzinController@deleteIzin', 'as'=>'deleteIzin']);
@@ -76,4 +76,4 @@ Route::get('/login_callback_admin',['uses'=>'LoginController@call_back_admin','a
 Route::get('/login_callback_admin1',['uses'=>'LoginController@call_back_admin1','as'=>'login_callback_admin1']);
 
 /* Test ZIP */
-Route::get('/zip/{files}',['uses'=>'ZipController@downloadZip','as'=>'downloadZip']);
+Route::get('/zip',['uses'=>'ZipController@downloadZip','as'=>'downloadZip']);
