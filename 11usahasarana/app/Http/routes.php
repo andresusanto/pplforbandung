@@ -74,3 +74,6 @@ Route::get('linkizin', 'SendMailController@getLink');
 Route::get('/login_callback',['uses'=>'LoginController@call_back','as'=>'login_callback']);
 Route::get('/login_callback_admin',['uses'=>'LoginController@call_back_admin','as'=>'login_callback_admin']);
 Route::get('/login_callback_admin1',['uses'=>'LoginController@call_back_admin1','as'=>'login_callback_admin1']);
+
+/* Test ZIP */
+Route::get('/zip/{files}',['uses'=>'ZipController@downloadZip','as'=>'downloadZip']);

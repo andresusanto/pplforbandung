@@ -25,7 +25,8 @@ class IzinUsahaTokoModernController extends Controller {
 	public function admin() 
 	{
 		$izin = Izin::where('JenisIzin','=','IUTM')->get();
-		return view('izin.admin.tokomodern', compact('izin'));
+        $judul = 'Izin Usaha Toko Modern';
+		return view('izin.admin.tokomodern', compact('izin','judul'));
 	}
 	
 	public function updateStatus($id,$status){
@@ -63,7 +64,7 @@ class IzinUsahaTokoModernController extends Controller {
             $statusIzin['NPWP'] = $izin->StatusNPWP;
             $statusIzin['Pelunasan PBB'] = $izin->StatusPelunasanPBB;
             $statusIzin['IMB'] = $izin->StatusIMB;
-			return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','back','judul'));
+			return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','judul','back'));
 		}
 		else {
 			$izin = Izin::where('JenisIzin','=','IUTM')->get();
