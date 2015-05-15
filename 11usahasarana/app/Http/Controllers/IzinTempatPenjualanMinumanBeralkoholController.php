@@ -97,7 +97,7 @@ class IzinTempatPenjualanMinumanBeralkoholController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\Izin Tempat Penjualan Minuman Beralkohol\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/Izin Tempat Penjualan Minuman Beralkohol/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPFileName = $KTPFile->getClientOriginalName();

@@ -122,7 +122,7 @@ class TandaPendaftaranWaralabaController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\STPW\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/STPW/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPFileName = $KTPFile->getClientOriginalName();
