@@ -10,7 +10,7 @@
 		
 		<div class="col-xs-9 col-offset-xs-1">
 			<br><br><br><br><br><br>
-			<h1> Izin Usaha Toko Modern </h1>
+			<h1> {{$judul}} </h1>
 			@if (!isset($downloadLink))
 				@include ('izin.admin.listizin')
 			@else

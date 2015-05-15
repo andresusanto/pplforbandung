@@ -40,6 +40,9 @@ class IzinUsahaTokoModernController extends Controller {
 	
 	public function downloadFile($id) {
 		$downloadLink = array();
+        $statusIzin = array();
+        $back = 'IzinUsahaTokoModern';
+        $judul = 'Izin Usaha Toko Modern';
 		$izin = IzinUsahaTokoModern::where('idIzin','=',$id)->first();
 		
 		if ($izin != null) {
@@ -54,7 +57,13 @@ class IzinUsahaTokoModernController extends Controller {
             $downloadLink['Surat Izin BKPM'] = $izin->SuratIzinBKPM;
             $downloadLink['Neraca Modal Perusahaan'] = $izin->NeracaModalPerusahaan;
             $downloadLink['Domisili Perusahaan'] = $izin->DomisiliPerusahaan;
-			return view('izin.admin.tokomodern',compact('downloadLink'));
+
+            $statusIzin['Akta Pendirian Perusahaan'] = $izin->StatusAktaPendirianPerusahaan;
+            $statusIzin['Izin Gangguan'] = $izin->StatusIzinGangguan;
+            $statusIzin['NPWP'] = $izin->StatusNPWP;
+            $statusIzin['Pelunasan PBB'] = $izin->StatusPelunasanPBB;
+            $statusIzin['IMB'] = $izin->StatusIMB;
+			return view('izin.admin.tokomodern',compact('downloadLink','statusIzin','back','judul'));
 		}
 		else {
 			$izin = Izin::where('JenisIzin','=','IUTM')->get();
