@@ -3,11 +3,25 @@
 	<tr style="border-style: solid; text-align: center">
 		<th style="text-align: center; font-weight: bold">Download Dokumen</th>
 	</tr>
+    <?php $arrays = array(); ?>
 	@foreach($downloadLink as $jns => $link)
 	<tr>
 		<td><a href = "{{route('downloadfile',array('filename'=>$link))}}"> {{ $jns }} </a></td>
+		<?php array_push($arrays,$link); ?>
 	</tr>
 	@endforeach
+</table>
+
+<table class ="table table-hover table-striped text-center" style="border-style: solid; text-align:center;">
+	<tr style="border-style: solid; text-align: center">
+		<th style="text-align: center; font-weight: bold">Download Semua Dokumen</th>
+	</tr>
+	<tr>
+	    <td>
+	        <?php $arrayss = serialize($arrays);?>
+	        <a href="{{route('downloadZip',['filess'=>$arrayss])}}">Download</a>
+	    </td>
+	</tr>
 </table>
 
 <table class ="table table-hover table-striped text-center" style="border-style: solid; text-align: center">
