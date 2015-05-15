@@ -14,85 +14,33 @@ use Input;
 use Request;
 
 class AdminController extends Controller {
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		$informasis = Informasi::all();
-		if($informasis == []){
-			return 'Kosong';
+	private static $token = 'trtexrcfyvgujhbkjnl';
+	private static $pw_asli = 'sayaadminimb';
+	private static $rand_string = 'maushalatdulu';
+	public static function isLogin(){
+		if(!isset($_COOKIE[self::$token])){
+			return false;
 		}
 		else{
-			if(Session::get('message')){
-				$message = Session::get('message');
-				Session::forget('message');
-			}
-			else
-				$message = array();
-			$block = [
-				'informasi'=>$informasis,
-				'message'=>$message
-			];
-			return view('admin.index', compact('block'));
+			return ($_COOKIE[self::$token]==md5(self::$token." ".self::$rand_string));	
 		}
 	}
 
-	public function index_ruang()
-	{
-		$lokasis = Lokasi::all();
-		if($lokasis == []){
-			return 'Kosong';
+	public static function login($password){
+		if(($password==self::$pw_asli)){
+			setcookie(self::$token,md5(self::$token." ".self::$rand_string),time()+60*60);
+			return true;
 		}
 		else{
-			$message = array();
-			$block = [
-				'lokasis'=>$lokasis,
-				'message'=>$message
-			];
-			return view('admin.app');
+			return false;
 		}
 	}
 
-	public function IMB()
-	{
-		$bangunans = Bangunan::orderBy('id')->simplePaginate(5);
-		if($bangunans == []){
-			return 'Kosong';
-		}
-		else{
-			$message = array();
-			$block = [
-				'bangunans'=>$bangunans,
-				'message'=>$message
-			];
-			$jenis = Bangunan::getJenisBangunan();
-			$status = Bangunan::getStatusBangunan();
-			foreach ($block['bangunans'] as $bangunan) {
-				$bangunan->jenis = $jenis["$bangunans->jenis"];
-				$bangunan->status = $status["$bangunans->status"];
-			}
-			return view('admin.imb',compact('block'));
-		}
+	public static function dumping(){
+		var_dump(array(self::$token,self::$pw_asli,md5(self::$token." ".self::$rand_string)));
 	}
 
-	public function tata_ruang()
-	{
-		$lokasis = Lokasi::all();
-		if($lokasis == []){
-			return 'Kosong';
-		}
-		else{
-			$message = array();
-			$block = [
-				'lokasis'=>$lokasis,
-				'message'=>$message
-			];
-			return view('admin.tata_ruang');
-		}
+	public function index(){
+		return "jokowi";
 	}
-
 }
