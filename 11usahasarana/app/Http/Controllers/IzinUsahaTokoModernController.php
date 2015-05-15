@@ -141,7 +141,7 @@ class IzinUsahaTokoModernController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\IUTM\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/IUTM/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPPimpinanFileName = $KTPPimpinan->getClientOriginalName();

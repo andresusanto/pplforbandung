@@ -138,7 +138,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
 		);
 
 		/* Destination Path */
-		$DestinationPath = storage_path().'\\Izin\\IUPT\\'.$id.'\\';
+		$DestinationPath = storage_path().'/Izin/IUPT/'.$id.'/';
 
 		/* Get each document file name */
 		$KTPPimpinanFileName = $KTPPimpinan->getClientOriginalName();
