@@ -19,7 +19,11 @@ class PerizinanController extends Controller {
 	| controller as you wish. It is just here to get your app started!
 	|
 	*/
-
+	public function cekStatusIzin($str)
+	{
+		$izins = Perizinan::where("id_pemohon",$str)->select(array('kode_izin','jenis_izin','status'))->get();
+		return $izins->toJson();
+	}
 	/**
 	 * Show the application dashboard to the user.
 	 *

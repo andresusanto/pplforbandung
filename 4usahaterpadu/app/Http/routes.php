@@ -16,6 +16,8 @@ Route::get('detailperizinan/{str}', 'PerizinanController@showDetailPerizinan');
 
 Route::get('isiform/{str}', 'PerizinanController@showFormulir');
 
+Route::get('status/{str}', 'PerizinanController@cekStatusIzin');
+
 Route::patch('upload/{str}', 'PerizinanController@uploadFormulir');
 
 Route::get('uploaddokumenawal/{str}/{id}', 'PerizinanController@uploadDokumenAwal');
@@ -67,6 +69,8 @@ Route::get('signup', 'HomeController@signup');
 Route::patch('signup', 'HomeController@checkSignup');
 
 Route::get('profil', 'HomeController@profil');
+
+Route::get('/', 'HomeController@home');
 
 Route::get('home', 'HomeController@home');
 
