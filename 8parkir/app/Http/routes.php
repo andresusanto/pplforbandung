@@ -76,7 +76,30 @@ Route::post('updateBayarRetribusi', array(
 	'uses' => 'PermohonanController@updateBayarRetribusi')
 	);
 
+//route for download file
+
+Route::get('downloadLampiran/{filename}', array(
+	'as' => 'downloadLampiran',
+	'uses'=>'DownloadController@downloadLampiran')
+	);
+Route::get('downloadBuktiPembayaran/{filename}', array(
+	'as' => 'downloadBuktiPembayaran',
+	'uses'=>'DownloadController@downloadBuktiPembayaran')
+	);
+
+//route for perizinan
+
+Route::get('daftar_izin', array(
+	'as' => 'daftar_izin',
+	'uses' => 'PermohonanController@getDaftarIzin')
+	);
+
 // route for admin page
+Route::get('admin/', array(
+	'as' => 'admin.home',
+	'array' => 'AdminController@home'
+	)
+	);
 
 Route::get('admin/login', array(
 	'as' => 'admin/login',
@@ -128,7 +151,41 @@ Route::post('admin/generatePDF', array(
 	'uses' => 'AdminController@generatePDF')
 	);	
 
+Route::get('admin/daftar_izin', array(
+	'as' => 'admin/daftar_izin',
+	'uses' => 'AdminController@getPerizinan')
+	);
+
+Route::post('admin/generateSuratIzin', array(
+	'as' => 'admin/generateSuratIzin',
+	'uses' => 'AdminController@generateSuratIzin')
+	);
+
+Route::post('admin/aturPerizinan', array(
+	'as' => 'admin/aturPerizinan',
+	'uses' => 'AdminController@aturPerizinan')
+	);
+
+Route::post('admin/updatePerizinan', array(
+	'as' => 'admin/updatePerizinan',
+	'uses' => 'AdminController@updatePerizinan')
+	);
+
 //delete permohonan
 
 Route::get('admin/delete_permohonan/{id}', 'AdminController@deletePermohonan');
 Route::get('delete_permohonan/{id}', 'PermohonanController@deletePermohonan');
+
+//delete perizinan
+Route::get('admin/delete_perizinan/{id}', 'AdminController@deletePerizinan');
+Route::get('delete_perizinan/{id}', 'PermohonanController@deletePerizinan');
+
+Route::get('loginsso', array(
+	'as' => 'loginsso',
+	'uses' => 'SSOController@loginsso')
+	);
+
+Route::get('logoutsso', array(
+	'as' => 'logoutsso',
+	'uses' => 'SSOController@logoutsso')
+	);

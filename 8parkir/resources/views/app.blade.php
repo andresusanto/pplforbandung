@@ -4,7 +4,7 @@
 
 
 <head>
-	<title>Park Here</title>
+	<title>Parkir dan Terminal</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			  </button>
-			  <a class="navbar-brand" href="#">Park Here</a>
+			  <a class="navbar-brand" href="#">Parkir dan Terminal</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 			  @yield('admin')
