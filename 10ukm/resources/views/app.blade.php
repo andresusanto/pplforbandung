@@ -74,9 +74,9 @@
                 </li> 
                 
                 <li>
-                    <a href="#">
+                    <a href="/getlaporan">
                         <i class="fa fa-book"></i>
-                        <span>Contact</span>
+                        <span>Laporan Usaha</span>
                     </a>                    
                 </li>
                 
@@ -86,6 +86,7 @@
                         <span>Registrasi UKM</span>
                     </a>                                    
                 </li>
+
                  <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> 
                         <i class="icon-long-arrow-down"></i>
@@ -168,6 +169,13 @@
                             <li><a href="http://dukcapil.pplbandung.biz.tm/">Dukcapil</a></li>
                             <li><a href="http://sampah.pplbandung.biz.tm/">Sampah</a></li>
                             <li><a href="http://parkir.pplbandung.biz.tm/">Parkir</a></li>
+                        </ul>
+                    </div>
+                    <div class="span3">
+                        <h4>
+                           Contact</h4>
+                        <ul>
+                            <li>ukmbandung@gmail.com</li>
                         </ul>
                     </div>
                     <!-- /span3 -->

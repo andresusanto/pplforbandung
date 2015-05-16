@@ -15,6 +15,7 @@ class CreateUsahaTable extends Migration {
 		Schema::create('usaha',function($table)
 		{
 			$table->increments('id');
+			$table->string('NIK');
 			$table->string('nama');
 			$table->string('email');
 			$table->string('lokasi');

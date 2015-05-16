@@ -35,7 +35,8 @@
 			<h4>Nomor Telepon : {{$usaha->telepon}}</h4>
 			<h4>Email : {{$usaha->email}}</h4>
 			<br><br>
-			<a class="btn btn-primary" href="/download/{{$usaha->id}}">Download Dokumen <span class="glyphicon glyphicon-download-alt"></span></a>
+			<a class="btn btn-primary" href="/registrasi-produk/{{$usaha->id}}">Registrasi Produk<span class="glyphicon glyphicon-chevron-right"></span></a>
+			
 		</div>
 	</div>
 	<!-- /.row -->
