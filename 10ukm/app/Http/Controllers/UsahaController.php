@@ -186,11 +186,11 @@ class UsahaController extends Controller {
 		$namausaha = $usaha['nama'];
 		$zipname = $namausaha . '.zip';
 		$path = 'dokumen/' . $zipname;
-		// $headers = array(
-		// 		'Content-Type => application/zip',
-		// 		'Content-disposition: attachment; filename=' . $path,
+		$headers = array(
+				'Content-Type : application/zip',
+				'Content-disposition: attachment; filename=' . $path,
 
-		// // );
+		);
 		// header('Content-Type: application/zip');
 		// header('Content-disposition: attachment; filename='.$zipname);
 		// header('Content-Length: ' . filesize($path));
@@ -202,9 +202,7 @@ class UsahaController extends Controller {
         if (file_exists($zipname))
         {
             // Send Download
-            return Response::download($zipname, basename($zipname), [
-                'Content-Length: '. filesize($zipname)
-            ]);
+            return Response::download($zipname, basename($zipname), $headers);
         }
         else
         {
@@ -241,19 +239,6 @@ class UsahaController extends Controller {
 		}
 		// $zip->addGlob('dokumen/'.$namausaha);
 		$zip->close();
-
-		if (file_exists($zip_name))
-        {
-            // Send Download
-            return Response::download($zip_name, basename($zip_name), [
-                'Content-Length: '. filesize($zip_name)
-            ]);
-        }
-        else
-        {
-            // Error
-            exit('File yang anda cari tidak dapat ditemukan!');
-        }
 	}
 
 	public function createpdf(){
