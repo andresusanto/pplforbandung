@@ -11,6 +11,7 @@
 		<td>Berlaku Sampai</td>
 		<td>Status Izin</td>
 		<td>File Pengajuan Izin</td>
+		<td>Dokumen Persetujuan</td>
 		<td>Hapus</td>
 	</tr>
 	@foreach($izin as $i)
@@ -44,6 +45,29 @@
 			</div>
 		</td>
 		<td style="vertical-align: middle"><a href ="{{url('/Admin/izin/'.$jenis.'/'.$i->id.'/Download') }}">Lihat</a></td>
+		<?php 
+			if ($i->StatusIzin == 'Disetujui'){
+				if ($i->DokumenPersetujuan == '-'){?>
+					<td style="vertical-align: middle"><a href ="{{url('/suratizin/'.$i->id) }}">Unduh</a></td>
+			<?php 
+				} else if ($i->DokumenPersetujuan == '/suratizin/'.$i->id) {?>					
+					<td style="vertical-align: middle">
+						<form role ="form" method ="post" enctype="multipart/form-data" action="{{ url('/suratizin/store') }}">
+							<input type="hidden" name="_token" value="{{csrf_token()}}">
+							<input type="hidden" name="id" value="<?php echo $i->id;?>">
+							<input type="file" id="SuratIzinFile" name="SuratIzinFile" class="hidden" onchange="javascript:this.form.submit();">
+							<label for="SuratIzinFile"><a>Unggah</a></label>
+						</form>
+					</td>
+			<?php
+				} else {?>
+					<td style="vertical-align: middle"><a href ="{{ url('suratizin/view/'.$i->id) }}"  target="_blank">Lihat</a></td>
+			<?php	
+				}
+			} else {
+				echo '<td style="vertical-align: middle">-</td>';
+			}
+		?>		
 		<td>
             <form method="get" onclick="return validate({{$i->id}},'{{$i->JenisIzin}}');" action="#">
                 <button type="submit" class="btn btn-danger">Hapus</button>

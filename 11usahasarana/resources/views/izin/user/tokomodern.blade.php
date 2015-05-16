@@ -107,6 +107,14 @@
 		
 		<div class ="form-group" id ="DataPribadi">
 			@include('izin.user.formidentitas')
+			<label>Kegiatan Usaha</label>
+        	<select name = "KegiatanUsaha">
+               <option value = "Minimarket">Minimarket</option>
+               <option value = "Supermarket">Supermarket</option>
+               <option value = "Departement Store">Departement Store</option>
+               <option value = "Hypermarket">Hypermarket</option>
+               <option value = "Perkulakan">Perkulakan</option>
+            </select>
 			<label for="KTP">Fotokopi KTP Pimpinan</label>
 			<input type="file" id="KTPFile" name ="KTPFile" required>
 			<label for="Pasfoto">Pasfoto 3x4 Berwarna</label>

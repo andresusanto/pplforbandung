@@ -32,7 +32,7 @@ class IzinUsahaPasarTradisionalController extends Controller {
         if($status === 'Disetujui')
         {
             $time = date('Y-m-d', strtotime('+5 years'));
-            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time]);
+            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time, 'TanggalDisetujui' => new \DateTime]);
         }
 		return Redirect::to('Admin/izin/IzinUsahaPasarTradisional')->with('message', 'Status updated.');
 	}
@@ -89,6 +89,8 @@ class IzinUsahaPasarTradisionalController extends Controller {
         /* Get data pemohon izin */
         $namaPerusahaan = $request->get('nama_perusahaan');
         $alamatPerusahaan = $request->get('alamat_perusahaan');
+        $namaUsaha = $request->get('nama_usaha');
+        $lokasiUsaha = $request->get('lokasi_usaha');
 
 		/* Get uploaded file from user */
 		$KTPPimpinan = $request->file('KTPFile');
@@ -127,11 +129,13 @@ class IzinUsahaPasarTradisionalController extends Controller {
 			'NamaPemohon' => $nama,
             'AlamatPerusahaan' => $alamatPerusahaan,
             'NamaPerusahaan'  => $namaPerusahaan,
+            'NamaUsaha' => $namaUsaha,
+            'LokasiUsaha'  => $lokasiUsaha,
 			'JenisIzin' => 'IUPT', 
 			'TanggalMasuk' => $date, 
 			'BerlakuSampai' => $date, 
 			'StatusIzin' => 'Diterima', 
-			'DokumenPersetujuan' => 'localhost:8000', 
+			'DokumenPersetujuan' => '-', 
 			'created_at' => $date, 
 			'updated_at' => $date
 			]
