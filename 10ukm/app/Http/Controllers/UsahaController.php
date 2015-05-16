@@ -9,6 +9,7 @@ use Zipper;
 use Fpdf;
 use Response;
 use Request;
+use ZipArchive;
 
 class UsahaController extends Controller {
 
@@ -185,10 +186,10 @@ class UsahaController extends Controller {
 		$namausaha = $usaha['nama'];
 		
 		$headers = array(
-				'Content-Type => application/octet-stream',
+				'Content-Type => application/zip',
 			);
 		
-		return Response::download('dokumen/' . $namausaha.'.zip', $namausaha, $headers);
+		return Response::download('dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
 		
 		//return redirect('daftar-usaha');
 	}
@@ -208,8 +209,19 @@ class UsahaController extends Controller {
 
 	private function zipfile($nama) {
 		$namausaha = $nama;
-		$files = glob('dokumen/'. $namausaha);
-		$makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files);
+		$files = glob('dokumen/'. $namausaha . '/*');
+		// $makezip = Zipper::make('dokumen/'. $namausaha .'.zip')->add($files);
+
+		$zip = new ZipArchive();
+		$zip_name = $namausaha .".zip"; // Zip name
+		$zip->open('dokumen/' . $zip_name,  ZipArchive::CREATE);
+		foreach ($files as $file) {
+			if(is_file($file)){
+		  		$zip->addFile($file);
+		  	}
+		}
+		// $zip->addGlob('dokumen/'.$namausaha);
+		$zip->close();
 	}
 
 	public function createpdf(){
