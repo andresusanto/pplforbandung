@@ -34,6 +34,18 @@
                       <td><a href="detailperizinan/iui" type="button" class=" text-center btn-sm btn-info">Pelajari</a></td>
                       <td><a href="isiform/iui" type="button" class=" text-center btn-sm btn-primary">Isi Sekarang <i class="fa fa-angle-right"></i> </a></td>
                   </tr>
+					<tr>
+						<td>4</td>
+						<td>Izin Usaha Pertambangan Operasi Produksi / IUPOP</td>
+						<td><a href="detailperizinan/iupop" type="button" class=" text-center btn-sm btn-info">Pelajari</a></td>
+						<td><a href="isiform/iupop" type="button" class=" text-center btn-sm btn-primary">Isi Sekarang <i class="fa fa-angle-right"></i> </a></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Izin Usaha Jasa Konstruksi / IUJK</td>
+						<td><a href="detailperizinan/iujk" type="button" class=" text-center btn-sm btn-info">Pelajari</a></td>
+						<td><a href="isiform/iujk" type="button" class=" text-center btn-sm btn-primary">Isi Sekarang <i class="fa fa-angle-right"></i> </a></td>
+					</tr>
                   </tbody>
               </table>
       	  </div><! --/content-panel -->
