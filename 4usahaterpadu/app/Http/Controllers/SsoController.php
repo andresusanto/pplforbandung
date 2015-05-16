@@ -18,7 +18,7 @@ class SsoController extends Controller {
 		$postBody->setField('grant_type', 'authorization_code');
 		$postBody->setField('client_id', '5SLTJ3QStpkyeBcG');
 		$postBody->setField('client_secret', 'xboB3LJRnLlrBNbU');
-		$postBody->setField('redirect_uri', 'http://localhost/PerizinanTerpadu/public/loginsso');
+		$postBody->setField('redirect_uri', \URL::to('loginsso'));
 		$postBody->setField('code', $req->get('code'));
 
 		$response = $client->send($request);
