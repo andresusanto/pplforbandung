@@ -241,6 +241,19 @@ class UsahaController extends Controller {
 		}
 		// $zip->addGlob('dokumen/'.$namausaha);
 		$zip->close();
+
+		if (file_exists($zip_name))
+        {
+            // Send Download
+            return Response::download($zip_name, basename($zip_name), [
+                'Content-Length: '. filesize($zip_name)
+            ]);
+        }
+        else
+        {
+            // Error
+            exit('File yang anda cari tidak dapat ditemukan!');
+        }
 	}
 
 	public function createpdf(){
