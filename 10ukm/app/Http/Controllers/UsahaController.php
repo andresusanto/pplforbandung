@@ -190,14 +190,27 @@ class UsahaController extends Controller {
 		// 		'Content-Type => application/zip',
 		// 		'Content-disposition: attachment; filename=' . $path,
 
-		// );
-		header('Content-Type: application/zip');
-		header('Content-disposition: attachment; filename='.$zipname);
-		header('Content-Length: ' . filesize($path));
-		readfile($path);
+		// // );
+		// header('Content-Type: application/zip');
+		// header('Content-disposition: attachment; filename='.$zipname);
+		// header('Content-Length: ' . filesize($path));
+		// readfile($path);
 		// return Response::download('dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
 		
 		//return redirect('daftar-usaha');
+
+        if (file_exists($path))
+        {
+            // Send Download
+            return Response::download($path, basename($path), [
+                'Content-Length: '. filesize($path)
+            ]);
+        }
+        else
+        {
+            // Error
+            exit('File yang anda cari tidak dapat ditemukan!');
+        }
 	}
 
 	public function search()
@@ -220,7 +233,7 @@ class UsahaController extends Controller {
 
 		$zip = new ZipArchive();
 		$zip_name = $namausaha .".zip"; // Zip name
-		$zip->open('dokumen/' . $zip_name,  ZipArchive::CREATE);
+		$zip->open('dokumen/' . $zip_name,  ZipArchive::CREATE | ZipArchive::OVERWRITE);
 		foreach ($files as $file) {
 			if(is_file($file)){
 		  		$zip->addFile($file);
