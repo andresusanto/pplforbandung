@@ -54,6 +54,8 @@
 		
 		<div class ="form-group" id ="DataPribadi">
 			@include('izin.user.formidentitas')
+			<label >Kegiatan Usaha:</label>
+			<input type="text" id="KegiatanUsaha" name ="KegiatanUsaha" required>
 			<label for="KTP">Fotokopi KTP Pimpinan</label>
 			<input type="file" id="KTPFile" name="KTPFile" required>
 		</div>
