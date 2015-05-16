@@ -185,7 +185,7 @@ class UsahaController extends Controller {
 		$usaha = Usaha::find($id);
 		$namausaha = $usaha['nama'];
 		$zipname = $namausaha . '.zip';
-		$path = 'dokumen/' . $zipname;
+		$path = public_path(). 'dokumen/' . $zipname;
 		// $headers = array(
 		// 		'Content-Type => application/zip',
 		// 		'Content-disposition: attachment; filename=' . $path,
