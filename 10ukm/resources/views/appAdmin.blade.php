@@ -79,12 +79,7 @@
                       </a>
                   </li>
 
-                  <li class="mt">
-                    <a class="active" href="getlaporan">
-                      <i class="fa fa-file-pdf-o"></i>
-                      <span>Laporan Usaha</span>
-                    </a>
-                  </li>
+                  
                   <!-- <li class="sub-menu">
                       <a href="javascript:;" >
                           <i class="fa fa-th"></i>
