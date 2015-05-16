@@ -13,9 +13,9 @@ class Pengguna extends Model implements AuthenticatableContract {
 	protected $table = 'pengguna';
     public $timestamps = false;
 
-    const CLIENT_ID = env('CLIENT_ID','Ij5mLtMQx9o1lvX9');
-    const CLIENT_SECRET = env('CLIENT_SECRET','W4HUMQvdfsyHnv3n');
-    const REDIRECT_URI = env('REDIRECT_URI','http://127.0.0.1/tugas-2-ppl/public/oauth/after-authorized');
+    const CLIENT_ID = 'Ij5mLtMQx9o1lvX9';
+    const CLIENT_SECRET = 'W4HUMQvdfsyHnv3n';
+    const REDIRECT_URI = 'http://127.0.0.1/tugas-2-ppl/public/oauth/after-authorized';
 
 
     public function getRememberToken()
