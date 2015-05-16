@@ -184,12 +184,18 @@ class UsahaController extends Controller {
 	{	
 		$usaha = Usaha::find($id);
 		$namausaha = $usaha['nama'];
-		
-		$headers = array(
-				'Content-Type => application/zip',
-			);
-		
-		return Response::download('dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
+		$zipname = $namausaha . '.zip';
+		$path = 'dokumen/' . $zipname;
+		// $headers = array(
+		// 		'Content-Type => application/zip',
+		// 		'Content-disposition: attachment; filename=' . $path,
+
+		// );
+		header('Content-Type: application/zip');
+		header('Content-disposition: attachment; filename='.$zipname);
+		header('Content-Length: ' . filesize($path));
+		readfile($path);
+		// return Response::download('dokumen/' . $namausaha . '.zip', $namausaha .'.zip', $headers);
 		
 		//return redirect('daftar-usaha');
 	}
