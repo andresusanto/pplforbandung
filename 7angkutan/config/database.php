@@ -53,8 +53,8 @@ return [
 		],
 
 		'mysql' => [
-			'driver'    => '127.0.0.1',
-			'host'      => 'localhost',
+			'driver'    => 'mysql',
+			'host'      => '127.0.0.1',
 			'database'  => 'tugas2ppl',
 			'username'  => 'tugas2ppl1',
 			'password'  => 'tugas2ppl',
