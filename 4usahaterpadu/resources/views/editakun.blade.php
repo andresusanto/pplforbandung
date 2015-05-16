@@ -1,6 +1,6 @@
 @extends("layouts.masterfront")
 @section('content')
-	
+
 	{!! Form::open(['url'=>"updateakun",'class'=>"form-login", 'method'=>'PATCH'])!!}
 	  <h2 class="bold centered">Mengedit Akun</h2>
 	  <br>
@@ -29,7 +29,7 @@
 	      </div>
 	  </div>
 	  <p class="centered"><a href="home"><img src="{{asset('assets/img/user/empty.jpg') }}" class="" width="100"></a></p>
-	
+
 	  <div class="col-sm-1"></div><button class="btn  btn-success"  type="submit"></i> Upload Picture</button>
 		<br><br>
 		<div class="centered">
