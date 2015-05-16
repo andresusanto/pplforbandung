@@ -21,14 +21,16 @@
 
 @section('admin')
 <ul class="nav navbar-nav">
-	<li class="active"><a href="home">Beranda</a></li>
-	<li><a href="daftar_permohonan">Daftar Permohonan</a></li>
-	<li><a href="laporan">Laporan</a></li>
+    <li class="active"><a href="{{URL::route('admin/home')}}">Beranda</a></li>
+    <li><a href="{{URL::route('admin/daftar_permohonan')}}">Daftar Permohonan</a></li>
+    <li><a href="{{URL::route('admin/daftar_izin')}}">Daftar Perizinan</a></li>
+    <li><a href="{{URL::route('admin/laporan')}}">Laporan</a></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-	<li><a href="#">welcome {{$admin->name}}</a></li>
-	<li><a href="logout">Logout</a></li>
+    <li><a href="#">welcome {{$admin->name}}</a></li>
+    <li><a href="logout">Logout</a></li>
 </ul>
+@stop
 
 @stop
 
