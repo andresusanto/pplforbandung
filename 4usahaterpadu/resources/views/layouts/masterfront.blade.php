@@ -220,7 +220,7 @@ use App\FormulirIUI;
     <div class="top-menu">
      <ul class="nav pull-right top-menu">
       <?php if(\Session::has('id')==false){ ?>
-          <li><a class="logout" href={{"http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=5SLTJ3QStpkyeBcG&redirect_uri=".URL::to('loginsso')."&response_type=code"}}>Login</a></li>
+          <li><a class="logout" href={{"http://dukcapil.pplbandung.biz.tm/oauth/authorize?client_id=5SLTJ3QStpkyeBcG&redirect_uri=http://usahaterpadu.pplbandung.biz.tm/loginsso&response_type=code"}}>Login</a></li>
       <?php }else{ ?>
       <li>
         <div class="logout btn-group ">
