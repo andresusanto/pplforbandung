@@ -185,7 +185,7 @@ class UsahaController extends Controller {
 		$usaha = Usaha::find($id);
 		$namausaha = $usaha['nama'];
 		$zipname = $namausaha . '.zip';
-		$path = public_path(). 'dokumen/' . $zipname;
+		$path = 'dokumen/' . $zipname;
 		// $headers = array(
 		// 		'Content-Type => application/zip',
 		// 		'Content-disposition: attachment; filename=' . $path,
@@ -199,11 +199,11 @@ class UsahaController extends Controller {
 		
 		//return redirect('daftar-usaha');
 
-        if (file_exists($path))
+        if (file_exists($zipname))
         {
             // Send Download
-            return Response::download($path, basename($path), [
-                'Content-Length: '. filesize($path)
+            return Response::download($zipname, basename($zipname), [
+                'Content-Length: '. filesize($zipname)
             ]);
         }
         else
@@ -233,7 +233,7 @@ class UsahaController extends Controller {
 
 		$zip = new ZipArchive();
 		$zip_name = $namausaha .".zip"; // Zip name
-		$zip->open('dokumen/' . $zip_name,  ZipArchive::CREATE | ZipArchive::OVERWRITE);
+		$zip->open($zip_name,  ZipArchive::CREATE | ZipArchive::OVERWRITE);
 		foreach ($files as $file) {
 			if(is_file($file)){
 		  		$zip->addFile($file);
