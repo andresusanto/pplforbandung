@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Response;
 use Auth;
 use Mail;
+use PDF;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
@@ -349,6 +350,28 @@ class PerizinanAirController extends Controller {
 												'izinair' => $izinair,
 												'dinas' => "",
 												'nav_ubah'=> ""));
+	}
+	
+	public function downloadPdf($id){
+		$izinair = IzinAir::find($id);
+		$pengguna = User::find($izinair->id_penduduk);
+		$lahan = 'Jalan Dago Asri No 7';
+		
+		/*return view('user/detilizin')->with(array(
+												'nama' => $pengguna->name,
+												'lahan' => $lahan,
+												'izinair' => $izinair,
+												'kategori' => $this->idToKategori($izinair->kategori),
+												'nav_list' => ""));*/
+												
+		$pdf = PDF::loadView('user/pdf', array(
+												'id' => $id,
+												'nama' => $pengguna->name,
+												'lahan' => $lahan,
+												'izinair' => $izinair,
+												'kategori' => $this->idToKategori($izinair->kategori),
+												'nav_list' => ""));
+		return $pdf->download("izin_$id.pdf");
 	}
 	
 	public function getListperizinan()

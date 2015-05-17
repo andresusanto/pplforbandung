@@ -15,6 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 Route::get('perizinanair/detailperizinanuser/{id}', 'PerizinanAirController@detailperizinanuser');
+Route::get('perizinanair/download/{id}', 'PerizinanAirController@downloadPdf');
 Route::get('perizinanair/ubahstatus/{id}/{status}', 'PerizinanAirController@ubahstatus');
 Route::get('perizinanair/perpanjangperizinan/{id}', 'PerizinanAirController@perpanjangperizinan');
 Route::get('perizinanair/keberatanperizinan/{id}', 'PerizinanAirController@keberatanperizinan');
