@@ -95,7 +95,9 @@
                         
                     </td>
                     <td>
-                    	@if($dokumen->status == DOKUMEN::STATUS_BELUM)
+                        @if (!$dokumen->template->butuh_upload)
+                            <span class='label label-success'>Sudah diterima</span>
+                    	@elseif($dokumen->status == DOKUMEN::STATUS_BELUM)
                     		<span class = 'label label-default'>Belum Diupload</span>
                     	@elseif($dokumen->status == DOKUMEN::STATUS_PENDING)
                     		<span class = 'label label-primary'>Sedang Diperiksa</span>
@@ -110,7 +112,7 @@
                     <!-- end of status Dokumen -->
 
                     <!--tombol Download, setujui dan tidak setujui -->
-                    @if($dokumen->status == Dokumen::STATUS_BELUM)
+                    @if(($dokumen->status == Dokumen::STATUS_BELUM) || (!$dokumen->template->butuh_upload))
                     	<td><a href = {{route('izin.admin.dokumen.agree',['id'=>$izin->id,'dokumen_id'=>$dokumen->id])}} class = 'btn btn-success btn-sm' disabled>Setujui</a>
                     	<a href = {{route('izin.admin.dokumen.disagree',['id'=>$izin->id,'dokumen_id'=>$dokumen->id])}} class = 'btn btn-warning btn-sm' disabled>Tidak setujui</a></td>
                     @else

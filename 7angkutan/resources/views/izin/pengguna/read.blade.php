@@ -102,7 +102,9 @@ use App\Models\Izin;
 	                            
 	                        </td>
 	                        <td>
-	                    	@if($dokumen->status == DOKUMEN::STATUS_BELUM)
+	                        @if (!$dokumen->template->butuh_upload)
+	                        	<span class='label label-success'>Sudah diterima</span>
+	                    	@elseif($dokumen->status == DOKUMEN::STATUS_BELUM)
 	                    		<span class = 'label label-default'>Belum Diupload</span>
 	                    	@elseif($dokumen->status == DOKUMEN::STATUS_PENDING)
 	                    		<span class = 'label label-primary'>Sedang Diperiksa</span>
