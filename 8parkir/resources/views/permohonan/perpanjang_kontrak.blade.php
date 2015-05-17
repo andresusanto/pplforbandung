@@ -1,6 +1,5 @@
 @extends('app')
-@if(Session::has('user'))
-    @section('guest')
+@section('guest')
         <ul class="nav navbar-nav">
                 <li><a href="{{URL::route('home')}}">Beranda</a></li>
                 <li><a href="{{URL::route('form_permohonan')}}">Ajukan Permohonan</a></li>
@@ -11,9 +10,9 @@
                 <li><a href="#">Selamat Datang {{Session::get('user')->nama_penduduk}}</a></li>
                 <li><a href="{{URL::route('logoutsso')}}">Logout</a></li>
             </ul>
-    @stop
+@stop
 
-    @section('content')
+@section('content')
     <br> <br> <br>
     <div class="container">
         <div class="row">
@@ -33,7 +32,4 @@
             {!! Form::close() !!}
         </div>
     </div>
-@else
-    {{Redirect::route('home')}}
-@endif
 @endsection
