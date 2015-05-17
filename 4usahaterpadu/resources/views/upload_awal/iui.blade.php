@@ -13,35 +13,32 @@
 			<br>
 			{!! Form::open(array('url'=>$urlUpload,'method'=>'PATCH', 'visibility'=> 'hidden' ,'files'=>true, 'class'=>'form-horizontal')) !!}
 			<div class="row form-group">
-				<label class="col-md-4 control-label">DokumenA :</label>
+				<label class="col-md-4 control-label">Data badan usaha :</label>
 				<div class="col-md-8">
-
-
-
-			          {!! Form::file('image', ['class'=>'form-control']) !!}
-					  <p class="errors">{{$errors->first('image')}}</p>
+					{!! Form::file('dokumen_1', ['class'=>'form-control', 'required']) !!}
+					<p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>
 					@endif
 				</div>
 			</div>
 			<div class="row form-group">
-				<label class="col-md-4 control-label">DokumenB :</label>
+				<label class="col-md-4 control-label">Surat pernyataan pengelolaan lingkungan :</label>
 				<div class="col-md-8">
 
-			          {!! Form::file('image',['class'=>'form-control']) !!}
-					  <p class="errors">{{$errors->first('image')}}</p>
+					{!! Form::file('dokumen_2',['class'=>'form-control', 'required']) !!}
+					<p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>
 					@endif
 				</div>
 			</div>
 			<div class="row form-group">
-				<label class="col-md-4 control-label">DokumenC :</label>
+				<label class="col-md-4 control-label">Laporan hasil pemeriksaan :</label>
 				<div class="col-md-8">
 
-			          {!! Form::file('image',['class'=>'form-control']) !!}
-					  <p class="errors">{{$errors->first('image')}}</p>
+					{!! Form::file('dokumen_3',['class'=>'form-control', 'required']) !!}
+					<p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>
 					@endif

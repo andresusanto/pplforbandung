@@ -1,4 +1,4 @@
-<?php 
+<?php
 use App\User;
 use App\Perizinan;
 use App\FormulirHO;
@@ -80,8 +80,10 @@ $i = 0;
 								<?php if($formulir->status == 'Disetujui (Belum Lengkap)') {?>
 								<a href = "{{"editformulir/".$formulir->jenis_izin."/"}}{{$formulir->id_izin}}"  class="btn btn-success btn-xs"><i class="fa fa-upload">&nbsp;&nbsp;Lengkapi</i></a>&nbsp;&nbsp;
 								<a href = "{{"editformulir/".$formulir->jenis_izin."/"}}{{$formulir->id_izin}}"  class="btn btn-primary btn-xs"><i class="fa fa-pencil">&nbsp;&nbsp;Edit</i></a>&nbsp;&nbsp;
+								<a href = "{{"uploaddokumenawal/".$formulir->jenis_izin."/"}}{{$formulir->id_izin}}"  class="btn btn-primary btn-xs"><i class="fa fa-pencil">&nbsp;&nbsp;Dokumen</i></a>&nbsp;&nbsp;
 								<?php }else  if($formulir->status != 'Terverifikasi' && $formulir->status != 'Disetujui (Sudah Lengkap)' ){ ?>
 								<a href = "{{"editformulir/".$formulir->jenis_izin."/"}}{{$formulir->id_izin}}"  class="btn btn-primary btn-xs"><i class="fa fa-pencil">&nbsp;&nbsp;Edit</i></a>&nbsp;&nbsp;
+								<a href = "{{"uploaddokumenawal/".$formulir->jenis_izin."/"}}{{$formulir->id_izin}}"  class="btn btn-primary btn-xs"><i class="fa fa-pencil">&nbsp;&nbsp;Dokumen</i></a>&nbsp;&nbsp;
 								<?php } ?>
 								<?php } else  if(\Session::get('peran')==2 && ($formulir->status!='Dibatalkan') && ($formulir->status!='Ditolak')) {?>
 								<?php if($formulir->status == "Disetujui (Belum Lengkap)") {?>

@@ -207,7 +207,7 @@ class PerizinanController extends Controller {
 		$perizinan->id_izin = $formulir->id;
 		$perizinan->updated_by_user = "true";
 		$perizinan->save();
-		if($str=="ho" || $str=="iui")
+		if($str=="ho")
 			{$url = "../listformulir";}
 		else
 			{$url = "../uploaddokumenawal/".$str."/".$formulir->id;}
@@ -512,7 +512,15 @@ class PerizinanController extends Controller {
 		->where('jenis_izin', $str)
 		->first();
 		$pemohon = User::find($perizinan->id_pemohon);
-		return view('detailformulir.'.$str,compact('formulir'),compact('pemohon'));
+		$dokumens = \File::files(public_path()."/dokumen/".$str."/".$id."/");
+		if($dokumens){
+			for($i=0; $i<count($dokumens); $i++){
+				$dokumen = pathinfo($dokumens[$i]);
+				$dokumens[$i] = "/dokumen/".$str."/".$id."/".$dokumen['filename'].".".$dokumen['extension'];
+			}
+		}
+		//return dd($dokumens);
+		return view('detailformulir.'.$str,compact('formulir','pemohon','dokumens'));
 	}
 
 	public function showEditFormulir($str,$id)

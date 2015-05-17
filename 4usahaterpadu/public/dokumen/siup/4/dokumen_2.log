@@ -1,0 +1,3 @@
+2014-12-17 12:48:54 ERROR  : ERROR:  syntax error at or near "user"
+LINE 1: INSERT INTO user (id, username, password, fullname, is_admin...
+                    ^
