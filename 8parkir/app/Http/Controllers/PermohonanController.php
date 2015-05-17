@@ -21,7 +21,7 @@ class PermohonanController extends Controller {
     }
 
 	public function form() {
-        return View::make('permohonan.form_permohonan');
+        return view('permohonan.form_permohonan');
     }
 
     public function get() {
