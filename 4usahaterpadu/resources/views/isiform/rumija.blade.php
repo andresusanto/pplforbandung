@@ -20,7 +20,7 @@
 	<p class=" text-justify">
 	  	Dalam upaya meningkatkan mutu pelayanan kepada masyarakat, pada tahun 2002 Pemerintah Kota Bandung  membentuk Badan Penanaman Modal dan Pelayanan Perizinan Terpadu (BPMPPT) sesuai dengan Peraturan Daerah Kota Bandung Nomor 12 Tahun 2007 tentang Pembentukan dan Susunan Organisasi Lembaga Teknis Daerah. Namun sejalan dengan waktu dan terus mengevaluasi pelaksanaan pelayanan publik khususnya pelayanan bidang perizinan bahwa lembaga Badan Penanaman Modal dan Pelayanan Perizinan Terpadu (BPMPPT) masih dirasakan kurang maksimal sehingga dengan terbitnya Peraturan Daerah Kota Bandung Nomor 12 Tahun 2009  yang mengacu pada Peraturan Menteri Dalam Negeri Nomor 20 Tahun 2008, pada akhir Tahun 2009 lembaga Badan Penanaman Modal dan Pelayanan Perizinan Terpadu dirubah menjadi Badan Pelayanan Perizinan Terpadu (BPPT) yang memiliki struktur lebih ramping sehingga diharapkan lebih dapat memangkas tentang kendala birokrasi.
 	</p>
-	
+
 	<hr>
 	<h4><b>Visi</b></h4>
 	<p class=" text-justify">“Badan Pelayanan Perizinan Terpadu yang Terdepan dan Terpercaya Dalam Mewujudkan Bandung Yang Unggul Nyaman dan Sejahtera"</p>
@@ -32,7 +32,7 @@
 	<hr>
 	<h4><b>Dasar Hukum</b></h4>
 		<p class=" text-justify">
-	  	Dalam melaksanakan tugas pokok dan fungsinya, BPPT Kota Bandung berlandaskan pada beberapa aturan sebagai berikut : 
+	  	Dalam melaksanakan tugas pokok dan fungsinya, BPPT Kota Bandung berlandaskan pada beberapa aturan sebagai berikut :
 		<ol>
 		<li><span style="font-size: 12pt;"><a href="/index.php?option=com_zj_downloadslite&amp;view=document&amp;cat_id=2:regulasi&amp;id=2:perda-12-tahun-2007&amp;Itemid=109">Peraturan Daerah Kota Bandung Nomor 12 Tahun 2007 Tentang Pembentukan dan Susunan Organisasi Lembaga Teknis Daerah Kota Bandung</a>;</span></li>
 		<li><span style="font-size: 12pt;"><a href="http://www.jdih.net/bandung/web/pdfperda/perda_12_2009.pdf">Peraturan Daerah Kota Bandung Nomor 12 Tahun 2009 Tentang Perubahan Perda Nomor 12 Tahun 2007&nbsp;Tentang Pembentukan dan Susunan Organisasi Lembaga Teknis Daerah Kota Bandung;</a></span></li>

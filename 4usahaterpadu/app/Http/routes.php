@@ -18,6 +18,8 @@ Route::get('isiform/{str}', 'PerizinanController@showFormulir');
 
 Route::get('status/{str}', 'PerizinanController@cekStatusIzin');
 
+Route::get('statusizin/{str}/{kode}', 'PerizinanController@cekStatusKodeIzin');
+
 Route::patch('upload/{str}', 'PerizinanController@uploadFormulir');
 
 Route::get('uploaddokumenawal/{str}/{id}', 'PerizinanController@uploadDokumenAwal');
