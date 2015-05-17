@@ -4,6 +4,7 @@ use App\Izin;
 use App\IzinUsahaTokoModern;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Library\SendMail;
 
 use Illuminate\Http\Request;
 use Redirect;
@@ -33,6 +34,7 @@ class IzinUsahaTokoModernController extends Controller {
 		Izin::where('id', $id)->update(['StatusIzin' => $status]);
         if($status === 'Disetujui')
         {
+			SendMail::sendMail();
             $time = date('Y-m-d', strtotime('+5 years'));
             DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time, 'TanggalDisetujui' => new \DateTime]);
         }

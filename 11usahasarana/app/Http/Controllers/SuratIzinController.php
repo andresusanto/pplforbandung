@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\PDF;
+use App\Library\SendMail;
 use App;
 use App\Izin;
 use App\Http\Controllers\Controller;
@@ -84,6 +85,7 @@ class SuratIzinController extends Controller
     public function store(Request $request){
         $SuratIzinFile = $request->file('SuratIzinFile');
         $id = $request->get('id');
+		
         /* Destination Path */
         $DestinationPath = public_path().'/File/Izin/Penerbitan/';
         $FileName = $id.'.pdf';
@@ -93,6 +95,7 @@ class SuratIzinController extends Controller
             $SuratIzinFile->move($DestinationPath, $FileName);
             DB::table('izin')->where('id',$id)->update(['DokumenPersetujuan' => $DestinationPath.$FileName]);
         }
+		SendMail::sendMailAccept($id);
         return Redirect::back();
     }
 
