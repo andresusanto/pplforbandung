@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Response;
 use Auth;
 use Mail;
+use PDF;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
@@ -228,6 +229,30 @@ class PerizinanAirController extends Controller {
 		return view('user/ubahizin')->with('izinair', $izinair);
 	}
 	
+	public function cancelPerizinan($id, $status)
+	{
+		$izinair = IzinAir::where('id', '=', $id)->first();
+		if ($status == 1){
+			$izinair->status = "BATAL";
+			$msg = "Izin berhasil dibatalkan";
+		}elseif ($status == 3){
+			$izinair->status = "APPROVED";
+			$msg = "Izin diaktifkan kembali";
+		}else{
+			$izinair->status = "TAHAN";
+			$msg = "Izin berhasil dicabut sementara";
+		}	
+		$izinair->save();
+		
+		return view('message')->with(array(
+												'message_title' => "Sukses",
+												'message_body' => $msg,
+												'message_color' => "green",
+												'message_redirect' => action('PerizinanAirController@getListdinas')
+											));
+	}
+	
+	
 	public function postUbahperizinan()
 	{
 		$id = Request::input('id');
@@ -304,6 +329,19 @@ class PerizinanAirController extends Controller {
 												'nav_masuk'=> ""));
 	}
 	
+	public function getListdinas()
+	{
+		$izinair = IzinAir::where('status', '=', 'APPROVED')->orWhere('status', '=', 'TAHAN')->get();
+		foreach($izinair as $izin)
+		{
+			$izin->kategori = $this->idToKategori($izin->kategori);
+		}
+		return view('dinas/list')->with(array(
+												'izinair' => $izinair,
+												'dinas' => "",
+												'nav_list'=> ""));
+	}
+	
 	public function getListperpanjangan()
 	{
 		$izinair = IzinAir::where('status', '=', 'PENDING RENEWAL')->get();
@@ -349,6 +387,21 @@ class PerizinanAirController extends Controller {
 												'izinair' => $izinair,
 												'dinas' => "",
 												'nav_ubah'=> ""));
+	}
+	
+	public function downloadPdf($id){
+		$izinair = IzinAir::find($id);
+		$pengguna = User::find($izinair->id_penduduk);
+		$lahan = 'Jalan Dago Asri No 7';
+												
+		$pdf = PDF::loadView('user/pdf',array(
+												'id' => $id,
+												'nama' => $pengguna->name,
+												'lahan' => $lahan,
+												'izinair' => $izinair,
+												'kategori' => $this->idToKategori($izinair->kategori),
+												'nav_list' => ""));
+		return $pdf->download("izin_$id.pdf");
 	}
 	
 	public function getListperizinan()
