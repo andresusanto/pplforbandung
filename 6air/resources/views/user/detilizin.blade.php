@@ -48,8 +48,12 @@
 				<br><br>
 				<a href="{{ ($izinair->status == 'APPROVED') ? action ('PerizinanAirController@perpanjangperizinan', $izinair->id) : 'javascript:void(0);' }}" class="btn btn-warning span2{{ ($izinair->status == 'APPROVED') ? '' : ' disabled' }}">Perpanjang</a>
 				<br><br>
+				<a href="{{action ('PerizinanAirController@downloadPdf', $izinair->id)}}" class="btn btn-primary span2">Download Form</a>
+				<br><br>
 				<a href="{{ ($izinair->status == 'REJECTED') ? action('PerizinanAirController@keberatanperizinan', $izinair->id) : 'javascript:void(0);' }}" class="btn btn-danger span2{{ ($izinair->status == 'REJECTED') ? '' : ' disabled' }}">Ajukan Keberatan</a>
+				
 			</div>
+			
 			</div>
 			<br>
 		</div>

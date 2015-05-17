@@ -1,5 +1,14 @@
 <h1>Formulir Izin</h1>
-<h2>ID : {{ $id }}</h2>
+<p>Nomor perizinan anda: {{ $id }}</p>
+<h2>
+@if ($izinair->status == "APPROVED")
+<font color="green">APPROVED</font>
+@elseif ($izinair->status == "REJECTED")
+<font color="red">REJECTED</font>
+@else
+PENDING
+@endif
+</h2>
 <table>
 	<tr>
 		<td>Nama Pemohon </td>
@@ -15,9 +24,7 @@
 	</tr>
 	<tr>
 		<td>Deskripsi </td>
-		<td>: <?php
-					echo $izinair->deskripsi;
-				?></td>
+		<td>: {{ $izinair->deskripsi }}</td>
 	</tr>
 	<tr>
 		<td>Status </td>
