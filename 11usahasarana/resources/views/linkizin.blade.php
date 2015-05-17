@@ -1,3 +1,3 @@
 <?php
-	echo "Berikut tautan menuju surat izin <br>";
-	echo "http://localhost:8000/suratizin";
+	echo "Izin anda sudah disetujui <br>";
+	echo "Dokumen persetjuan akan dikirimkan di lain waktu";

@@ -6,7 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"guzzlehttp/guzzle": "~5.2",
+		"guzzlehttp/guzzle": "~4.0",
 		"barryvdh/laravel-dompdf": "*"
 	},
 	"require-dev": {
