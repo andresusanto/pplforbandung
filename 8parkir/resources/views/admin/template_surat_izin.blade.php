@@ -43,7 +43,7 @@ body {margin-top: 0px;margin-left: 0px;}
 .p3{text-align: left;padding-left: 105px;margin-top: 50px;margin-bottom: 0px;}
 .p4{text-align: left;padding-left: 244px;margin-top: 16px;margin-bottom: 0px;}
 .p5{text-align: left;padding-left: 270px;margin-top: 15px;margin-bottom: 0px;}
-.p6{text-align: left;padding-left: 195px;margin-top: 16px;margin-bottom: 0px;}
+.p6{text-align: left;padding-left: 135px;margin-top: 16px;margin-bottom: 0px;}
 .p7{text-align: left;padding-left: 133px;margin-top: 15px;margin-bottom: 0px;}
 .p8{text-align: left;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
 .p9{text-align: left;padding-left: 3px;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
@@ -118,7 +118,7 @@ document.write(
 <P class="p3 ft2">SURAT KEPUTUSAN KEPALA DINAS PERHUBUNGAN</P>
 <P class="p4 ft2">KOTA BANDUNG</P>
 <P class="p5 ft2">TENTANG</P>
-<P class="p6 ft2">IZIN PENGELOLAAN PARKIR</P>
+<P class="p6 ft2">IZIN PENGELOLAAN PARKIR DAN TERMINAL</P>
 <P class="p7 ft1">Nomor : {{$perizinan->id}}/Dishub/{{$tahun}}</P>
 <TABLE cellpadding=0 cellspacing=0 class="t0">
 <TR>
@@ -161,7 +161,7 @@ document.write(
 </TR>
 <TR>
 	<TD class="tr2 td4"><P class="p8 ft3">PERTAMA</P></TD>
-	<TD colspan=2 class="tr2 td7"><P class="p17 ft3">: Memberikan izin pengelolaan parkir kepada :</P></TD>
+	<TD colspan=2 class="tr2 td7"><P class="p17 ft3">: Memberikan izin pengelolaan {{$perizinan->jenis_permohonan}} kepada :</P></TD>
 </TR>
 <TR>
 	<TD class="tr1 td4"><P class="p8 ft4">&nbsp;</P></TD>

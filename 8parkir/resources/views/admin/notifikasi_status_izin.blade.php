@@ -13,8 +13,6 @@ lokasi tanah 		: {!! $perizinan['lokasi_tanah'] !!}
 tanggal dibuat 		: {!! $perizinan['tanggal_dibuat'] !!}
 <br>
 tanggal berakhir 	: {!! $perizinan['tanggal_expired'] !!}
-<br>
-<b>enrollment key 	: {!! $perizinan['key'] !!}</b>
 <br><br>
 dirubah statusnya menjadi <b>{!! $perizinan['status_perizinan'] !!}</b><br>
 

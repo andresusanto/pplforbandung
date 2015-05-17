@@ -1,23 +1,25 @@
 @extends('app')
 
 @if(Session::has('user'))
-    @section('guest')
-        <ul class="nav navbar-nav">
-            <li><a href="{{URL::route('home')}}">Beranda</a></li>
-            <li class="active"><a href="{{URL::route('form_permohonan')}}">Ajukan Permohonan</a></li>
-            <li><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
-            <li><a href="{{URL::route('daftar_izin')}}">Daftar Izin</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Selamat Datang {{Session::get('user')->nama_penduduk}}</a></li>
-            <li><a href="{{URL::route('logoutsso')}}">Logout</a></li>
-        </ul>
+    @section('navbar')
+    <li><a href="{{URL::route('home')}}"><i class="icon-dashboard"></i><span>Beranda</span> </a> </li>
+    <li><a href="{{URL::route('form_permohonan')}}"><i class="icon-list-alt"></i><span>Ajukan Permohonan</span> </a> </li>
+    <li class="active"><a href="{{URL::route('daftar_permohonan')}}"><i class="icon-list-ul"></i><span>Daftar Permohonan</span> </a></li>
+    <li><a href="{{URL::route('daftar_izin')}}"><i class="icon-list-ul"></i><span>Daftar Izin</span> </a> </li>
     @stop
 
     @section('content')
-    <br> <br> <br>
-    <div class="container">
-        <div class="row">
+    <div class="span12">
+        <div class="widget">
+        <div class="widget-header"> <i class="icon-list-alt"></i>
+          <h3> Edit Permohonan Izin</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+          <div class="widget big-stats-container">
+            <div class="widget-content">
+              <img src="{{asset('image/logo-pemkot-bandung.png')}}" height="100" width="100"></img>
+              <h6 class="bigstats">Edit Permohonan Surat Izin untuk Parkir dan Terminal, ketika sudah divalidasi anda tidak dapat melakukan editing permohonan</h6>
             {!! Form::open(['url' => 'updatePermohonan', 'role' => 'form', 'files' => 'true']) !!}
                 <div class="col-lg-6">
                     <div class="well well-sm"><strong>Permohonan Izin</strong></div>    
@@ -78,22 +80,29 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lampiran', 'Lampiran Surat Izin Mendirikan Bangunan:') !!}
+                        {!! Form::label('lampiran', 'Lampiran Surat Izin Mendirikan Bangunan (file harus berbentuk PDF):') !!}
                         <div>
-                            <a href="{{URL::route('downloadLampiran',[$permohonan->lampiran])}}" class="btn btn-sm btn-info"}>Download Lampiran Sebelumnya</a>
+                            <a href="{{URL::route('downloadLampiran',[$permohonan->lampiran])}}" class="btn btn-sm btn-success"}>Download Lampiran Sebelumnya</a>
                         <div>
                         <div class="input-group">
                             {!! Form::File('lampiran', ['class' => 'form-control']) !!}
                             <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
-                        @if ($errors->has('lampiran')) <p class="help-block" style="color:red"> {{ $errors->first('lampiran') }} </p> @endif
+                        @if ($errors->has('enroll')) <p class="help-block" style="color:red"> {{ $errors->first('enroll') }} </p> @endif
                     </div>
                     {!! Form::hidden('id', $permohonan->id) !!}
-                    {!! Form::submit('Entri Pengaduan', ['class' => 'btn btn-info pull-right']) !!}
+                    {!! Form::submit('Entri Pengaduan', ['class' => 'btn btn-success pull-right']) !!}
                 </div>
             {!! Form::close() !!}
+            </div>
+            <!-- /widget-content --> 
+            
+          </div>
         </div>
+      </div>
+      <!-- /widget -->
     </div>
+    <!-- /span12 --> 
     @stop
 @else
     {{Redirect::route('home')}}

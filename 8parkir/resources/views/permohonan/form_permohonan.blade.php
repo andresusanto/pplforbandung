@@ -1,26 +1,27 @@
 @extends('app')
 
 @if(Session::has('user'))
-    @section('guest')
-        <ul class="nav navbar-nav">
-            <li><a href="{{URL::route('home')}}">Beranda</a></li>
-            <li class="active"><a href="{{URL::route('form_permohonan')}}">Ajukan Permohonan</a></li>
-            <li><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
-            <li><a href="{{URL::route('daftar_izin')}}">Daftar Izin</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Selamat Datang {{Session::get('user')->nama_penduduk}}</a></li>
-            <li><a href="{{URL::route('logoutsso')}}">Logout</a></li>
-        </ul>
+    @section('navbar')
+    <li><a href="{{URL::route('home')}}"><i class="icon-dashboard"></i><span>Beranda</span> </a> </li>
+    <li class="active"><a href="{{URL::route('form_permohonan')}}"><i class="icon-list-alt"></i><span>Ajukan Permohonan</span> </a> </li>
+    <li><a href="{{URL::route('daftar_permohonan')}}"><i class="icon-list-ul"></i><span>Daftar Permohonan</span> </a></li>
+    <li><a href="{{URL::route('daftar_izin')}}"><i class="icon-list-ul"></i><span>Daftar Izin</span> </a> </li>
     @stop
 
     @section('content')
-    <br> <br> <br>
-    <div class="container">
-        <div class="row">
-            {!! Form::open(['route' => 'permohonan', 'role' => 'form', 'files' => 'true']) !!}
+    <div class="span12">
+        <div class="widget">
+        <div class="widget-header"> <i class="icon-list-alt"></i>
+          <h3> Permohonan Izin</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+          <div class="widget big-stats-container">
+            <div class="widget-content">
+              <img src="{{asset('image/logo-pemkot-bandung.png')}}" height="100" width="100"></img>
+              <h6 class="bigstats">Ajukan Permohonan Surat Izin untuk Parkir dan Terminal</h6>
+              {!! Form::open(['route' => 'permohonan', 'role' => 'form', 'files' => 'true']) !!}
                 <div class="col-lg-6">
-                    <div class="well well-sm"><strong>Permohonan Izin</strong></div>    
                     <div class="form-group">
                         {!! Form::label('email_pemohon', 'Alamat Email:')!!}
                         <div class="input-group">
@@ -29,14 +30,12 @@
                             @else
                                 {!! Form::text('email_pemohon', '',  ['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('id_pemohon', 'No ID Pemohon:') !!}
                         <div class="input-group">
                             {!! Form::text('id_pemohon', Session::get('user')->id, ['class' => 'form-control', 'required', 'readonly']) !!}
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,7 +46,6 @@
                             @else
                                 {!! Form::text('id_surat_tanah', '', ['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -58,7 +56,6 @@
                             @else
                                 {!! Form::select('jenis_pemohon', ['Organisasi' => 'Organisasi', 'Perorangan' => 'Perorangan'] , null ,['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,7 +66,6 @@
                             @else
                                 {!! Form::select('jenis_permohonan', ['Parkir' => 'Parkir', 'Terminal' => 'Terminal'] , null ,['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -80,7 +76,6 @@
                             @else
                                 {!! Form::text('lokasi_tanah', '', ['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,7 +86,6 @@
                             @else
                                 {!! Form::input('date', 'tanggal_dibuat', '', ['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -102,24 +96,28 @@
                             @else
                                 {!! Form::input('date', 'tanggal_expired', '', ['class' => 'form-control', 'required']) !!}
                             @endif
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('lampiran', 'Lampiran Surat Izin Mendirikan Bangunan:') !!}
+                        {!! Form::label('lampiran', 'Lampiran Surat Izin Mendirikan Bangunan (file harus berbentuk PDF):') !!}
                         <div class="input-group">
                             {!! Form::File('lampiran', ['class' => 'form-control', 'required']) !!}
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                         </div>
                         @if ($errors->has('lampiran')) <p class="help-block" style="color:red"> {{ $errors->first('lampiran') }} </p> @endif
                     </div>  
                     {!! Form::hidden('key', md5(uniqid())) !!}
-                    <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Wajib Diisi</strong></div>
-                    {!! Form::submit('Entri Permohonan', ['class' => 'btn btn-info pull-right']) !!}
+                    {!! Form::submit('Entri Permohonan', ['class' => 'btn btn-success pull-right']) !!}
                 </div>
-            {!! Form::close() !!}
+            {!! Form::close() !!}   
+            </div>
+            <!-- /widget-content --> 
+            
+          </div>
         </div>
+      </div>
+      <!-- /widget -->
     </div>
+    <!-- /span12 --> 
     @stop
 @else
     {{Redirect::route('home')}}
