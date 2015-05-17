@@ -150,7 +150,7 @@
 					</a>    				
 				</li>
 				<li{{ isset($nav_faq) ? ' class=active' : '' }}>
-					<a href="#">
+					<a href="{{ action('MasyarakatController@getFaq') }}">
 						<i class="icon-question-sign"></i>
 						<span>FAQ</span>
 					</a>    				
