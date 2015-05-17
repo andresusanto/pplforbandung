@@ -88,7 +88,7 @@
 <script src="{{asset('usercss/js/bootstrap.js')}}"></script>
 <script language="javascript" type="text/javascript" src="{{asset('usercss/js/full-calendar/fullcalendar.min.js')}}"></script>
  
-<script src="{{asset('js/base.js')}}"></script> 
+<script src="{{asset('usercss/js/base.js')}}"></script> 
 @yield('script')
 </body>
 </html>
