@@ -3,7 +3,7 @@
 <div class="col-md-2">	</div>
 <div class="col-md-8">
 	<?php if(\Session::has('peran') && (\Session::get('peran')!=3)) {?>
-	<div class="list-group">	
+	<div class="list-group">
 		<div class="list-group-item active row text-center"><h3>Data Akun Pemohon</h3></div>
 
 		<div class="list-group-item row">
@@ -39,7 +39,7 @@
 			<label class="col-md-6">Nomor KTP/Paspor :</label>
 			<div class="col-md-6">{{$formulir->nomor_ktp_pemilik}}</div>
 		</div>
-		<div class="list-group-item row"> 
+		<div class="list-group-item row">
 			<label class="col-md-6">Kewarganegaraan :</label>
 			<div class="col-md-6">{{$formulir->kewarganegaraan_pemilik}}</div>
 		</div>
@@ -122,6 +122,31 @@
 		<div class="list-group-item row">
 			<label class="col-md-6">Barang/Jasa Dagangan Utama :</label>
 			<div class="col-md-6">{{$formulir->dagangan_utama}}</div>
+		</div>
+		<div class="list-group-item active row">Dokumen : </div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Neraca perusahaan :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[0])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
+		</div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Tabel penyerapan tenaga kerja sektor perdagangan :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[1])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
+		</div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Surat pernyataan :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[2])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
 		</div>
 		<br>
 		<div class="row text-center centered">

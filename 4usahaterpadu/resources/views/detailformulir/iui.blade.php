@@ -137,6 +137,34 @@
 			<label class="col-md-6">Merek :</label>
 			<div class="col-md-6">{{$formulir->merek}}</div>
 		</div>
+		<?php
+
+		?>
+		<div class="list-group-item active row">Dokumen : </div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Data badan usaha :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[0])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
+		</div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Surat pernyataan pengelolaan lingkungan :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[0])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
+		</div>
+		<div class="list-group-item row">
+			<label class="col-md-6">Laporan hasil pemeriksaan :</label>
+			<?php if($dokumens) { ?>
+				<div class="col-md-6"><a href={{URL::asset($dokumens[0])}}>unduh</a></div>
+			<?php } else { ?>
+				<div class="col-md-6">dokumen belum diunggah</div>
+			<?php } ?>
+		</div>
 		<br>
 		<div class="row text-center centered">
 			<div class="span5"></div>

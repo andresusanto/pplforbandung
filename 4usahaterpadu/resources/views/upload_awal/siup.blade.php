@@ -15,10 +15,7 @@
 			<div class="row form-group">
 				<label class="col-md-4 control-label">Neraca perusahaan :</label>
 				<div class="col-md-8">
-
-
-
-			          {!! Form::file('dokumen_1', ['class'=>'form-control']) !!}
+			          {!! Form::file('dokumen_1', ['class'=>'form-control', 'required']) !!}
 					  <p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>
@@ -29,7 +26,7 @@
 				<label class="col-md-4 control-label">Tabel penyerapan tenaga kerja sektor perdagangan :</label>
 				<div class="col-md-8">
 
-			          {!! Form::file('dokumen_2',['class'=>'form-control']) !!}
+			          {!! Form::file('dokumen_2',['class'=>'form-control', 'required']) !!}
 					  <p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>
@@ -40,7 +37,7 @@
 				<label class="col-md-4 control-label">Surat pernyataan :</label>
 				<div class="col-md-8">
 
-			          {!! Form::file('dokumen_3',['class'=>'form-control']) !!}
+			          {!! Form::file('dokumen_3',['class'=>'form-control', 'required']) !!}
 					  <p class="errors">{{$errors->first('image')}}</p>
 					@if(Session::has('error'))
 					<p class="errors">{{ Session::get('error') }}</p>

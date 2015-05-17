@@ -16,8 +16,8 @@ class SsoController extends Controller {
 		$postBody = $request->getBody();
 		// $postBody is an instance of GuzzleHttp\Post\PostBodyInterface
 		$postBody->setField('grant_type', 'authorization_code');
-		$postBody->setField('client_id', '5SLTJ3QStpkyeBcG');
-		$postBody->setField('client_secret', 'xboB3LJRnLlrBNbU');
+		$postBody->setField('client_id', 'OGOQfMz8DIeNf7OF');
+		$postBody->setField('client_secret', 'ghrfIe8MURkkp4uw');
 		$postBody->setField('redirect_uri', \URL::to('loginsso'));
 		$postBody->setField('code', $req->get('code'));
 
