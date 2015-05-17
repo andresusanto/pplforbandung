@@ -40,7 +40,7 @@ class MasyarakatController extends Controller {
 		$izinair = IzinAir::where(function($query) use ($keyword)
             {
                 $query->where('deskripsi', 'LIKE', "%$keyword%")
-                      ->where('status', '<>', 'PENDING');
+                      ->where('status', '<>', 'PENDING APPROVE');
             })->get();
 		foreach($izinair as $izin)
 		{
