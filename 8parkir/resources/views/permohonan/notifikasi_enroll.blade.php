@@ -13,8 +13,6 @@ lokasi tanah 		: {!! $permohonan['lokasi_tanah'] !!}
 tanggal dibuat 		: {!! $permohonan['tanggal_dibuat'] !!}
 <br>
 tanggal berakhir 	: {!! $permohonan['tanggal_expired'] !!}
-<br>
-<b>enrollment key 	: {!! $permohonan['key'] !!}</b>
 <br><br>
 
 Terimakasih.

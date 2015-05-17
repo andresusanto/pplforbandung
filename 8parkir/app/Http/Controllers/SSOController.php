@@ -24,9 +24,9 @@ class SSOController extends Controller {
 		// $postBody is an instance of GuzzleHttp\Post\PostBodyInterface
 		
 		$postBody->setField('grant_type', 'authorization_code');
-		$postBody->setField('client_id', 'lS8IPqEYcX2vMkPJ');
-		$postBody->setField('client_secret', 'vXsiP1OHFOlEpb0w');
-		$postBody->setField('redirect_uri', 'http://localhost/parkhere/parkhere/public/loginsso');
+		$postBody->setField('client_id', 'lD0TANrJBzIkTT1i');
+		$postBody->setField('client_secret', 'QlJGoqpB9CrmyKUy');
+		$postBody->setField('redirect_uri', 'http://parkir.pplbandung.biz.tm/loginsso');
 		$postBody->setField('code', $code);
 
 		echo json_encode($postBody->getFields());

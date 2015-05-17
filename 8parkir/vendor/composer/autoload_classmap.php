@@ -25,6 +25,7 @@ return array(
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreatePerizinansTable' => $baseDir . '/database/migrations/2015_05_02_081121_create_perizinans_table.php',
     'CreatePermohonansTable' => $baseDir . '/database/migrations/2015_04_08_204005_create_permohonans_table.php',
+    'CreateTerminalsTable' => $baseDir . '/database/migrations/2015_05_17_071235_create_terminals_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DOMPDF' => $vendorDir . '/dompdf/dompdf/include/dompdf.cls.php',
     'DOMPDF_Exception' => $vendorDir . '/dompdf/dompdf/include/dompdf_exception.cls.php',

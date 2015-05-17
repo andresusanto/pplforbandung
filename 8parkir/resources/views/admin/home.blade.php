@@ -1,115 +1,108 @@
-@extends('app')
+@extends('admin.app')
 
-@section('head')
+@section('sidebar')
 
-<style>
-  	.carousel-inner > .item > img,
-  	.carousel-inner > .item > a > img {
-		width: 100%;
-	  	margin: auto;
-	}
-  	.item{
-		height: 450px;
-  	}	
+<li class="mt">
+  <a class="active" href="{{URL::route('admin/home')}}">
+      <i class="fa fa-dashboard"></i>
+      <span>Beranda</span>
+  </a>
+</li>
 
-  	.verticalLine {
-    	border-left: thick solid #7D858A;
-	}
-</style>
+<li class="sub-menu">
+  <a href="{{URL::route('admin/daftar_permohonan')}}" >
+      <i class="fa fa-list"></i>
+      <span>Daftar Permohonan</span>
+  </a>
+</li>
 
-@stop
-
-@section('admin')
-<ul class="nav navbar-nav">
-    <li class="active"><a href="{{URL::route('admin/home')}}">Beranda</a></li>
-    <li><a href="{{URL::route('admin/daftar_permohonan')}}">Daftar Permohonan</a></li>
-    <li><a href="{{URL::route('admin/daftar_izin')}}">Daftar Perizinan</a></li>
-    <li><a href="{{URL::route('admin/laporan')}}">Laporan</a></li>
-</ul>
-<ul class="nav navbar-nav navbar-right">
-    <li><a href="#">welcome {{$admin->name}}</a></li>
-    <li><a href="logout">Logout</a></li>
-</ul>
-@stop
+<li class="sub-menu">
+  <a href="{{URL::route('admin/daftar_izin')}}" >
+      <i class="fa fa-list"></i>
+      <span>Daftar Perizinan</span>
+  </a>
+</li>
+<li class="sub-menu">
+  <a href="{{URL::route('admin/laporan')}}" >
+      <i class="fa fa-book"></i>
+      <span>Laporan</span>
+  </a>
+</li>
 
 @stop
 
 @section('content')
-<!-- image slider make carousel -->	  
-<br><br>
-<div id="homeCarousel" class="carousel slide" data-ride="carousel">
-	<!-- Indicators -->
-	<ol class="carousel-indicators">
-	  <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
-	  <li data-target="#homeCarousel" data-slide-to="1"></li>
-	  <li data-target="#homeCarousel" data-slide-to="2"></li>
-	</ol>
-
-	<!-- Wrapper for slides -->
-	<div class="carousel-inner" role="listbox">
-	  <div class="item active">
-		<img src="{{ URL::asset('image/Terminal-bus.jpg') }}" alt="First-slide">
-		<div class="container">
-			<div class="carousel-caption">
-				<h1>Terminal Leuwipanjang</h1>
-			</div>
-		</div>
-	  </div>
-
-	  <div class="item">
-		<img src="{{ URL::asset('image/Terminal-bus-cicaheum.jpg') }}" alt="Second-slide">
-		<div class="container">
-			<div class="carousel-caption">
-				<h1>Terminal Cicaheum</h1>
-			</div>
-		</div>
-	  </div>
-	
-	  <div class="item">
-		<img src="{{ URL::asset('image/parkir.jpg') }}" alt="Third-slide">
-		<div class="container">
-			<div class="carousel-caption">
-				<h1>Lahan Parkir</h1>
-			</div>
-		</div>
-	  </div>
-	</div>	
-	
-	<!-- Left and right controls -->
-	<a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
-	  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	  <span class="sr-only">Previous</span>
-	</a>
-	<a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
-	  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	  <span class="sr-only">Next</span>
-	</a>
-</div>
-
-<!-- selesai image slider -->
-
-
-<div class="jumbotron">
-	<div class="container">
-		<div class="col-sm-6">
-			<div class="col-sm-4">
-				<br />
-				<img src="{{ URL::asset('image/logo-pemkot-bandung.png') }}" alt="" width="100%" height="100%" >
-			</div>
-			<div class="col-sm-8">
-				<h2> Layanan Parkir dan Terminal Bandung </h2>
-			</div>
-		</div>
-
-		<div class="col-sm-12">
-			<hr style="width: 100%; height: 3px; background-color:#7D858A" />
-			<div class="verticalLine">
-				<h2>  Layanan ini menangani segala hal mengenai parkir dan terminal, seperti permohonan izin lahan parkir dan pembayaran 
-					retribusi </h2>
-			</div>
+<div class="row">
+  <div class="col-lg-9 main-chart">
+  	<div class="col-md-9 col-sm-9 col-md-offset-1">
+		<div class="box1">
+			<span><img src="{{asset('image/logo-pemkot-bandung.png')}}" width="100"></img></span>
+			<h3>Admin Aplikasi Parkir dan Terminal</h3>
 		</div>
 	</div>
-</div>
+  </div><!-- /col-lg-9 END SECTION MIDDLE -->
+                                  
+      <!-- **********************************************************************************************************************************************************
+      RIGHT SIDEBAR CONTENT
+      *********************************************************************************************************************************************************** -->                  
+                  
+  <div class="col-lg-3 ds">
+    <!-- CALENDAR-->
+	<div id="calendar" class="mb">
+	    <div class="panel green-panel no-margin">
+	        <div class="panel-body">
+	            <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
+	                <div class="arrow"></div>
+	                <h3 class="popover-title" style="disadding: none;"></h3>
+	                <div id="date-popover-content" class="popover-content"></div>
+	            </div>
+	            <div id="my-calendar"></div>
+	        </div>
+	    </div>
+	</div><!-- / calendar -->
+                      
+  </div><!-- /col-lg-3 -->
+</div><!--/row -->
+@stop
 
+@section('rightsidebar')
+
+@stop
+
+@section('script')
+<script type="application/javascript">
+    $(document).ready(function () {
+        $("#date-popover").popover({html: true, trigger: "manual"});
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+            $(this).hide();
+        });
+    
+        $("#my-calendar").zabuto_calendar({
+            action: function () {
+                return myDateFunction(this.id, false);
+            },
+            action_nav: function () {
+                return myNavFunction(this.id);
+            },
+            ajax: {
+                url: "show_data.php?action=1",
+                modal: true
+            },
+            legend: [
+                {type: "text", label: "Special event", badge: "00"},
+                {type: "block", label: "Regular event", }
+            ]
+        });
+    });
+    
+    
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+</script>
 
 @endsection

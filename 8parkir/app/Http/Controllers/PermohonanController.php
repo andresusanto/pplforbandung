@@ -15,7 +15,9 @@ use Response;
 class PermohonanController extends Controller {
 
     public function index(){
-        return view ('permohonan.home');
+        if(Session::has('user'))
+            return view ('permohonan.home');
+        else return view ('permohonan.login');
     }
 
 	public function form() {
@@ -75,10 +77,10 @@ class PermohonanController extends Controller {
             ];
 
         try {
-            Mail::send('permohonan.notifikasi_enroll', $data, function($message) use ($permohonan)
+            Mail::send('permohonan.notifikasi_entry', $data, function($message) use ($permohonan)
             {
                 $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
-                $message->to($permohonan['email_pemohon'])->subject('Enrollment key parkir dan terminal');
+                $message->to($permohonan['email_pemohon'])->subject('Permohonan parkir dan terminal');
             });
         } catch (Exception $e) {
             return Redirect::route('home');
@@ -157,52 +159,8 @@ class PermohonanController extends Controller {
 
         $permohonan = Permohonan::where('id', '=', $input['id'])->firstOrFail();
 
-        return view('permohonan.enroll_permohonan', compact('permohonan'));
-    }
-
-    public function enrollPermohonan(){
-        $input = Request::all();
-
-        $validator = array('enroll' => 'enrollment key salah');
-
-        $permohonan = Permohonan::where('id', '=', $input['id'])->firstOrFail();
-
-        if($permohonan->key == $input['key']){
-            return view('permohonan.edit_permohonan', compact('permohonan'));
-        }
-
-        return Redirect::to('enrollPermohonan')->with('permohonan', $permohonan)->withErrors($validator);
-    }
-
-    public function getEnrollPermohonan(){
-        $session = Session::get('permohonan');
-        $permohonan = Permohonan::where('id', '=', $session->id)->firstOrFail();
-
-        return view('permohonan.enroll_permohonan', compact('permohonan'));
-    }
-
-    public function enrollPermohonanBayarRetribusi(){
-        $input = Request::all();
-
-        $validator = array('enroll' => 'enrollment key salah');
-
-        $permohonan = Permohonan::where('id', '=', $input['id'])->firstOrFail();
-
-        if($permohonan->key == $input['key']){
-            return view('permohonan.bayar_retribusi', compact('permohonan'));
-        }
-
-        return Redirect::to('enrollPermohonanBayarRetribusi')->with('permohonan', $permohonan)->withErrors($validator);
-    }
-
-    public function getEnrollPermohonanBayarRetribusi(){
-        $session = Session::get('permohonan');
-        $permohonan = Permohonan::where('id', '=', $session->id)->firstOrFail();
-
-        return view('permohonan.enroll_bayar_retribusi', compact('permohonan'));
-    }
-
-    
+        return view('permohonan.edit_permohonan', compact('permohonan'));
+    } 
 
     public function deletePermohonan($id){
         $permohonan = Permohonan::where('id', '=', $id)->firstOrFail();
@@ -243,7 +201,7 @@ class PermohonanController extends Controller {
 
         $permohonan = Permohonan::where('id', '=', $input['id'])->firstOrFail();
 
-        return view('permohonan.enroll_bayar_retribusi', compact('permohonan'));
+        return view('permohonan.bayar_retribusi', compact('permohonan'));
     }
 
     public function updateBayarRetribusi(){
@@ -304,6 +262,127 @@ class PermohonanController extends Controller {
 
         $perizinans = Perizinan::where('id_pemohon', $user->id)->get();
 
+        foreach ($perizinans as $perizinan) {
+            if($perizinan->tanggal_expired < Carbon::now()){
+                $perizinan->status_perizinan = 'Tidak Aktif';
+            }
+        }
+
         return view('permohonan.daftar_izin', compact('perizinans'));
+    }
+
+    public function deletePerizinan($id){
+        $perizinan = Perizinan::where('id', '=', $id)->firstOrFail();
+
+        $_permohonan = [
+                'id_pemohon' => $perizinan->id_pemohon,
+                'email_pemohon' => $perizinan->email_pemohon,
+                'id_surat_tanah' => $perizinan->id_surat_tanah,
+                'jenis_pemohon' => $perizinan->jenis_pemohon,
+                'jenis_permohonan' => $perizinan->jenis_permohonan,
+                'lokasi_tanah' => $perizinan->lokasi_tanah,
+                'tanggal_dibuat' => $perizinan->tanggal_dibuat,
+                'tanggal_expired' => $perizinan->tanggal_expired,
+                'key' => $perizinan->key
+            ];
+
+        $data = [
+                'perizinan' => $_perizinan
+            ];
+
+        try {
+            Mail::send('permohonan.notifikasi_cabut_izin', $data, function($message) use ($_perizinan)
+            {
+                $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
+                $message->to($_perizinan['email_pemohon'])->subject('Penghapusan permohonan terkait parkir dan terminal');
+            });
+        } catch (Exception $e) {
+            return Redirect::route('daftar_izin');
+        }
+
+        $permohonan->delete();
+
+        return Redirect::route('daftar_izin'); 
+    }
+
+    public function perpanjangKontrak(){
+        $input = Request::all();
+
+        $perizinan = Perizinan::where('id', '=', $input['id'])->firstOrFail();
+
+        return view('permohonan.perpanjang_kontrak', compact('perizinan'));
+    }
+
+    public function updatePerpanjangKontrak(){
+        $input = Request::all();
+
+        $perizinan = Perizinan::where('id', '=', $input['id'])->firstOrFail();
+
+        $perizinan->tanggal_expired = $input['tanggal_expired'];
+
+        $perizinan->status_perizinan = 'Ingin Perpanjang Kontrak';
+
+        $perizinan->save();
+
+        return Redirect::route('daftar_izin');
+    }
+
+    public function bayarPerpanjangKontrak(){
+        $input = Request::all();
+
+        $perizinan = Perizinan::where('id', '=', $input['id'])->firstOrFail();
+
+        return view('permohonan.bayar_perpanjang_kontrak', compact('perizinan'));
+    }
+
+    public function updateBayarPerpanjangKontrak(){
+        $input = Request::all();
+        $perizinan = Perizinan::where('id', '=', $input['id'])->firstOrFail();
+
+        $validator = array('enroll' => 'Terjadi Error: File bukti pembayaran harus berbentuk JPG/JPEG');
+
+        if(Request::file('bukti_pembayaran') != null){
+
+            if(Request::file('bukti_pembayaran')->getClientOriginalExtension() != "jpg"){
+                return Redirect::back()->with('perizinan', $perizinan)->withErrors($validator);
+            }
+
+            $filename = $perizinan->key.'-BuktiPembayaran.'.Request::file('bukti_pembayaran')->getClientOriginalExtension();
+
+            Request::file('bukti_pembayaran')->move('./storage/'.$perizinan->id_pemohon.'/', $filename);
+        }
+        $_perizinan = [
+            'id_pemohon' => $perizinan->id_pemohon,
+            'email_pemohon' => $perizinan->email_pemohon,
+            'id_surat_tanah' => $perizinan->id_surat_tanah,
+            'jenis_pemohon' => $perizinan->jenis_pemohon,
+            'jenis_permohonan' => $perizinan->jenis_permohonan,
+            'lokasi_tanah' => $perizinan->lokasi_tanah,
+            'tanggal_dibuat' => $perizinan->tanggal_dibuat,
+            'tanggal_expired' => $perizinan->tanggal_expired,
+            'key' => $perizinan->key
+        ];
+
+        $data = [
+                'perizinan' => $_perizinan
+            ];
+
+        try {
+            Mail::send('permohonan.notifikasi_perpanjangan_kontrak', $data, function($message) use ($_perizinan)
+            {
+                $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
+                $message->to($_perizinan['email_pemohon'])->subject('Bukti pembayaran perpanjangan kontrak izin parkir dan terminal');
+            });
+        } catch (Exception $e) {
+            return Redirect::route('home');
+        }
+
+        $perizinan->status_perizinan = 'Selesai Pembayaran';
+
+        $perizinan->bukti_pembayaran = $filename;
+        
+        $perizinan->save();
+
+        return Redirect::route('daftar_izin');
     }
 }

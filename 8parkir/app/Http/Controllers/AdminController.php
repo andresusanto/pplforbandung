@@ -34,13 +34,13 @@ class AdminController extends Controller {
     	foreach ($admins as $admin) {
     		if($input['email'] == $admin->email && $input['password'] == $admin->password){
                 Session::set('admin', $admin);
-    			return redirect::to('admin/home');
+    			return Redirect::route('admin/home');
     		}
     	}
 
         $validator = array('login' => 'Email atau Password salah!');
 
-    	return redirect::to('admin/login')->withErrors($validator);
+    	return Redirect::route('admin/login')->withErrors($validator);
     }
 
     public function getAdmin(){
@@ -48,7 +48,7 @@ class AdminController extends Controller {
             $session = Session::get('admin');
         	$admin = Admin::where('id', '=', $session->id)->firstOrFail();
         	return view('admin.home', compact("admin", $admin));
-        } else return redirect::to('admin/login');
+        } else return Redirect::route('admin/login');
     }
 
     public function getPermohonan(){
@@ -78,7 +78,7 @@ class AdminController extends Controller {
                     'jenis_permohonan' => $permohonan->jenis_permohonan,
                     'id_surat_tanah' => $permohonan->id_surat_tanah,
                     'lokasi_tanah' => $permohonan->lokasi_tanah,
-                    'status_perizinan' => 'aktif',
+                    'status_perizinan' => 'Aktif',
                     'biaya_retribusi' => $permohonan->biaya_retribusi,
                     'bukti_pembayaran' => $permohonan->bukti_pembayaran,
                     'email_pemohon' => $permohonan->email_pemohon,
@@ -105,20 +105,28 @@ class AdminController extends Controller {
                 return Redirect::route('admin/daftar_izin');
             }
 
-            return redirect::to('admin/delete_permohonan/'.$input['id']);
+            return Redirect::to('admin/deletePermohonanWithoutNotif/'.$input['id']);
         } else {
             $permohonan->biaya_retribusi = $input['biaya_retribusi'];
             $permohonan->status_permohonan = $input['status_permohonan'];
 
             $permohonan->save();
 
-            return redirect('admin/daftar_permohonan');
+            return Redirect::route('admin/daftar_permohonan');
         }
     }
 
     public function viewLaporan(){
         $admin = Session::get('admin');
         return view('admin.laporan',compact('admin'));
+    }
+
+    public function deletePermohonanWithoutNotif($id){
+        $permohonan = Permohonan::where('id', '=', $id)->firstOrFail();
+
+        $permohonan->delete();
+
+        return Redirect::route('admin/daftar_permohonan'); 
     }
 
     public function deletePermohonan($id){
@@ -152,11 +160,7 @@ class AdminController extends Controller {
 
         $permohonan->delete();
 
-        return redirect::to('admin/daftar_permohonan'); 
-    }
-
-    public function entryPerizinan(){
-        
+        return Redirect::to('admin/daftar_permohonan'); 
     }
 
     public function updatePerizinan(){
@@ -181,25 +185,38 @@ class AdminController extends Controller {
                 ];
 
             $data = [
-                    'perizinan' => $perizinan
+                    'perizinan' => $_perizinan
                 ];
 
-            try {
-                Mail::send('admin.notifikasi_status_izin', $data, function($message) use ($_perizinan)
-                {
-                    $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
-                    $message->to($_perizinan['email_pemohon'])->subject('Perubahan Status Izin');
-                });
-            } catch (Exception $e) {
-                return Redirect::route('admin/daftar_izin');
+            if($input['status_perizinan'] == 'Tidak Aktif'){
+                try {
+                    Mail::send('admin.notifikasi_status_izin', $data, function($message) use ($_perizinan)
+                    {
+                        $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
+                        $message->to($_perizinan['email_pemohon'])->subject('Perubahan Status Izin');
+                    });
+                } catch (Exception $e) {
+                    return Redirect::route('admin/daftar_izin');
+                }
+            } else if($input['status_perizinan'] == 'Aktif'){
+                try {
+                    Mail::send('admin.notifikasi_status_izin', $data, function($message) use ($_perizinan)
+                    {
+                        $message->from('if3250.ppl.parkhere@gmail.com', 'Administrasi Aplikasi Terkait Izin Parkir dan Terminal');
+                        $message->to($_perizinan['email_pemohon'])->subject('Perubahan Status Izin');
+                    });
+                } catch (Exception $e) {
+                    return Redirect::route('admin/daftar_izin');
+                }
             }
-
+            
+            $perizinan->status_perizinan = $input['biaya_retribusi'];
             $perizinan->status_perizinan = $input['status_perizinan'];
             $perizinan->save();
-            return redirect::to('admin/daftar_izin');
+            return Redirect::route('admin/daftar_izin');
         } else {
 
-            return redirect('admin/daftar_izin');
+            return Redirect::route('admin/daftar_izin');
         }
     }
 
@@ -212,7 +229,7 @@ class AdminController extends Controller {
                     'jenis_permohonan' => $perizinan->jenis_permohonan,
                     'id_surat_tanah' => $perizinan->id_surat_tanah,
                     'lokasi_tanah' => $perizinan->lokasi_tanah,
-                    'status_perizinan' => $input['status_perizinan'],
+                    'status_perizinan' => $perizinan->status_perizinan,
                     'biaya_retribusi' => $perizinan->biaya_retribusi,
                     'bukti_pembayaran' => $perizinan->bukti_pembayaran,
                     'email_pemohon' => $perizinan->email_pemohon,
@@ -238,7 +255,7 @@ class AdminController extends Controller {
 
         $perizinan->delete();
 
-        return redirect::to('admin/daftar_izin'); 
+        return Redirect::route('admin/daftar_izin'); 
     }
 
     public function getPerizinan(){
@@ -249,6 +266,12 @@ class AdminController extends Controller {
         }
 
         $perizinans = Perizinan::all();
+
+        foreach ($perizinans as $perizinan) {
+            if($perizinan->tanggal_expired < Carbon::now()){
+                $perizinan->status_perizinan = 'Tidak Aktif';
+            }
+        }
 
         return view('admin.daftar_izin', compact('perizinans', 'admin'));
     }
@@ -270,6 +293,9 @@ class AdminController extends Controller {
         $permohonans = Permohonan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
         $sjpermohonan = 0;
         $sjpemohon = 0;
+        $perizinans = Perizinan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
+        $pjpermohonan = 0;
+        $pjpemohon = 0;
         foreach ($permohonans as $tmp) {
             if($tmp->jenis_permohonan == 'Parkir'){
                 $sjpermohonan += 1;
@@ -279,7 +305,17 @@ class AdminController extends Controller {
             }
         }
 
-        return view("admin.generate_laporan", compact('admin', 'permohonans', 'sjpemohon', 'sjpermohonan', 'tanggal_awal', 'tanggal_akhir'));
+        foreach ($perizinans as $tmp) {
+            if($tmp->jenis_permohonan == 'Parkir'){
+                $pjpermohonan += 1;
+            }
+            if($tmp->jenis_pemohon == 'Organisasi'){
+                $pjpemohon += 1;
+            }
+        }
+
+        return view("admin.generate_laporan", compact('admin', 'permohonans', 'sjpemohon', 'sjpermohonan', 'tanggal_awal', 'tanggal_akhir',
+            'perizinans', 'pjpemohon', 'pjpermohonan'));
     }
 
     public function generatePDF(){
@@ -288,13 +324,15 @@ class AdminController extends Controller {
         $tanggal_awal = $input['tanggal_awal'];
         $tanggal_akhir = $input['tanggal_akhir'];
         $permohonans = Permohonan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
-        
+        $perizinans = Perizinan::whereBetween('created_at', array($tanggal_awal, $tanggal_akhir))->get();
         $data = [
                 'permohonans' => $permohonans,
                 'sjpemohon' => $input['sjpemohon'],
                 'sjpermohonan' => $input['sjpermohonan'],
+                'perizinans' => $perizinans,
+                'pjpemohon' => $input['pjpemohon'],
+                'pjpermohonan' => $input['pjpermohonan']
             ];
-
 
         $pdf = PDF::loadView('admin.generate_pdf', $data);
         return $pdf->stream('laporan-'.$tanggal_awal.'-'.$tanggal_akhir.'.pdf');
@@ -316,12 +354,12 @@ class AdminController extends Controller {
             $pdf = PDF::loadView('admin.template_surat_izin', $data);
             return $pdf->stream('surat izin-'.$perizinan->id_pemohon.'.pdf');
         } else {
-            return redirect::to('admin/login');
+            return Redirect::route('admin/login');
         }
     }
 
     public function logout(){
         Session::forget('admin');
-        return redirect('admin/login');
+        return Redirect::route('admin/login');
     }
 }
