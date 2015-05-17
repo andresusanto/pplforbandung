@@ -27,7 +27,7 @@ class PerizinanController extends Controller {
 
 	public function cekStatusKodeIzin($str,$kode)
 	{
-		$izins = Perizinan::where("jenis_izin",$str)->where("kode_izin",$kode)->select(array('kode_izin','jenis_izin','status'))->first();
+		$izins = Perizinan::where("jenis_izin",$str)->where("kode_izin",$kode)->select(array('kode_izin','jenis_izin','status'))->get()->first();
 		return $izins->toJson();
 	}
 	/**
