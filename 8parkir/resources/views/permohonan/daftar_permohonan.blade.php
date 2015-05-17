@@ -1,6 +1,5 @@
 @extends('app')
 
-@if(Session::has('user'))
 @section('navbar')
     <li><a href="{{URL::route('home')}}"><i class="icon-dashboard"></i><span>Beranda</span> </a> </li>
     <li><a href="{{URL::route('form_permohonan')}}"><i class="icon-list-alt"></i><span>Ajukan Permohonan</span> </a> </li>
@@ -8,7 +7,7 @@
     <li><a href="{{URL::route('daftar_izin')}}"><i class="icon-list-ul"></i><span>Daftar Izin</span> </a> </li>
 @stop
 
-    @section('content')
+@section('content')
     <div class="span12">
     <div class="widget widget-table action-table">
         <div class="widget-header"> <i class="icon-th-list"></i>
@@ -71,9 +70,5 @@
         }
     }
     </script>
-    @stop
-@else
-    {{Redirect::route('home')}}
-@endif
-
+    
 @endsection
