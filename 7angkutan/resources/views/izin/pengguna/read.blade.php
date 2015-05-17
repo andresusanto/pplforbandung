@@ -96,7 +96,7 @@ use App\Models\Izin;
 			                        Template tidak tersedia
 			                        @endif
 		                        @else
-		                        	<a href='#'>Lihat data</a>
+		                        	<a href='#' style='color:#5cb85c;'>{{$dokumen->nama}} valid</a>
 		                        @endif
 	                            
 	                            
