@@ -5,7 +5,8 @@ Aplikasi PPL Untuk Perbaikan Sistem Pelayanan Kota Bandung
 http://www.pplbandung.biz.tm
 
 ## Database
-Dump SQL database diserahkan ke Andre Susanto / Luthfi Hamid, nanti informasi login ke mysql beserta nama database yang digunakan akan disampaikan langsung ke anggota kelompok
+- Konfirm jika sudah merge ke master (akan d artisan migrate)
+- Kalau butuh seed, silahkan bilang
 
 ## Konten:
 1. Aplikasi Kependudukan & Catatan Sipil + Single Sign On
