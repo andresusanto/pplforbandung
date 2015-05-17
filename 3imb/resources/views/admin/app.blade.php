@@ -79,9 +79,9 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="imb">Semua Izin</a></li>
-                          <li><a  href="#">Izin dalam Proses</a></li>
-                          <li><a  href="#">Izin Diterima</a></li>
-                          <li><a  href="#">Izin Ditolak</a></li>
+                          <li><a  href="imb/proses">Izin dalam Proses</a></li>
+                          <li><a  href="imb/disetujui">Izin Disetujui</a></li>
+                          <li><a  href="imb/semua">Izin Ditolak</a></li>
                       </ul>
                   </li>
 
@@ -92,9 +92,9 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="lokasi">Semua Izin</a></li>
-                          <li><a  href="#">Izin dalam Proses</a></li>
-                          <li><a  href="#">Izin Diterima</a></li>
-                          <li><a  href="#">Izin Ditolak</a></li>
+                          <li><a  href="lokasi/proses">Izin dalam Proses</a></li>
+                          <li><a  href="lokasi/disetujui">Izin Disetujui</a></li>
+                          <li><a  href="lokasi/semua">Izin Ditolak</a></li>
                       </ul>
                   </li>
 

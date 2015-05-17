@@ -4,6 +4,15 @@
 @extends('admin.app')
 
 @section('content')
+
+<?php $judulweb = 'Semua Izin' ?>
+@if($block['message'] == 'Disetujui')
+  <?php $judulweb = 'Izin Diterima' ?>
+@elseif($block['message'] == 'Ditolak')
+  <?php $judulweb = 'Izin Ditolak' ?>
+@elseif($block['message'] == 'Proses')
+  <?php $judulweb = 'Izin Dalam Proses' ?>
+@endif
       
       @if($block)
       <!--main content start-->
@@ -15,7 +24,7 @@
                   <div class="col-md-12">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                            <h4><i class="fa fa-angle-right"></i> Semua Izin</h4>
+                            <h4><i class="fa fa-angle-right"></i>{{$judulweb}}</h4>
                             <hr>
                               <thead>
                               <tr>
@@ -37,7 +46,7 @@
                                   foreach ($block['lokasis'] as $lokasi) {
                               ?>
                               <tr>
-                                  <td>{{$lokasi->id}}</td>
+                                  <td><a href="lokasi/{{$lokasi->id}}">{{$lokasi->id}}</a></td>
                                   <td>{{$lokasi->nik}}</td>
                                   <td>{{$lokasi->email}}</td>
                                   <td>{{$lokasi->alamat}}</td>
