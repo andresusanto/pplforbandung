@@ -21,75 +21,75 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('form_permohonan', array(
+Route::get('/form_permohonan', array(
 	'as' => 'form_permohonan', 
 	'uses' => 'PermohonanController@form')
 	);
 
-Route::get('daftar_permohonan', array(
+Route::get('/daftar_permohonan', array(
 	'as' => 'daftar_permohonan',
 	'uses' => 'PermohonanController@get')
 	);
 
-Route::post('editPermohonan', array(
+Route::post('/editPermohonan', array(
 	'as' => 'editPermohonan',
 	'uses' => 'PermohonanController@editPermohonan')
 	);
 
-Route::post('permohonan', array(
+Route::post('/permohonan', array(
 	'as' => 'permohonan',
 	'uses' => 'PermohonanController@entry')
 	);
 
-Route::post('updatePermohonan', array(
+Route::post('/updatePermohonan', array(
 	'as' => 'updatePermohonan',
 	'uses' => 'PermohonanController@update')
 	);
 
-Route::post('bayarRetribusi', array(
+Route::post('/bayarRetribusi', array(
 	'as' => 'bayarRetribusi',
 	'uses' => 'PermohonanController@bayarRetribusi')
 	);
 
-Route::post('updateBayarRetribusi', array(
+Route::post('/updateBayarRetribusi', array(
 	'as' => 'updateBayarRetribusi',
 	'uses' => 'PermohonanController@updateBayarRetribusi')
 	);
 
 //route for download file
 
-Route::get('downloadLampiran/{filename}', array(
+Route::get('/downloadLampiran/{filename}', array(
 	'as' => 'downloadLampiran',
 	'uses'=>'DownloadController@downloadLampiran')
 	);
-Route::get('downloadBuktiPembayaran/{filename}', array(
+Route::get('/downloadBuktiPembayaran/{filename}', array(
 	'as' => 'downloadBuktiPembayaran',
 	'uses'=>'DownloadController@downloadBuktiPembayaran')
 	);
 
 //route for perizinan
 
-Route::get('daftar_izin', array(
+Route::get('/daftar_izin', array(
 	'as' => 'daftar_izin',
 	'uses' => 'PermohonanController@getDaftarIzin')
 	);
 
-Route::post('perpanjangKontrak', array(
+Route::post('/perpanjangKontrak', array(
 	'as' => 'perpanjangKontrak',
 	'uses' => 'PermohonanController@perpanjangKontrak')
 	);
 
-Route::post('updatePerpanjangKontrak', array(
+Route::post('/updatePerpanjangKontrak', array(
 	'as' => 'updatePerpanjangKontrak',
 	'uses' => 'PermohonanController@updatePerpanjangKontrak')
 	);
 
-Route::post('bayarPerpanjangKontrak', array(
+Route::post('/bayarPerpanjangKontrak', array(
 	'as' => 'bayarPerpanjangKontrak',
 	'uses' => 'PermohonanController@bayarPerpanjangKontrak')
 	);
 
-Route::post('updateBayarPerpanjangKontrak', array(
+Route::post('/updateBayarPerpanjangKontrak', array(
 	'as' => 'updateBayarPerpanjangKontrak',
 	'uses' => 'PermohonanController@updateBayarPerpanjangKontrak')
 	);
