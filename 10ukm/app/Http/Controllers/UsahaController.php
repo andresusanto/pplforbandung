@@ -298,4 +298,19 @@ class UsahaController extends Controller {
 		return Response::download('dokumen/UKM_Laporan.pdf', 'UKM_Laporan.pdf', $headers);
 
 	}
+
+	public function uploadlaporan($id){
+		$input = Request::all();
+		$usaha = Usaha::find($id);
+		$namausaha = $usaha['nama'];
+		$destinationPath = '';
+		if (Request::hasFile('laporan')) {
+	        $file            = Request::file('laporan');
+	        $filePath = $destinationPath . 'laporan/';
+	        $filename        = str_random(6) . '_' . 'laporankegiatan' . '_' . $namausaha . '_' . $file->getClientOriginalName();
+	        $uploadSuccess   = $file->move($filePath, $filename);
+	        unset($input['laporan']);
+	    }
+	    return redirect('daftar-usaha/'.$id);
+	}
 }
