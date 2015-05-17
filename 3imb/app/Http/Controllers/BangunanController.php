@@ -18,9 +18,6 @@ class BangunanController extends Controller {
 	public function index()
 	{
 		$bangunans = Bangunan::orderBy('id')->simplePaginate(5);
-
-		// $lokasis->setPath("imb");
-
 		$bangunans->setPath("imb");
 
 		if($bangunans == []){
@@ -46,9 +43,88 @@ class BangunanController extends Controller {
 		}
 	}
 
-	public function imbSatuan()
+	public function getProses()
 	{
-		return view('admin.imb_satuan');
+		$bangunans = Bangunan::where('status','=',0)->orderBy('id')->simplePaginate(5);
+		$bangunans->setPath("imb");
+
+		if($bangunans == []){
+			$block =[
+				'bangunans' => null,
+				'message' => "Tidak ada izin bangunan",
+			];
+			return view('admin.imb',compact('block'));
+		}
+		else{
+			$message = "Proses";
+			$block = [
+				'bangunans'=>$bangunans,
+				'message'=>$message
+			];
+			$jenis = Bangunan::getJenisBangunan();
+			$status = Bangunan::getStatusBangunan();
+			foreach ($block['bangunans'] as $bangunan) {
+				$bangunan->jenis = $jenis["$bangunan->jenis"];
+				$bangunan->status = $status["$bangunan->status"];
+			}
+			return view('admin.imb',compact('block'));
+		}
+	}
+
+	public function getDisetujui()
+	{
+		$bangunans = Bangunan::where('status','=',1)->orderBy('id')->simplePaginate(5);
+		$bangunans->setPath("imb");
+
+		if($bangunans == []){
+			$block =[
+				'bangunans' => null,
+				'message' => "Tidak ada izin bangunan",
+			];
+			return view('admin.imb',compact('block'));
+		}
+		else{
+			$message = "Disetujui";
+			$block = [
+				'bangunans'=>$bangunans,
+				'message'=>$message
+			];
+			$jenis = Bangunan::getJenisBangunan();
+			$status = Bangunan::getStatusBangunan();
+			foreach ($block['bangunans'] as $bangunan) {
+				$bangunan->jenis = $jenis["$bangunan->jenis"];
+				$bangunan->status = $status["$bangunan->status"];
+			}
+			return view('admin.imb',compact('block'));
+		}
+	}
+
+	public function getDitolak()
+	{
+		$bangunans = Bangunan::where('status','=',-1)->orderBy('id')->simplePaginate(5);
+		$bangunans->setPath("imb");
+
+		if($bangunans == []){
+			$block =[
+				'bangunans' => null,
+				'message' => "Tidak ada izin bangunan",
+			];
+			return view('admin.imb',compact('block'));
+		}
+		else{
+			$message = "Ditolak";
+			$block = [
+				'bangunans'=>$bangunans,
+				'message'=>$message
+			];
+			$jenis = Bangunan::getJenisBangunan();
+			$status = Bangunan::getStatusBangunan();
+			foreach ($block['bangunans'] as $bangunan) {
+				$bangunan->jenis = $jenis["$bangunan->jenis"];
+				$bangunan->status = $status["$bangunan->status"];
+			}
+			return view('admin.imb',compact('block'));
+		}
 	}
 
 	public function user_index()
@@ -188,19 +264,15 @@ class BangunanController extends Controller {
 	public function show($id)
 	{
 		$bangunan = Bangunan::find($id);
-		return view('bangunans.bangunan',compact('bangunan'));
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$bangunan = Bangunan::find($id);
-		return view('bangunans.edit',compact('bangunan'));
+		if($bangunan == [])
+			return redirect('/admin/imb');
+		else{
+			$jenis = Bangunan::getJenisBangunan();
+			$status = Bangunan::getStatusBangunan();
+			$bangunan->jenis = $jenis["$bangunan->jenis"];
+			$bangunan->status = $status["$bangunan->status"];
+			return view('admin.imb_satuan', compact('bangunan'));
+		}
 	}
 
 	/**
