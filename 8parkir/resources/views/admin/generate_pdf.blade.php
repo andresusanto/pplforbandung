@@ -131,7 +131,7 @@
 
             <DIV id="page_1">
                 <DIV id="dimg1">
-                    <IMG src="{{URL::asset('image/parkir1x1.jpg')}}">
+                    <IMG src="{{URL::asset('image/Parkir1x1.jpg')}}">
                 </DIV>
 
 
