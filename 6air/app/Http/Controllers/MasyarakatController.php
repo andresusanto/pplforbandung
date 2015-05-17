@@ -21,6 +21,10 @@ class MasyarakatController extends Controller {
 	{
 		//return view('pengaduan');
 	}
+	
+	public function getFaq(){
+		return view('faq')->with(array('nav_faq' => ""));
+	}
 
 	private function idToKategori($id){
 		switch ($id){
