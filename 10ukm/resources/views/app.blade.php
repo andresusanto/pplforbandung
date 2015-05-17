@@ -26,6 +26,13 @@
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		.lala{
+			
+				min-height : 500px;
+			
+		}
+	</style>
 </head>
 <body>
 	<!-- Navigation -->
@@ -45,7 +52,7 @@
                 </a>        
                 
                 <div class="navbar-search pull-right">
-                    {!! Form::open(['url'=>'/search']) !!}
+                    {!! Form::open(['url'=>'daftar-usaha/search']) !!}
                     {!! Form::text('query', null, array( 'placeholder' => 'Search' )) !!}
                     {!! Form::submit('Search') !!}
                     {!! Form::close() !!}
@@ -86,7 +93,7 @@
                         <span>Registrasi UKM</span>
                     </a>                                    
                 </li>
-
+                
                  <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> 
                         <i class="icon-long-arrow-down"></i>
@@ -94,15 +101,15 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/sort/0">Agro</a></li>
-                        <li><a href="/sort/1">Kimia</a></li>
-                        <li><a href="/sort/2">Logam</a></li>
-                        <li><a href="/sort/3">Alat Transportasi</a></li>
-                        <li><a href="/sort/4">Elektronika</a></li>
-                        <li><a href="/sort/5">Tekstil</a></li>
-                        <li><a href="/sort/6">Produk Tekstil</a></li>
-                        <li><a href="/sort/7">Mesin Elektronika dan Aneka</a></li>
-                        <li><a href="/sort/8">Non-Formal</a></li>
+                        <li><a href="/daftar-usaha/sort/0">Agro</a></li>
+                        <li><a href="/daftar-usaha/sort/1">Kimia</a></li>
+                        <li><a href="/daftar-usaha/sort/2">Logam</a></li>
+                        <li><a href="/daftar-usaha/sort/3">Alat Transportasi</a></li>
+                        <li><a href="/daftar-usaha/sort/4">Elektronika</a></li>
+                        <li><a href="/daftar-usaha/sort/5">Tekstil</a></li>
+                        <li><a href="/daftar-usaha/sort/6">Produk Tekstil</a></li>
+                        <li><a href="/daftar-usaha/sort/7">Mesin Elektronika dan Aneka</a></li>
+                        <li><a href="/daftar-usaha/sort/8">Non-Formal</a></li>
                     </ul>
                 </li>
             </ul>
@@ -114,7 +121,7 @@
 </div> <!-- /subnavbar -->
 	<hr>
 	<!-- Page Content -->
-    <div class="container">
+    <div class="container lala">
 		@yield('content')
 		<!-- Footer -->
         <footer>
@@ -150,7 +157,7 @@
                             <li><a href="javascript:;">Stanley Santoso</a></li>
                             <li><a href="javascript:;">Mario Tressa Jusar</a></li>
                             <li><a href="javascript:;">Andarias Silvanus</a></li>
-							<li><a href="javascript:;">Aladyka Mushtofa</a></li>
+                            <li><a href="javascript:;">Aladyka Mushtofa</a></li>
                         </ul>
                     </div>
                     <!-- /span3 -->
