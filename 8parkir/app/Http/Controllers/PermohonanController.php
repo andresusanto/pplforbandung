@@ -21,7 +21,7 @@ class PermohonanController extends Controller {
     }
 
 	public function form() {
-        return view('permohonan.form_permohonan');
+        return "tes";
     }
 
     public function get() {
