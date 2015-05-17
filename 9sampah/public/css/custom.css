@@ -123,9 +123,23 @@ hr {
 }
 
 .btn-theme:hover {
-	background-color: #1A88B8;
-	border-color: #1A88B8; 
+	background-color: #37bc9b;
+	border-color:;
 }
+
 ul.sidebar-menu li ul.sub li.active a {
 	color: #FFC477;
+}
+
+.icon {
+	margin-top: 50px;
+	opacity: 0.4;
+}
+
+.white-panel i {
+	color: #37bc9b;
+}
+
+::selection {
+	background: #37bc9b;
 }

@@ -67,6 +67,9 @@
                                   <div class="col-sm-6 col-xs-6">
                                     <p><i class="fa fa-database"></i>{{count($TPA)}} TPA tersedia</p>
                                   </div>
+                                  <div class="icon">
+                                    <img src="{{asset('img/tpa.png')}}" height="120px" width="120px">
+                                  </div>
                                 </div>
                             </div><!--/grey-panel -->
                         </div><!-- /col-md-6-->
@@ -80,6 +83,9 @@
                                 <div class="row">
                                   <div class="col-sm-6 col-xs-6">
                                     <p><i class="fa fa-database"></i> {{count($TPS)}} TPS tersedia</p>
+                                  </div>
+                                  <div class="icon">
+                                    <img src="{{asset('img/tps.png')}}" height="120px" width="120px">
                                   </div>
                                 </div>
                             </div>
