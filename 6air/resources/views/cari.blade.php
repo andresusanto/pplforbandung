@@ -12,7 +12,7 @@
 				<table class="table table-striped table-hover ">
 					  <thead>
 						<tr>
-						  <th>#</th>
+						  <th>Nomor Izin</th>
 						  <th>Jenis Izin</th>
 						  <th>Deskripsi</th>
 						  <th>Status</th>
@@ -20,11 +20,10 @@
 					  </thead>
 					  <tbody>
 					  <?php
-							$i = 1;
 							foreach($izinair as $izin)
 							{
 								echo '<tr>';
-								echo '<td>' . $i++ . '</td>';
+								echo '<td>' . $izin->id . '</td>';
 								echo '<td>'.$izin->kategori.'</td>';
 								echo '<td>'.$izin->deskripsi.'</td>';
 								echo '<td>'.$izin->status.'</td>';
