@@ -3,6 +3,7 @@
 use App\Izin;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Library\SendMail;
 
 use App\TandaPendaftaranWaralaba;
 use Illuminate\Http\Request;
@@ -31,8 +32,9 @@ class TandaPendaftaranWaralabaController extends Controller {
 		Izin::where('id', $id)->update(['StatusIzin' => $status]);
         if($status === 'Disetujui')
         {
+			SendMail::sendMail();
             $time = date('Y-m-d', strtotime('+5 years'));
-            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time]);
+            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time, 'TanggalDisetujui' => new \DateTime]);
         }
 		return Redirect::to('Admin/izin/TandaPendaftaranWaralaba')->with('message', 'Status updated.');
 	}
@@ -81,6 +83,9 @@ class TandaPendaftaranWaralabaController extends Controller {
 	{
         $alamatPerusahaan = $request->get('alamat_perusahaan');
         $namaPerusahaan = $request->get('nama_perusahaan');
+        $namaUsaha = $request->get('nama_usaha');
+        $lokasiUsaha = $request->get('lokasi_usaha');
+        $kegiatanUsaha = $request->get('KegiatanUsaha');
 
 		/* Get each document from user form's submission */
 		$KTPFile = $request->file('KTPFile');
@@ -111,11 +116,14 @@ class TandaPendaftaranWaralabaController extends Controller {
 			'NamaPemohon' => $nama,
             'AlamatPerusahaan' => $alamatPerusahaan,
             'NamaPerusahaan'  => $namaPerusahaan,
+            'NamaUsaha' => $namaUsaha,
+            'LokasiUsaha'  => $lokasiUsaha,
+            'KegiatanUsaha' => $kegiatanUsaha,
 			'JenisIzin' => 'STPW', 
 			'TanggalMasuk' => $date, 
 			'BerlakuSampai' => $date, 
 			'StatusIzin' => 'Diterima', 
-			'DokumenPersetujuan' => 'localhost:8000', 
+			'DokumenPersetujuan' => '-', 
 			'created_at' => $date, 
 			'updated_at' => $date
 			]

@@ -416,13 +416,15 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	 */
 	public function forceFill(array $attributes)
 	{
-		static::unguard();
+		// Since some versions of PHP have a bug that prevents it from properly
+		// binding the late static context in a closure, we will first store
+		// the model in a variable, which we will then use in the closure.
+		$model = $this;
 
-		$this->fill($attributes);
-
-		static::reguard();
-
-		return $this;
+		return static::unguarded(function() use ($model, $attributes)
+		{
+			return $model->fill($attributes);
+		});
 	}
 
 	/**
@@ -489,12 +491,12 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	{
 		$instance = (new static)->setConnection($connection);
 
-		$collection = $instance->newCollection($items);
-
-		return $collection->map(function ($item) use ($instance)
+		$items = array_map(function ($item) use ($instance)
 		{
 			return $instance->newFromBuilder($item);
-		});
+		}, $items);
+
+		return $instance->newCollection($items);
 	}
 
 	/**
@@ -537,18 +539,15 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	 */
 	public static function forceCreate(array $attributes)
 	{
-		if (static::$unguarded)
+		// Since some versions of PHP have a bug that prevents it from properly
+		// binding the late static context in a closure, we will first store
+		// the model in a variable, which we will then use in the closure.
+		$model = new static;
+
+		return static::unguarded(function() use ($model, $attributes)
 		{
-			return static::create($attributes);
-		}
-
-		static::unguard();
-
-		$model = static::create($attributes);
-
-		static::reguard();
-
-		return $model;
+			return $model->create($attributes);
+		});
 	}
 
 	/**
@@ -697,9 +696,11 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	 */
 	public function fresh(array $with = array())
 	{
+		if ( ! $this->exists) return;
+
 		$key = $this->getKeyName();
 
-		return $this->exists ? static::with($with)->where($key, $this->getKey())->first() : null;
+		return static::with($with)->where($key, $this->getKey())->first();
 	}
 
 	/**
@@ -1621,9 +1622,16 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 		{
 			$this->$relation()->touch();
 
-			if ( ! is_null($this->$relation))
+			if ($this->$relation instanceof Model)
 			{
 				$this->$relation->touchOwners();
+			}
+			elseif ($this->$relation instanceof Collection)
+			{
+				$this->$relation->each(function (Model $relation)
+				{
+					$relation->touchOwners();
+				});
 			}
 		}
 	}
@@ -2200,9 +2208,9 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	 *
 	 * @return void
 	 */
-	public static function unguard()
+	public static function unguard($state = true)
 	{
-		static::$unguarded = true;
+		static::$unguarded = $state;
 	}
 
 	/**
@@ -2216,14 +2224,32 @@ abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializab
 	}
 
 	/**
-	 * Set "unguard" to a given state.
+	 * Determine if current state is "unguarded".
 	 *
-	 * @param  bool  $state
-	 * @return void
+	 * @return bool
 	 */
-	public static function setUnguardState($state)
+	public static function isUnguarded()
 	{
-		static::$unguarded = $state;
+		return static::$unguarded;
+	}
+
+	/**
+	 * Run the given callable while being unguarded.
+	 *
+	 * @param  callable  $callback
+	 * @return mixed
+	 */
+	public static function unguarded(callable $callback)
+	{
+		if (static::$unguarded) return $callback();
+
+		static::unguard();
+
+		$result = $callback();
+
+		static::reguard();
+
+		return $result;
 	}
 
 	/**

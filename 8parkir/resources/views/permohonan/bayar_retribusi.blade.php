@@ -1,32 +1,45 @@
 @extends('app')
-
-@section('guest')
-<ul class="nav navbar-nav">
-    <li><a href="{{URL::route('home')}}">Beranda</a></li>
-    <li class="active"><a href="{{URL::route('form_permohonan')}}">Permohonan</a></li>
-    <li><a href="{{URL::route('daftar_permohonan')}}">Daftar Permohonan</a></li>
-</ul>
+@if(Session::has('user'))
+    @section('navbar')
+    <li><a href="{{URL::route('home')}}"><i class="icon-dashboard"></i><span>Beranda</span> </a> </li>
+    <li><a href="{{URL::route('form_permohonan')}}"><i class="icon-list-alt"></i><span>Ajukan Permohonan</span> </a> </li>
+    <li class="active"><a href="{{URL::route('daftar_permohonan')}}"><i class="icon-list-ul"></i><span>Daftar Permohonan</span> </a></li>
+    <li><a href="{{URL::route('daftar_izin')}}"><i class="icon-list-ul"></i><span>Daftar Izin</span> </a> </li>
 @stop
 
-@section('content')
-<br> <br> <br>
-<div class="container">
-    <div class="row">
-        {!! Form::open(['url' => 'updateBayarRetribusi', 'role' => 'form', 'files' => 'true']) !!}
-            <div class="col-lg-6">
-                <div class="well well-sm"><strong>Pembayaran Retribusi</strong></div>    
-                <div class="form-group">
-                    {!! Form::label('bukti_pembayaran', 'Bukti Pembayaran:') !!}
-                    <div class="input-group">
-                        {!! Form::File('bukti_pembayaran', ['class' => 'form-control', 'required']) !!}
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+    @section('content')
+    <div class="span12">
+      <div class="widget">
+        <div class="widget-header"> <i class="icon-list-alt"></i>
+          <h3> Pembayaran Retribusi</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+          <div class="widget big-stats-container">
+            <div class="widget-content">
+              <img src="{{asset('image/logo-pemkot-bandung.png')}}" height="100" width="100"></img>
+              <h6 class="bigstats">Lampirkan Bukti Pembayaran Untuk Pembuatan Surat Izin</h6>
+              {!! Form::open(['route' => 'updateBayarRetribusi', 'role' => 'form', 'files' => 'true']) !!}   
+                    <div class="form-group">
+                        {!! Form::label('bukti_pembayaran', 'Bukti Pembayaran (file harus berbentuk JPG):') !!}
+                        <div class="input-group">
+                            {!! Form::File('bukti_pembayaran', ['class' => 'form-control', 'required']) !!}
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        </div>
                     </div>
-                </div>
-                {!! Form::hidden('id', $permohonan->id) !!}
-                {!! Form::submit('Entri Bukti Pembayaran', ['class' => 'btn btn-info pull-right']) !!}
+                    @if ($errors->has('enroll')) <p class="help-block" style="color:red"> {{ $errors->first('enroll') }} </p> @endif
+                    {!! Form::hidden('id', $permohonan->id) !!}
+                    {!! Form::submit('Entri Bukti Pembayaran', ['class' => 'btn btn-success pull-right']) !!}
+            {!! Form::close() !!}
             </div>
-        {!! Form::close() !!}
+            <!-- /widget-content --> 
+          </div>
+        </div>
+      </div>
+      <!-- /widget --> 
     </div>
-</div>
-
+    <!-- /span12 -->
+@else
+    {{Redirect::route('home')}}
+@endif
 @endsection

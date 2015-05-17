@@ -36,7 +36,17 @@
 			<h4>Email : {{$usaha->email}}</h4>
 			<br><br>
 			<a class="btn btn-primary" href="/registrasi-produk/{{$usaha->id}}">Registrasi Produk<span class="glyphicon glyphicon-chevron-right"></span></a>
-			
+			<br>
+			<br>
+			{!! Form::open(['url'=>'uploadlaporan/'. $usaha->id, 'files' => true]) !!}
+				<div class="form-group">
+					{!! Form::label('laporan','Laporan Kegiatan :') !!}
+					{!! Form::file('laporan', null)!!}
+				</div>
+				<div class="form-group">
+					{!! Form::submit('Upload',['class' => 'btn btn-primary form-control']) !!}
+				</div>
+			{!! Form::close() !!}
 		</div>
 	</div>
 	<!-- /.row -->

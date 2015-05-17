@@ -4,6 +4,7 @@ use App\Izin;
 use App\IzinUsahaTokoModern;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Library\SendMail;
 
 use Illuminate\Http\Request;
 use Redirect;
@@ -33,8 +34,9 @@ class IzinUsahaTokoModernController extends Controller {
 		Izin::where('id', $id)->update(['StatusIzin' => $status]);
         if($status === 'Disetujui')
         {
+			SendMail::sendMail();
             $time = date('Y-m-d', strtotime('+5 years'));
-            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time]);
+            DB::table('izin')->where('id',$id)->update(['BerlakuSampai' => $time, 'TanggalDisetujui' => new \DateTime]);
         }
 		return Redirect::to('Admin/izin/IzinUsahaTokoModern')->with('message', 'Status updated.');
 	}
@@ -92,6 +94,9 @@ class IzinUsahaTokoModernController extends Controller {
 	{
         $namaPerusahaan = $request->get('nama_perusahaan');
         $alamatPerusahaan = $request->get('alamat_perusahaan');
+        $namaUsaha = $request->get('nama_usaha');
+        $lokasiUsaha = $request->get('lokasi_usaha');
+        $kegiatanUsaha = $request->get('KegiatanUsaha');
 
 		/* Get uploaded file from user */
 		$KTPPimpinan = $request->file('KTPFile');
@@ -130,11 +135,14 @@ class IzinUsahaTokoModernController extends Controller {
 			'NamaPemohon' => $nama,
             'AlamatPerusahaan' => $alamatPerusahaan,
             'NamaPerusahaan'  => $namaPerusahaan,
+            'NamaUsaha' => $namaUsaha,
+            'LokasiUsaha'  => $lokasiUsaha,
+            'KegiatanUsaha' => $kegiatanUsaha,
 			'JenisIzin' => 'IUTM', 
 			'TanggalMasuk' => $date, 
 			'BerlakuSampai' => $date, 
 			'StatusIzin' => 'Diterima', 
-			'DokumenPersetujuan' => 'localhost:8000', 
+			'DokumenPersetujuan' => '-', 
 			'created_at' => $date, 
 			'updated_at' => $date
 			]

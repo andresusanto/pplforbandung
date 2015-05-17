@@ -54,10 +54,10 @@ return [
 
 		'mysql' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', '127.0.0.1'),
-			'database'  => env('DB_DATABASE', 'tugas_2_ppl'),
-			'username'  => env('DB_USERNAME', 'tugas2ppl'),
-			'password'  => env('DB_PASSWORD', 'tugas2ppl'),
+			'host'      => '127.0.0.1',
+			'database'  => 'tugas2ppl',
+			'username'  => 'tugas2ppl1',
+			'password'  => 'tugas2ppl',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

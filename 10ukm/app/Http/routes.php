@@ -58,6 +58,9 @@ Route::get('pemberian-izin/{id}',"AdminController@izin");
 Route::delete('deleteusahaAdmin/{id}', "AdminController@destroy");
 
 Route::get('loginsso', 'ssoController@login');
+
+Route::post('uploadlaporan/{id}', 'UsahaController@uploadlaporan');
+
 //Route::get('registrasi-produk',"ProdukController@create");
 
 Route::controllers([

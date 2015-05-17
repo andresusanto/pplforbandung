@@ -36,16 +36,6 @@ Route::post('editPermohonan', array(
 	'uses' => 'PermohonanController@editPermohonan')
 	);
 
-Route::post('enrollPermohonan', array(
-	'as' => 'enrollPermohonan',
-	'uses' => 'PermohonanController@enrollPermohonan')
-	);
-
-Route::get('enrollPermohonan', array(
-	'as' => 'enrollPermohonan',
-	'uses' => 'PermohonanController@getEnrollPermohonan')
-	);
-
 Route::post('permohonan', array(
 	'as' => 'permohonan',
 	'uses' => 'PermohonanController@entry')
@@ -61,22 +51,55 @@ Route::post('bayarRetribusi', array(
 	'uses' => 'PermohonanController@bayarRetribusi')
 	);
 
-Route::post('enrollPermohonanBayarRetribusi', array(
-	'as' => 'enrollPermohonanBayarRetribusi',
-	'uses' => 'PermohonanController@enrollPermohonanBayarRetribusi')
-	);
-
-Route::get('enrollPermohonanBayarRetribusi', array(
-	'as' => 'enrollPermohonanBayarRetribusi',
-	'uses' => 'PermohonanController@getEnrollPermohonanBayarRetribusi')
-	);
-
 Route::post('updateBayarRetribusi', array(
 	'as' => 'updateBayarRetribusi',
 	'uses' => 'PermohonanController@updateBayarRetribusi')
 	);
 
+//route for download file
+
+Route::get('downloadLampiran/{filename}', array(
+	'as' => 'downloadLampiran',
+	'uses'=>'DownloadController@downloadLampiran')
+	);
+Route::get('downloadBuktiPembayaran/{filename}', array(
+	'as' => 'downloadBuktiPembayaran',
+	'uses'=>'DownloadController@downloadBuktiPembayaran')
+	);
+
+//route for perizinan
+
+Route::get('daftar_izin', array(
+	'as' => 'daftar_izin',
+	'uses' => 'PermohonanController@getDaftarIzin')
+	);
+
+Route::post('perpanjangKontrak', array(
+	'as' => 'perpanjangKontrak',
+	'uses' => 'PermohonanController@perpanjangKontrak')
+	);
+
+Route::post('updatePerpanjangKontrak', array(
+	'as' => 'updatePerpanjangKontrak',
+	'uses' => 'PermohonanController@updatePerpanjangKontrak')
+	);
+
+Route::post('bayarPerpanjangKontrak', array(
+	'as' => 'bayarPerpanjangKontrak',
+	'uses' => 'PermohonanController@bayarPerpanjangKontrak')
+	);
+
+Route::post('updateBayarPerpanjangKontrak', array(
+	'as' => 'updateBayarPerpanjangKontrak',
+	'uses' => 'PermohonanController@updateBayarPerpanjangKontrak')
+	);
+
 // route for admin page
+Route::get('admin/', array(
+	'as' => 'admin.home',
+	'array' => 'AdminController@home'
+	)
+	);
 
 Route::get('admin/login', array(
 	'as' => 'admin/login',
@@ -128,7 +151,65 @@ Route::post('admin/generatePDF', array(
 	'uses' => 'AdminController@generatePDF')
 	);	
 
+Route::get('admin/daftar_izin', array(
+	'as' => 'admin/daftar_izin',
+	'uses' => 'AdminController@getPerizinan')
+	);
+
+Route::post('admin/generateSuratIzin', array(
+	'as' => 'admin/generateSuratIzin',
+	'uses' => 'AdminController@generateSuratIzin')
+	);
+
+Route::post('admin/aturPerizinan', array(
+	'as' => 'admin/aturPerizinan',
+	'uses' => 'AdminController@aturPerizinan')
+	);
+
+Route::post('admin/updatePerizinan', array(
+	'as' => 'admin/updatePerizinan',
+	'uses' => 'AdminController@updatePerizinan')
+	);
+
 //delete permohonan
 
-Route::get('admin/delete_permohonan/{id}', 'AdminController@deletePermohonan');
-Route::get('delete_permohonan/{id}', 'PermohonanController@deletePermohonan');
+Route::get('admin/delete_permohonan/{id}', array(
+	'as' => 'admin/delete_permohonan',
+	'uses'=>'AdminController@deletePermohonan')
+	);
+
+Route::get('admin/deletePermohonanWithoutNotif/{id}', array(
+	'as' => 'admin/deletePermohonanWithoutNotif',
+	'uses'=>'AdminController@deletePermohonanWithoutNotif')
+	);
+
+Route::get('delete_permohonan/{id}', array(
+	'as' => 'delete_permohonan',
+	'uses' => 'PermohonanController@deletePermohonan')
+	);
+
+//delete perizinan
+Route::get('admin/delete_perizinan/{id}', array(
+	'as' => 'admin/delete_perizinan',
+	'uses' => 'AdminController@deletePerizinan')
+	);
+Route::get('delete_perizinan/{id}', array(
+	'as' => 'delete_perizinan',
+	'uses' => 'PermohonanController@deletePerizinan')
+	);
+
+Route::get('loginsso', array(
+	'as' => 'loginsso',
+	'uses' => 'SSOController@loginsso')
+	);
+
+Route::get('logoutsso', array(
+	'as' => 'logoutsso',
+	'uses' => 'SSOController@logoutsso')
+	);
+
+//api
+Route::get('api/daftarterminal', array(
+	'as' => 'api/daftarterminal',
+	'uses' => 'ApiController@getDaftarTerminal')
+	);

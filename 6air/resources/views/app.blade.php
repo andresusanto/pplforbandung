@@ -55,8 +55,9 @@
 					@endif
 				</ul>
 			
-				<form class="navbar-search pull-right">
-					<!--<input type="text" class="search-query" placeholder="Search">-->
+				<form class="navbar-search pull-right" action="{{ action('MasyarakatController@postCari') }}" method="POST">
+					<input type="text" name="cari" class="search-query" placeholder="Cari Izin">
+					<input type="hidden" name="_token" value="{{csrf_token()}}" />
 				</form>
 				
 			</div><!--/.nav-collapse -->	
@@ -76,7 +77,7 @@
 			
 				<li{{ isset($nav_masuk) ? ' class=active' : '' }}>
 					<a href="{{ action('PerizinanAirController@getHomedinas') }}">
-						<i class="icon-list-alt"></i>
+						<i class="icon-star"></i>
 						<span>Permohonan Izin Baru</span>
 					</a>    				
 				</li>
@@ -98,16 +99,16 @@
 						<span>Daftar Keberatan</span>
 					</a>    				
 				</li>
+				<li{{ isset($nav_list) ? ' class=active' : '' }}>
+					<a href="{{ action('PerizinanAirController@getListdinas') }}">
+						<i class="icon-list-alt"></i>
+						<span>Perizinan Aktif</span>
+					</a>    				
+				</li>
 				<li{{ isset($nav_pengaduan) ? ' class=active' : '' }}>
 					<a href="{{ action('PerizinanAirController@getListpengaduan') }}">
 						<i class="icon-exclamation-sign"></i>
 						<span>Daftar Pengaduan</span>
-					</a>    				
-				</li>
-				<li{{ isset($nav_faq) ? ' class=active' : '' }}>
-					<a href="#">
-						<i class="icon-question-sign"></i>
-						<span>FAQ</span>
 					</a>    				
 				</li>
 			</ul>
