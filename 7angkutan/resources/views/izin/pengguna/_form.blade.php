@@ -59,7 +59,7 @@
 
 
 {{-- Daftar terminal yang ada di bandung --}}
-<div class='form-group daftar-dokumen'>
+<div class='form-group'>
     <label>Data terminal yang ada di Bandung</label>
     <ul>
         <li>Terminal Bus Leuwi Panjang : Jl.Soekarno Hatta 205 Bandung</li>
