@@ -214,7 +214,7 @@ class BangunanController extends Controller {
 				"token" => null,
 			];
 			MailController::send($toSend);
-			return redirect('/user/');
+			return redirect('/user');
 		}
 	}
 
@@ -305,7 +305,7 @@ class BangunanController extends Controller {
 		$bangunan->id_lokasi = $var['id_lokasi'];
 		$bangunan->dokumen = $fileSrc;
 		$bangunan->save();
-		return redirect("/user/");
+		return redirect("/user");
 	}
 
 	public function setuju($id)

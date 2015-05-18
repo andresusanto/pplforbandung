@@ -7,7 +7,7 @@
     <div class="alert alert-danger"> {{$message}}</div>
     {!! Form::open(['url' => '/loginAdmin']) !!}
     <div class='form-group'>
-      {!! Form::label('password','Passowrd Admin:') !!}
+      {!! Form::label('password','Password Admin:') !!}
       {!! Form::password('password') !!}
     </div>
     <div class='form-group'>
@@ -16,7 +16,7 @@
     @else
     {!! Form::open(['url' => '/loginAdmin']) !!}
     <div class='form-group'>
-      {!! Form::label('password','Passowrd Admin:') !!}
+      {!! Form::label('password','Password Admin:') !!}
       {!! Form::password('password') !!}
     </div>
     <div class='form-group'>

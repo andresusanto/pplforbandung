@@ -83,8 +83,8 @@ Route::group(array('middleware' => 'adminAuth'),function()
         Route::group(['prefix' => '/tataruang'], function()
         {
             Route::get('/', 'TataruangController@admin_index');
-            Route::get('/tambah','Tataruangcontroller@create');
-            Route::post('/tambah','Tataruangcontroller@store');
+            Route::get('/tambah','TataruangController@create');
+            Route::post('/tambah','TataruangController@store');
             Route::get('/{id}', 'TataruangController@getFungsiRuangAdmin');
             Route::get('/sunting/{id}', 'TataruangController@edit');
             Route::post('/sunting', 'TataruangController@update');

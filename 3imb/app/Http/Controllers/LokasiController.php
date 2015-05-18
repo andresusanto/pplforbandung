@@ -179,7 +179,7 @@ class LokasiController extends Controller {
 		];
 		MailController::send($data);
 
-		return redirect('/user/');
+		return redirect('/user');
 	}
 
 	/**
@@ -314,7 +314,7 @@ class LokasiController extends Controller {
 		$lokasi->jumlah_lantai = $var['jumlah_lantai'];
 		$lokasi->dokumen = $fileSrc;
 		$lokasi->save();
-		return redirect('/admin/lokasi/');
+		return redirect('/admin/lokasi');
 	}
 
 	public function setuju($id)
