@@ -14,8 +14,8 @@ use Redirect;
 
 class SSOData {
 
-    static $CLIENT_ID = "yFWiOsxOcMSU4OFM";
-    static $CLIENT_SECRET = "TVbLttUBLZ8u4HBk";
+    static $CLIENT_ID = "0hGaCHiXQ2RpVpVk";
+    static $CLIENT_SECRET = "5MTCGxdl87qj3ys7";
     static $REDIRECT_URI = "http://pajak.pplbandung.biz.tm/test/getacctoken";
 
 

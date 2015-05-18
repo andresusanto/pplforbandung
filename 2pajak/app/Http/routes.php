@@ -49,15 +49,16 @@ Route::get('/wp/daftar', ['as' => 'wp_daftar', function() {
 		'nama' =>$arr['Nama'],
 		'NIK' =>$arr['NIK'],
 		'TTL' => $arr['Tempat Lahir'].', '.$arr['Tgl Lahir'],
+        'tempatLahir' => $arr['Tempat Lahir'],
+        'tanggalLahir' => $arr['Tgl Lahir'],
 		'alamat' => $arr['Alamat']
 	);
 
 	return view('wp.daftar')->with($view_variable);
 }]);
 
-Route::post('/wp/daftar', function(){
-	return view('wp.daftar');
-});
+
+Route::post('/wp/daftar/submit', 'PendaftarWPController@daftar');
 
 ///////////////////////////////////
 // kelompok permintaanWP
@@ -161,9 +162,32 @@ Route::get('/pajak/',function(){
 	
     return view('permintaanWP.pembuatanSSPD')->with($variable);
 });
-Route::get('/pajak/search','PajakController@search');
-Route::get('/pajak/add', ['as' => 'pajak_tambah', 'uses' => 'PajakController@add']);
-Route::post('/pajak/add/submit','PajakController@submit');
+
+Route::get('wp/pajak/search', ['as' => 'pajak_search', 'uses' => 'PajakController@search']);
+Route::get('wp/pajak/add', ['as' => 'pajak_tambah', 'uses' => 'PajakController@add']);
+Route::post('wp/pajak/add/submit',['as' => 'pajak_submit', 'uses' => 'PajakController@submit']);
+
+////////////////////////////////////
+// Route Pembayaran
+////////////////////////////////////
+Route::get('wp/pembayaran', ['as' => 'pembayaran', function() {
+    $arr=SSOData::GetNPWP();
+    if (get_class($redir = (object) $arr) === 'Illuminate\Http\RedirectResponse'){
+        return $redir;
+    } else if ($arr['npwpd']==='-'){
+        return Redirect::to('wp/daftar');
+    }
+
+    $array = array('npwpd' => $arr['npwpd']);
+    //$array = array('npwpd' => '32445688474536');
+    return view('pembayaran.home')->with($array);
+}]);
+Route::post('wp/pembayaran/prosesPembayaran', 'BayarPajakController@prosesPembayaran');
+// bukti pembayaran
+Route::get('wp/pembayaran/bukti/{id}', ['as' => 'pembarayan_bukti', 'uses' => 'BayarPajakController@getBukti']);
+// daftar bukti pembayaran
+Route::get('wp/pembayaran/bukti/', ['as' => 'pembayaran_bukti', 'uses' => 'BayarPajakController@daftarBukti']);
+Route::post('wp/pembayaran/prosesPembayaran', ['as' => 'pembayaran_proses', 'uses' =>'BayarPajakController@prosesPembayaran']);
 
 
 Route::post('/petugas/home','PetugasPajakController@index');
@@ -197,28 +221,9 @@ Route::get('/petugas', function(){
 Route::post('/petugas/login', 'PetugasPajakController@cek');
 Route::get('petugas/wajib_pajak/laporan/{id}','WajibPajakController@laporan');
 
-////////////////////////////////////
-// Route Pembayaran
-////////////////////////////////////
-Route::get('/pembayaran', ['as' => 'pembayaran', function() {
-	$arr=SSOData::GetNPWP();
-	if (get_class($redir = (object) $arr) === 'Illuminate\Http\RedirectResponse'){
-		return $redir;
-	} else if ($arr['npwpd']==='-'){
-		return Redirect::to('wp/daftar');
-	}
-	
-    $array = array('npwpd' => $arr['npwpd']);
-    //$array = array('npwpd' => '32445688474536');
-    return view('pembayaran.home')->with($array);
-}]);
-Route::post('/pembayaran/prosesPembayaran', 'BayarPajakController@prosesPembayaran');
+
 
 Route::get('/petugas/pembuatanSTPD', function() {
     return view('petugas.pembuatanSTPD');
 });
-// bukti pembayaran
-Route::get('/pembayaran/bukti/{id}', ['as' => 'pembarayan_bukti', 'uses' => 'BayarPajakController@getBukti']);
-// daftar bukti pembayaran
-Route::get('/pembayaran/bukti/', ['as' => 'pembayaran_bukti', 'uses' => 'BayarPajakController@daftarBukti']);
-Route::post('/pembayaran/prosesPembayaran', ['as' => 'pembayaran_proses', 'uses' =>'BayarPajakController@prosesPembayaran']);
+
