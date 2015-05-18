@@ -29,12 +29,6 @@
                   </li>
 
                   <li class="sub-menu">
-                      <a href="#" >
-                          <i class="fa fa-file-text"></i>
-                          <span>Laporan</span>
-                      </a>
-                 </li>
-                  <li class="sub-menu">
                       <a href="{{url('/petugas/edit')}}" >
                           <i class="fa fa-users"></i>
                           <span>Petugas Pajak</span>

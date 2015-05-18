@@ -16,7 +16,7 @@ class BayarPajakController extends Controller {
 		$input = Input::all();
 		BayarPajak::create($input);
 
-		return Redirect::to('/pembayaran');
+		return Redirect::to('/wp/pembayaran');
 	}
 
 	public function daftarBukti()
