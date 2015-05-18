@@ -105,7 +105,7 @@
                       </a>
                       <ul class="sub">
                           <li><a  href="{{url('/admin/tataruang')}}">Peta</a></li>
-                          <li><a  href="{{url('/admin/tataruang')}}">Tambah Wilayah</a></li>
+                          <li><a  href="{{url('/admin/tataruang/tambah')}}">Tambah Wilayah</a></li>
                       </ul>
                   </li>
 

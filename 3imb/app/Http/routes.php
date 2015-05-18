@@ -60,34 +60,34 @@ Route::group(array('middleware' => 'adminAuth'),function()
        Route::group(['prefix' => '/imb'], function()
         {
             Route::get('/','BangunanController@index');
-            Route::get('/{id}', 'BangunanController@show');
             Route::get('setuju/{id}', 'BangunanController@setuju');
             Route::post('tolak', 'BangunanController@tolak');
             Route::get('sebelumTolak/{id}', 'BangunanController@sebelumTolak');
             Route::get('/proses', 'BangunanController@getProses');
             Route::get('/disetujui', 'BangunanController@getDisetujui');
             Route::get('/ditolak', 'BangunanController@getDitolak');
+            Route::get('/{id}', 'BangunanController@show');
         }); 
        Route::group(['prefix' => '/lokasi'], function()
         {
             Route::get('/','LokasiController@index');
-            Route::get('/{id}', 'BangunanController@show');
             Route::get('setuju/{id}', 'LokasiController@setuju');
             Route::post('tolak', 'LokasiController@tolak');
             Route::get('sebelumTolak/{id}', 'LokasiController@sebelumTolak');
             Route::get('/proses', 'LokasiController@getProses');
             Route::get('/disetujui', 'LokasiController@getDisetujui');
             Route::get('/ditolak', 'LokasiController@getDitolak');
-            Route::get('/laporan', 'LokasiController@kirimLaporan'); 
+            Route::get('/laporan', 'LokasiController@kirimLaporan');
+            Route::get('/{id}', 'LokasiController@show');
         });
         Route::group(['prefix' => '/tataruang'], function()
         {
             Route::get('/', 'TataruangController@admin_index');
             Route::get('/tambah','TataruangController@create');
             Route::post('/tambah','TataruangController@store');
-            Route::get('/{id}', 'TataruangController@getFungsiRuangAdmin');
             Route::get('/sunting/{id}', 'TataruangController@edit');
             Route::post('/sunting', 'TataruangController@update');
+            Route::get('/{id}', 'TataruangController@getFungsiRuangAdmin');
         }); 
     });
   
