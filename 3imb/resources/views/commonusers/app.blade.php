@@ -31,7 +31,7 @@
                                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                                         class="icon-user"> <?php
                                         if(isset($_COOKIE['nama'])){
-                                        echo $_COOKIE['nama'];
+                                            echo $_COOKIE['nama'];
                                         }
                                     ?></i> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">

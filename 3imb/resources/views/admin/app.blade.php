@@ -96,7 +96,6 @@
                           <li><a  href="{{url('/admin/lokasi/disetujui')}}">Izin Disetujui</a></li>
                           <li><a  href="{{url('/admin/lokasi/semua')}}">Izin Ditolak</a></li>
                       </ul>
-                      </ul>
                   </li>
 
                   <li class="sub-menu">
