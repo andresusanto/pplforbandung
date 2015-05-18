@@ -171,6 +171,12 @@ Route::post('admin/updatePerizinan', array(
 	'uses' => 'AdminController@updatePerizinan')
 	);
 
+Route::get('admin/daftar_izin_type/{type}', array(
+	'as' => 'admin/daftar_izin_type',
+	'uses' => 'AdminController@getSortPerizinan'
+	)
+);
+
 //delete permohonan
 
 Route::get('admin/delete_permohonan/{id}', array(

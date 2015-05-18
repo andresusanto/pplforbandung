@@ -17,10 +17,18 @@
 </li>
 
 <li class="sub-menu">
-  <a href="{{URL::route('admin/daftar_izin')}}" >
+  <a href="javascript:;" >
       <i class="fa fa-list"></i>
       <span>Daftar Perizinan</span>
   </a>
+  <ul class="sub">
+      <li><a  href="{{URL::route('admin/daftar_izin')}}">Semua</a></li>
+      <li><a  href="{{URL::route('admin/daftar_izin_type', ['tanggal_dibuat'])}}">Terurut Tanggal Mulai Kontrak</a></li>
+      <li><a  href="{{URL::route('admin/daftar_izin_type', ['tanggal_expired'])}}">Terurut Tanggal Berakhir Kontrak</a></li>
+      <li><a  href="{{URL::route('admin/daftar_izin_type', ['biaya_retribusi'])}}">Terurut Biaya Retribusi</a></li>
+      <li><a  href="{{URL::route('admin/daftar_izin_type', ['lokasi_tanah'])}}">Terurut Lokasi</a></li>
+      <li><a  href="{{URL::route('admin/daftar_izin_type', ['status_perizinan'])}}">Terurut Status</a></li>
+  </ul>
 </li>
 <li class="sub-menu">
   <a href="{{URL::route('admin/laporan')}}" >

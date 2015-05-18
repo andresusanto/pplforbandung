@@ -263,8 +263,9 @@ class PermohonanController extends Controller {
         $perizinans = Perizinan::where('id_pemohon', $user->id)->get();
 
         foreach ($perizinans as $perizinan) {
-            if($perizinan->tanggal_expired < Carbon::now()){
+            if($perizinan->tanggal_expired < Carbon::now() && $perizinan->status_perizinan = 'Aktif'){
                 $perizinan->status_perizinan = 'Tidak Aktif';
+                $perizinan->save();
             }
         }
 
