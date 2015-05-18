@@ -45,7 +45,7 @@ class AdminController extends Controller {
 	}
 
 	public function after_index(){
-		return redirect('/admin/lokasi/');
+		return redirect('/admin/lokasi');
 	}
 
 	public function login(){

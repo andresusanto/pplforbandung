@@ -78,10 +78,10 @@
                           <span>IMB</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="imb">Semua Izin</a></li>
-                          <li><a  href="imb/proses">Izin dalam Proses</a></li>
-                          <li><a  href="imb/disetujui">Izin Disetujui</a></li>
-                          <li><a  href="imb/semua">Izin Ditolak</a></li>
+                          <li><a  href="{{url('/admin/imb')}}">Semua Izin</a></li>
+                          <li><a  href="{{url('/admin/imb/proses')}}">Izin dalam Proses</a></li>
+                          <li><a  href="{{url('/admin/imb/disetujui')}}">Izin Disetujui</a></li>
+                          <li><a  href="{{url('/admin/imb/semua')}}">Izin Ditolak</a></li>
                       </ul>
                   </li>
 
@@ -91,10 +91,11 @@
                           <span>Izin Lokasi</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="lokasi">Semua Izin</a></li>
-                          <li><a  href="lokasi/proses">Izin dalam Proses</a></li>
-                          <li><a  href="lokasi/disetujui">Izin Disetujui</a></li>
-                          <li><a  href="lokasi/semua">Izin Ditolak</a></li>
+                          <li><a  href="{{url('/admin/lokasi')}}">Semua Izin</a></li>
+                          <li><a  href="{{url('/admin/lokasi/proses')}}">Izin dalam Proses</a></li>
+                          <li><a  href="{{url('/admin/lokasi/disetujui')}}">Izin Disetujui</a></li>
+                          <li><a  href="{{url('/admin/lokasi/semua')}}">Izin Ditolak</a></li>
+                      </ul>
                       </ul>
                   </li>
 
@@ -104,8 +105,8 @@
                           <span>Tata Ruang</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="tataruang">Peta</a></li>
-                          <li><a  href="tataruang/tambah">Tambah Wilayah</a></li>
+                          <li><a  href="{{url('/admin/tataruang')}}">Peta</a></li>
+                          <li><a  href="{{url('/admin/tataruang')}}">Tambah Wilayah</a></li>
                       </ul>
                   </li>
 
@@ -115,9 +116,9 @@
                           <span>Pengaduan</span>
                       </a>
                       <ul class="sub">
-                          <li><a  href="pengaduan/1">IMB</a></li>
-                          <li><a  href="pengaduan/2">Izin Lokasi</a></li>
-                          <li><a  href="pengaduan/3">Tata Ruang</a></li>
+                          <li><a  href="{{url('/admin/pengaduan/1')}}">IMB</a></li>
+                          <li><a  href="{{url('/admin/pengaduan/2')}}">Izin Lokasi</a></li>
+                          <li><a  href="{{url('/admin/pengaduan/3')}}">Tata Ruang</a></li>
                       </ul>
                   </li>
 
@@ -145,7 +146,7 @@
       <footer class="site-footer">
           <div class="text-center">
               2015 - Azabalakisimawa
-              <a href="/admin" class="go-top">
+              <a href="{{url('/admin')}}" class="go-top">
                   <i class="fa fa-angle-up"></i>
               </a>
           </div>

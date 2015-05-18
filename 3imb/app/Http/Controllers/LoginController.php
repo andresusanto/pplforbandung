@@ -42,6 +42,7 @@ class LoginController extends Controller {
 		$json2 = $response->json();
 		setcookie("access_token",$json['access_token'],time()+60*60);
 		setcookie("nik",$json2['id'],time()+60*60);
+		setcookie("nama",$json2['nama_penduduk'],time()+60*60);
 	}
 
 	public static function isLogin(){
@@ -61,6 +62,7 @@ class LoginController extends Controller {
 	public function logout(){
 		setcookie("access_token",'',time()-60);
 		setcookie("nik",'',time()-60);
+		setcookie("nama",'',time()-60);
 		return redirect('/');	
 	}
 

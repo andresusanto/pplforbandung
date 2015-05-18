@@ -74,7 +74,7 @@ class PengaduanController extends Controller {
 		Pengaduan::create($var);
 		$message = "Pengaduan telah dikirim.";
 		Session::put('message', $message);
-		return redirect('/pengaduan');
+		return redirect('/user/pengaduan');
 	}
 
 	/**
@@ -88,7 +88,7 @@ class PengaduanController extends Controller {
 		$var = Request::all();
 		$pengaduan = Pengaduan::find($id);
 		$pengaduan->update($var);
-		return redirect('/pengaduans');
+		return redirect('/pengaduan');
 	}
 
 	/**
