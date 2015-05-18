@@ -56,7 +56,7 @@ class AdminController extends Controller {
 		}
 		else{
 			if(self::_login($var['password'])){
-				return redirect('/admin/');
+				return redirect('/admin/lokasi');
 			}
 			else{
 				$message = "Incorrect Passowrd";

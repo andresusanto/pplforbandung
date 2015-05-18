@@ -35,6 +35,8 @@
 		<div class="container">
 			<div class="content">
 				<div class="title">Anda tidak diperbolehkan mengakses halaman ini.</div>
+				<a href="{{url('/loginPemohon')}}" class="title" style='font-size : 12pt'>Login Pemohon</a>
+				
 			</div>
 		</div>
 	</body>
