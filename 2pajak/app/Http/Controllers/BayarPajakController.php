@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Input;
 use Redirect;
 use App\BayarPajak;
+use App\Classes\SSOData;
 
 class BayarPajakController extends Controller {
 
@@ -20,8 +21,17 @@ class BayarPajakController extends Controller {
 
 	public function daftarBukti()
 	{
+		$arr=SSOData::GetNPWP();
+		if (get_class($redir = (object) $arr) === 'Illuminate\Http\RedirectResponse'){
+			return $redir;
+		} else if ($arr['npwpd']==='-'){
+			return Redirect::to('wp/daftar');
+		}
+		
+		$array = array('npwpd' => $arr['npwpd']);
 		// dummy
-		$npwpd = '32445688474536';
+		$npwpd = $arr['npwpd'];
+		//$npwpd = '32445688474536';
 
 		$sql = "npwpd like '$npwpd'";
 		$listBukti = BayarPajak::select('id', 'jenis_pajak', 'nomor_stp', 'tanggal_pembayaran')

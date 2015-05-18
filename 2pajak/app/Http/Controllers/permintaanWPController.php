@@ -12,7 +12,7 @@ class permintaanWPController extends Controller {
 
 	public function prosesPermintaan()
 	{
-		$input = Input::all();
+        $input = Input::all();
 		permintaanWP::create($input);
 		$message = array('message'=> 'Permintaan pengajuan berhasil dikirim');
 
@@ -119,5 +119,12 @@ class permintaanWPController extends Controller {
 	{
 		//
 	}
+
+    public function pembuatanSSPD()
+    {
+        $pdf = \PDF::loadView('SSPD.templateSSPD')->setPaper('a4')->setOrientation('vertical')->setWarnings(false);
+        return $pdf->download('SSPD.pdf'); //this code is used for the name pdf
+
+    }
 
 }

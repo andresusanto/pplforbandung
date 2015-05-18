@@ -1,39 +1,27 @@
-# Repo PPL - Project 2
-Aplikasi PPL Untuk Perbaikan Sistem Pelayanan Kota Bandung
+## Laravel PHP Framework
 
-## Server
-http://www.pplbandung.biz.tm
+[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
+[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
+[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-## Konten:
-1. Aplikasi Kependudukan & Catatan Sipil + Single Sign On
-2. Aplikasi Pelayanan Pajak
-3. Aplikasi IMB dan Ijin Lokasi
-4. Aplikasi Ijin Usaha terpadu
-5. Aplikasi Ijin terkait Lahan
-6. Aplikasi Ijin terkait Air
-7. Aplikasi terkait Ijin Angkutan
-8. Aplikasi Parkir dan Terminal
-9. Aplikasi Pengelolaan Sampah
-10. Aplikasi UKM dan Indag + Dashboard (Portal)
-11. Aplikasi Ijin Usaha dan Sarana Perdagangan
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
 
-## Aturan:
-1. Setiap kelompok sudah dibuatkan folder masing-masing, sedangkan folder root digunakan untuk portal utama
-2. Tiap kelompok buat branch masing-masing jika ingin menggunakan repo ini, update dilakukan pada branch masing-masing
-3. Branch utama (master) akan langsung di sync ke server, sehingga jika ingin melakukan merge, tolong diperiksa/diteliti terlebih dahulu.
+Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
 
+## Official Documentation
 
-## Running
-Beberapa saat (mungkin dibawah 5 menit) setelah di-merge dengan branch utama (dan di push ke github), aplikasi anda dapat diakses langsung pada alamat yang sesuai dengan situs anda:
+Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-1. http://dukcapil.pplbandung.biz.tm
-2. http://pajak.pplbandung.biz.tm
-3. http://imb.pplbandung.biz.tm
-4. http://usahaterpadu.pplbandung.biz.tm
-5. http://lahan.pplbandung.biz.tm
-6. http://air.pplbandung.biz.tm
-7. http://angkutan.pplbandung.biz.tm
-8. http://parkir.pplbandung.biz.tm
-9. http://sampah.pplbandung.biz.tm
-10. http://ukm.pplbandung.biz.tm + http://www.pplbandung.biz.tm
-11. http://usahasarana.pplbandung.biz.tm
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+
+### License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

@@ -21,7 +21,7 @@
                             @foreach($wps as $wp)
                                 <tr>
                                     <td>{{$wp->nik}}</td>
-                                    <td>{{$wp->npwpd}}</td>
+                                    <td><a href="{{Request::url()}}/laporan/{{$wp->npwpd}}">{{$wp->npwpd}}</a></td>
                                     <td>{{$wp->nama}}</td>
                                     <td>{{$wp->alamat}}</td>
                                     <td>{{$wp->tempat_lahir}}</td>

@@ -23,6 +23,8 @@
                           <li><a  href="{{url('/petugas/pendaftar')}}">Daftar Calon WP</a></li>
                           <li><a  href="{{url('/petugas/permintaan')}}">Daftar Permintaan WP</a></li>
                           <li><a  href="{{url('/petugas/wajib_pajak')}}">Daftar Wajib Pajak</a></li>
+                          <li><a href="{{url('/petugas/pembuatanSTPD')}}">Pembuatan STPD</a> </li>
+                          <li><a href="#">Pengecekan Status SSPD</a> </li>
                       </ul>
                   </li>
 

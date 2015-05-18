@@ -34,13 +34,13 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="{{Request::url()}}/home" method="post">
+		      <form class="form-login" action="{{Request::url()}}/login" method="post">
 		        <h2 class="form-login-heading">masuk petugas</h2>
 		        <div class="login-wrap">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-		            <input type="text" class="form-control" placeholder="Username Petugas" autofocus>
+		            <input type="text" name="username" class="form-control" placeholder="Username Petugas" autofocus>
 		            <br>
-		            <input type="password" class="form-control" placeholder="Sandi">
+		            <input type="password" name="password" class="form-control" placeholder="Sandi">
 		            <br>
 		            <button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Masuk </button>		
 		        </div>		
