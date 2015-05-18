@@ -81,7 +81,7 @@
                           <li><a  href="{{url('/admin/imb')}}">Semua Izin</a></li>
                           <li><a  href="{{url('/admin/imb/proses')}}">Izin dalam Proses</a></li>
                           <li><a  href="{{url('/admin/imb/disetujui')}}">Izin Disetujui</a></li>
-                          <li><a  href="{{url('/admin/imb/semua')}}">Izin Ditolak</a></li>
+                          <li><a  href="{{url('/admin/imb/ditolak')}}">Izin Ditolak</a></li>
                       </ul>
                   </li>
 
@@ -94,7 +94,7 @@
                           <li><a  href="{{url('/admin/lokasi')}}">Semua Izin</a></li>
                           <li><a  href="{{url('/admin/lokasi/proses')}}">Izin dalam Proses</a></li>
                           <li><a  href="{{url('/admin/lokasi/disetujui')}}">Izin Disetujui</a></li>
-                          <li><a  href="{{url('/admin/lokasi/semua')}}">Izin Ditolak</a></li>
+                          <li><a  href="{{url('/admin/lokasi/ditolak')}}">Izin Ditolak</a></li>
                       </ul>
                   </li>
 

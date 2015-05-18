@@ -45,7 +45,7 @@
                                   foreach ($block['bangunans'] as $bangunan) {
                               ?>
                               <tr>
-                                  <td><a href="imb/{{$bangunan->id}}">{{$bangunan->id}}</a></td>
+                                  <td><a href='{{url("/admin/imb/$bangunan->id")}}'>{{$bangunan->id}}</a></td>
                                   <td>{{$bangunan->nik}}</td>
                                   <td>{{$bangunan->email}}</td>
                                   <td>{{$bangunan->nama}}</td>
@@ -55,8 +55,8 @@
                                   <td>{{$bangunan->status}}</td>
                                   @if($bangunan->status==Bangunan::getStatusBangunan()['0'])
                                   <td>
-                                      <a href='imb/setuju/{{$bangunan->id}}'><button class="btn btn-success btn-xs"><i class="fa fa-check">Setujui</i></button></a>
-                                      <a href='imb/sebelumTolak/{{$bangunan->id}}'><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">Tolak</i></button></a>
+                                      <a href='{{url("/admin/imb/setuju/$bangunan->id")}}'><button class="btn btn-success btn-xs"><i class="fa fa-check">Setujui</i></button></a>
+                                      <a href='{{url("/admin/imb/sebelumTolak/$bangunan->id")}}'><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">Tolak</i></button></a>
                                   </td>
                                   @endif
                               </tr>

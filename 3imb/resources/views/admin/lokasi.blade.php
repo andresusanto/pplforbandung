@@ -46,7 +46,7 @@
                                   foreach ($block['lokasis'] as $lokasi) {
                               ?>
                               <tr>
-                                  <td><a href="lokasi/{{$lokasi->id}}">{{$lokasi->id}}</a></td>
+                                  <td><a href='{{ url("/admin/lokasi/$lokasi->id")}}'>{{$lokasi->id}}</a></td>
                                   <td>{{$lokasi->nik}}</td>
                                   <td>{{$lokasi->email}}</td>
                                   <td>{{$lokasi->alamat}}</td>
@@ -57,8 +57,8 @@
                                   <td>{{$lokasi->status}}</td>
                                   @if($lokasi->status==Lokasi::getStatusLokasi()['0'])
                                   <td>
-                                      <a href='lokasi/setuju/{{$lokasi->id}}'><button class="btn btn-success btn-xs"><i class="fa fa-check">Setujui</i></button></a>
-                                      <a href='lokasi/sebelumTolak/{{$lokasi->id}}'><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">Tolak</i></button></a>
+                                      <a href='{{url("/admin/lokasi/setuju/$lokasi->id")}}'><button class="btn btn-success btn-xs"><i class="fa fa-check">Setujui</i></button></a>
+                                      <a href='{{url("/admin/lokasi/sebelumTolak/$lokasi->id")}}'><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o ">Tolak</i></button></a>
                                   </td>
                                   @endif
                               </tr>
