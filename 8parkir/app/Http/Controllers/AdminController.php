@@ -268,8 +268,28 @@ class AdminController extends Controller {
         $perizinans = Perizinan::all();
 
         foreach ($perizinans as $perizinan) {
-            if($perizinan->tanggal_expired < Carbon::now()){
+            if($perizinan->tanggal_expired < Carbon::now() && $perizinan->status_perizinan = 'Aktif'){
                 $perizinan->status_perizinan = 'Tidak Aktif';
+                $perizinan->save();
+            }
+        }
+
+        return view('admin.daftar_izin', compact('perizinans', 'admin'));
+    }
+
+    public function getSortPerizinan($type){
+        try{
+            $admin = Session::get('admin');
+        } catch (Exception $e) {
+            return Redirect::route('admin/login');
+        }
+
+        $perizinans = Perizinan::orderBy($type, 'ASC')->get();
+
+        foreach ($perizinans as $perizinan) {
+            if($perizinan->tanggal_expired < Carbon::now() && $perizinan->status_perizinan = 'Aktif'){
+                $perizinan->status_perizinan = 'Tidak Aktif';
+                $perizinan->save();
             }
         }
 

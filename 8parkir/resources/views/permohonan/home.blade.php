@@ -16,7 +16,7 @@
 	      <div class="widget big-stats-container">
 	        <div class="widget-content">
 	          <img src="{{asset('image/logo-pemkot-bandung.png')}}" height="100" width="100"></img>
-	          <h6 class="bigstats">Aplikasi ini mengurus perizinan terkait parkir dan terminal. (DEBUG)</h6>
+	          <h6 class="bigstats">Aplikasi ini mengurus perizinan terkait parkir dan terminal.</h6>
 	        </div>
 	        <!-- /widget-content --> 
 	        
