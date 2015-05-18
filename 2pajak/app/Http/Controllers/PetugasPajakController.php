@@ -26,7 +26,7 @@ class PetugasPajakController extends Controller {
         $wp = new WajibPajak;
         $wp->nik = $pendaftar->nik;
         $wp->nama = $pendaftar->nama;
-        $wp->npwpd = 'mi Generate di sini';
+        $wp->npwpd = $pendaftar->nik;
         $wp->alamat = $pendaftar->alamat;
         $wp->tempat_lahir = $pendaftar->tempat_lahir;
         $wp->tanggal_lahir = $pendaftar->tanggal_lahir;

@@ -31,7 +31,7 @@
 	
 	<div class="content clearfix">
 		
-		<form action="{{url('/register')}}" method="get">
+		<form method="post" action="{{ url('/wp/daftar/submit') }}">
 		
 			<h1>Pendaftaran Wajib Pajak</h1>		
 			
@@ -41,24 +41,29 @@
 				
 				<b>Nama:</b>
 				<p>{{ $nama }}</p>
+				<input type="hidden" name="nama" value="{{ $nama }}">
 				<b>NIK:</b>
 				<p>{{ $NIK }}</p>
+				<input type="hidden" name="nik" value="{{ $NIK }}">
 				<b>Tempat dan Tanggal Lahir:</b>
 				<p>{{ $TTL }}</p>
+				<input type="hidden" name="tempatLahir" value="{{ $tempatLahir }}">
+				<input type="hidden" name="tanggalLahir" value="{{ $tanggalLahir }}">
 				<b>Alamat:</b>
 				<p>{{ $alamat }}</p>
+				<input type="hidden" name="alamat" value="{{ $alamat }}">
 				<br>
 				
 			</div> <!-- /login-fields -->
 			
 			<div class="login-actions">
 				
-				<input type="submit" style="margin-left:1em;" class="button btn btn-success btn-large" formaction="">Daftar</input>
+				<input type="submit" style="margin-left:1em;" class="button btn btn-success btn-large"  value="Daftar">
 				<button class="button btn btn-large" >Batal</button>
 				
 			</div> <!-- .actions -->
 			
-			
+			<input type="hidden" name="_token" value="{{ csrf_token() }}">
 			
 		</form>
 

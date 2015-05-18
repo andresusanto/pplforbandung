@@ -46,7 +46,7 @@
                                 echo '</td>';
                                 echo '<td>';
                                   $id = $daf['id'];
-                                  echo '<a href=\'' . url("/pembayaran/bukti/$id") . '\'>Buka</a>';
+                                  echo '<a href=\'' . url("/wp/pembayaran/bukti/$id") . '\'>Buka</a>';
                                 echo '</td>';
                               echo '</tr>';
                               $i++;

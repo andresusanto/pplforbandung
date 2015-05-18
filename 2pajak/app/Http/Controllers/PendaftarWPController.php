@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\PendaftarWP;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PendaftarWPController extends Controller {
 
@@ -80,5 +82,19 @@ class PendaftarWPController extends Controller {
 	{
 		//
 	}
+
+    public function daftar(Request $request)
+    {
+        $pendaftar = new PendaftarWP();
+
+        $pendaftar->nama = $request->input('nama');
+        $pendaftar->nik = $request->input('nik');
+        $pendaftar->tempat_lahir = $request->input('tempatLahir');
+        $pendaftar->tanggal_lahir = date('Y-m-d',strtotime($request->input('tanggalLahir')));
+        $pendaftar->alamat = $request->input('alamat');
+        $pendaftar->status_pendaftaran = -1;
+        $pendaftar->save();
+        return Redirect::to('/');
+    }
 
 }

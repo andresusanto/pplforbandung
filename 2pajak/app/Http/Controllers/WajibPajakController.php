@@ -26,6 +26,7 @@ class WajibPajakController extends Controller {
         if (get_class($redir = (object) $arr) === 'Illuminate\Http\RedirectResponse'){
             return $redir;
         }
+		
         $wajibpajak->nama = $arr['Nama'];
         $wajibpajak->nik = $arr['NIK'];
         $wajibpajak->npwpd = $arr['NIK'];
