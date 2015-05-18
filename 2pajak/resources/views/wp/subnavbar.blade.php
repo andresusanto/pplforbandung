@@ -8,7 +8,7 @@
           <ul class="dropdown-menu">
             <li><a href="{{ route('pembayaran') }}">Bayar Pajak</a></li>
             <li><a href="{{ route('pembayaran_bukti') }}">Bukti Pembayaran Pajak</a></li>
-            <li><a href="{{ route('pajak_tambah', ['npwpd' => "10000"]) }}">Tambah jenis pajak</a></li>
+            <li><a href="{{ route('pajak_tambah')}}">Tambah jenis pajak</a></li>
           </ul>
         </li>
         <li class="dropdown"><a href="{{route("wp_permintaan_home")}}"><i class='icon-hand-up'></i><span>Pengajuan</span><b class="caret"></b></a>
